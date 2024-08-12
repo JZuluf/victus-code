@@ -1,4 +1,6 @@
-# Repositorio del Proyecto de Diseño Orientado a Objetos (DOO)
+# Repositorio del Proyecto de Diseño Orientado a Objetos (DOO).......
+
+
 
 Este repositorio ha sido creado por los estudiantes **Andrés Felipe Vélez Alcaraz**, **José Manuel Zuluaga Figueroa** y **Juan Pablo Avendaño Duque**. Aquí encontrarás el código fuente de nuestra aplicación, la cual estamos desarrollando en **Java** utilizando el framework **IntelliJ IDEA**.
 
