@@ -1,9 +1,13 @@
-# ¡Bienvenido Profesor y a quien le interese!
+# Repositorio del Proyecto de Diseño Orientado a Objetos (DOO)
 
-Bienvenido al repositorio **CodeProyectoClaseDOO**. Espero sinceramente que lo que encuentres aquí sea de tu agrado y te resulte útil. He puesto mucho empeño en desarrollar este proyecto, por lo que espero que disfrutes explorando el código y las ideas detrás de él.
+Este repositorio ha sido creado por los estudiantes **Andrés Felipe Vélez Alcaraz**, **José Manuel Zuluaga Figueroa** y **Juan Pablo Avendaño Duque**. Aquí encontrarás el código fuente de nuestra aplicación, la cual estamos desarrollando en **Java** utilizando el framework **IntelliJ IDEA**.
 
-Si tienes cualquier comentario o sugerencia, no dudes en hacérnoslo saber. ¡Estoy abierto a mejorar y aprender más en el proceso!
+## Actualizaciones Semanales
 
----
+Nos comprometemos a actualizar este repositorio cada semana para reflejar los avances y mejoras que implementaremos en la aplicación, conforme a las indicaciones de clase del curso **Diseño Orientado a Objetos (DOO)**, impartido por el profesor **Wíder Farid Sánchez Garzón** en el **segundo semestre de 2024** en la **Universidad Católica de Oriente (UCO)**.
 
-Gracias por tu interés y que tengas una excelente experiencia revisando este repositorio.
+## Documentación
+
+Toda la documentación relevante para el proyecto la puedes encontrar en el siguiente enlace: [Documentación del Proyecto](https://github.com/JZuluf/victus-doc).
+
+Esperamos que disfruten y encuentren útil nuestro trabajo.
