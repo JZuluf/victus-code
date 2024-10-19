@@ -10,13 +10,18 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 public class ComunZoneEntity extends DomainEntity {
 	
 	private String name;
-	private StateEntity state;
+	private String descripcion;
+	private int capacidadPersonas;
+	private int tiempoUso;
+	private String unidadTiempoUso;
+	private String normas;
+	private ResidentialComplexEntity conjuntoResidencial;
 
 
 	public ComunZoneEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		setState(new StateEntity());
+		setConjuntoResidencial(new ResidentialComplexEntity());
 	}
 	
 	public String getName() {
@@ -26,6 +31,48 @@ public class ComunZoneEntity extends DomainEntity {
 	public void setName(String name) {
 		this.name = TextHelper.applyTrim(name);
 	}
+	
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public int getCapacidadPersonas() {
+		return capacidadPersonas;
+	}
+
+	public void setCapacidadPersonas(int capacidadPersonas) {
+		this.capacidadPersonas = capacidadPersonas;
+	}
+
+	public int getTiempoUso() {
+		return tiempoUso;
+	}
+
+	public void setTiempoUso(int tiempoUso) {
+		this.tiempoUso = tiempoUso;
+	}
+
+	public String getUnidadTiempoUso() {
+		return unidadTiempoUso;
+	}
+
+	public void setUnidadTiempoUso(String unidadTiempoUso) {
+		this.unidadTiempoUso = unidadTiempoUso;
+	}
+
+	public String getNormas() {
+		return normas;
+	}
+
+	public void setNormas(String normas) {
+		this.normas = normas;
+	}
+
 	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
@@ -35,12 +82,12 @@ public class ComunZoneEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public StateEntity getState() {
-		return state;
+	public ResidentialComplexEntity getConjuntoResidencial() {
+		return conjuntoResidencial;
 	}
 
-	public void setState(final StateEntity state) {
-		this.state = ObjectHelper.getDefault(state, new StateEntity());
+	public void setConjuntoResidencial(final ResidentialComplexEntity conjuntoResidencial) {
+		this.conjuntoResidencial = ObjectHelper.getDefault(conjuntoResidencial, new ResidentialComplexEntity());
 	}
 	
 	

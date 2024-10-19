@@ -1,5 +1,6 @@
 package co.edu.uco.victusresidencias.entity;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -10,13 +11,16 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 public class ScheduledEntity extends DomainEntity {
 	
 	private String name;
-	private StateEntity state;
-
-
+	private Boolean disponibilidad;
+	private LocalDateTime fechaHoraInicio;
+	private LocalDateTime fechaHoraFin;
+	private ComunZoneEntity zonaComun;
+	
+	
 	public ScheduledEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		setState(new StateEntity());
+		setZonaComun(new ComunZoneEntity());
 	}
 	
 	public String getName() {
@@ -26,6 +30,32 @@ public class ScheduledEntity extends DomainEntity {
 	public void setName(String name) {
 		this.name = TextHelper.applyTrim(name);
 	}
+	
+	
+	public Boolean getDisponibilidad() {
+		return disponibilidad;
+	}
+
+	public void setDisponibilidad(Boolean disponibilidad) {
+		this.disponibilidad = disponibilidad;
+	}
+
+	public LocalDateTime getFechaHoraInicio() {
+		return fechaHoraInicio;
+	}
+
+	public void setFechaHoraInicio(LocalDateTime fechaHoraInicio) {
+		this.fechaHoraInicio = fechaHoraInicio;
+	}
+
+	public LocalDateTime getFechaHoraFin() {
+		return fechaHoraFin;
+	}
+
+	public void setFechaHoraFin(LocalDateTime fechaHoraFin) {
+		this.fechaHoraFin = fechaHoraFin;
+	}
+
 	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
@@ -35,12 +65,12 @@ public class ScheduledEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public StateEntity getState() {
-		return state;
+	public ComunZoneEntity getZonaComun() {
+		return zonaComun;
 	}
 
-	public void setState(final StateEntity state) {
-		this.state = ObjectHelper.getDefault(state, new StateEntity());
+	public void setZonaComun(final ComunZoneEntity zonaComun) {
+		this.zonaComun = ObjectHelper.getDefault(zonaComun, new ComunZoneEntity());
 	}
 	
 	

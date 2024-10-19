@@ -2,30 +2,39 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
-
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
 
 public class PropertyEntity extends DomainEntity {
 	
-	private String name;
-	private StateEntity state;
-
-
+	private String tipoInmueble;
+	private int numeroVivienda;
+	private PropertyZoneEntity zonaInmueble;
+	
 	public PropertyEntity() {
 		super(UUIDHelper.getDefault());
-		setName(TextHelper.EMPTY);
-		setState(new StateEntity());
+		setTipoInmueble(TextHelper.EMPTY);
+		setZonaInmueble(new PropertyZoneEntity());
 	}
 	
-	public String getName() {
-		return name;
+	public String getTipoInmueble() {
+		return tipoInmueble;
 	}
 
-	public void setName(String name) {
-		this.name = TextHelper.applyTrim(name);
+	public void setTipoInmueble(String tipoInmueble) {
+		this.tipoInmueble = TextHelper.applyTrim(tipoInmueble);
 	}
+	
+	
+	public int getNumeroVivienda() {
+		return numeroVivienda;
+	}
+
+	public void setNumeroVivienda(int numeroVivienda) {
+		this.numeroVivienda = numeroVivienda;
+	}
+
 	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
@@ -35,12 +44,12 @@ public class PropertyEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public StateEntity getState() {
-		return state;
+	public PropertyZoneEntity getZonaInmueble() {
+		return zonaInmueble;
 	}
 
-	public void setState(final StateEntity state) {
-		this.state = ObjectHelper.getDefault(state, new StateEntity());
+	public void setZonaInmueble(final PropertyZoneEntity zonaInmueble) {
+		this.zonaInmueble = ObjectHelper.getDefault(zonaInmueble, new PropertyZoneEntity());
 	}
 	
 	

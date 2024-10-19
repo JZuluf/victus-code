@@ -9,23 +9,26 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 
 public class ReservationEntity extends DomainEntity {
 	
-	private String name;
-	private StateEntity state;
+	private String numeroInvitado;
+	private TurnEntity turno;
+	private ResidentEntity residente;
 
 
 	public ReservationEntity() {
 		super(UUIDHelper.getDefault());
-		setName(TextHelper.EMPTY);
-		setState(new StateEntity());
+		setNumeroInvitado(numeroInvitado);
+		setTurno(new TurnEntity());
+		setResidente(new ResidentEntity());
 	}
 	
-	public String getName() {
-		return name;
+	public String getNumeroInvitado() {
+		return numeroInvitado;
 	}
 
-	public void setName(String name) {
-		this.name = TextHelper.applyTrim(name);
+	public void setNumeroInvitado(String numeroInvitado) {
+		this.numeroInvitado = numeroInvitado;
 	}
+
 	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
@@ -35,12 +38,20 @@ public class ReservationEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public StateEntity getState() {
-		return state;
+	public TurnEntity getTurno() {
+		return turno;
 	}
 
-	public void setState(final StateEntity state) {
-		this.state = ObjectHelper.getDefault(state, new StateEntity());
+	public void setTurno(final TurnEntity turno) {
+		this.turno = ObjectHelper.getDefault(turno, new TurnEntity());
+	}
+	
+	public TurnEntity getResidente() {
+		return turno;
+	}
+
+	public void setResidente(final ResidentEntity residente) {
+		this.residente = ObjectHelper.getDefault(residente, new ResidentEntity());
 	}
 	
 	

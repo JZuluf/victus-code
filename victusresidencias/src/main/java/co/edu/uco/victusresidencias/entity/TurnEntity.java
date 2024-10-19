@@ -1,5 +1,6 @@
 package co.edu.uco.victusresidencias.entity;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -10,13 +11,17 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 public class TurnEntity extends DomainEntity {
 	
 	private String name;
-	private StateEntity state;
-
-
+	private String numeroTurno;
+	private LocalDateTime horaInicio;
+	private LocalDateTime horaFin;
+	private Boolean estado;
+	private ScheduledEntity agenda;
+	
+	
 	public TurnEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		setState(new StateEntity());
+		setAgenda(new ScheduledEntity());
 	}
 	
 	public String getName() {
@@ -26,6 +31,39 @@ public class TurnEntity extends DomainEntity {
 	public void setName(String name) {
 		this.name = TextHelper.applyTrim(name);
 	}
+	
+	public String getNumeroTurno() {
+		return numeroTurno;
+	}
+
+	public void setNumeroTurno(String numeroTurno) {
+		this.numeroTurno = numeroTurno;
+	}
+
+	public LocalDateTime getHoraInicio() {
+		return horaInicio;
+	}
+
+	public void setHoraInicio(LocalDateTime horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public LocalDateTime getHoraFin() {
+		return horaFin;
+	}
+
+	public void setHoraFin(LocalDateTime horaFin) {
+		this.horaFin = horaFin;
+	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+
 	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
@@ -35,12 +73,12 @@ public class TurnEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public StateEntity getState() {
-		return state;
+	public ScheduledEntity getAgenda() {
+		return agenda;
 	}
 
-	public void setState(final StateEntity state) {
-		this.state = ObjectHelper.getDefault(state, new StateEntity());
+	public void setAgenda(final ScheduledEntity agenda) {
+		this.agenda = ObjectHelper.getDefault(agenda, new ScheduledEntity());
 	}
 	
 	
