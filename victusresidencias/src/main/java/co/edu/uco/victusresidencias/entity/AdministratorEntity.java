@@ -14,7 +14,7 @@ public class AdministratorEntity extends DomainEntity {
 	private int numeroDocumento;
 	private int numeroContacto;
 	private String correoElectronico;
-	private String contraseña;
+	private String contrasena;
 
 
 	public AdministratorEntity() {
