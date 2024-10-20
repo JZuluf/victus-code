@@ -34,3 +34,30 @@
 .btn-primary:hover {
     background-color: #367C57;
 }
+
+/* Estilos de la galería */
+.gallery {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    text-align: center;
+    max-width: 300px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.gallery-item h3 {
+    margin-top: 10px;
+    color: #4A947A;
+}
+
+.gallery-item button {
+    margin-top: 10px;
+}
