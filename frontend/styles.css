@@ -1,0 +1,36 @@
+/* Diseño básico del navbar */
+.navbar-brand {
+    font-weight: bold;
+    color: #4A947A;
+}
+
+/* Estilo del contenido principal */
+#main-content {
+    text-align: center;
+    padding: 20px;
+}
+
+#main-content h1 {
+    font-size: 2.5rem;
+    color: #4A947A;
+}
+
+/* Estilos del modal */
+.modal-header {
+    background-color: #4A947A;
+    color: white;
+}
+
+#login-error {
+    margin-top: 10px;
+}
+
+/* Botón personalizado */
+.btn-primary {
+    background-color: #4A947A;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #367C57;
+}

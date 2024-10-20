@@ -80,10 +80,10 @@ public class AdministratorEntity extends DomainEntity {
 	}
 
 	public String getContraseña() {
-		return contraseña;
+		return contrasena;
 	}
 
 	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+		this.contrasena = contraseña;
 	}
 }
