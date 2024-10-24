@@ -2,7 +2,7 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
-
+import co.edu.uco.crosscutting.helpers.NumericHelper;
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
@@ -21,7 +21,10 @@ public class ResidentialComplexEntity extends DomainEntity {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
 		setAdministrator(new AdministratorEntity());
-		setState(new CityEntity());
+		setCity(new CityEntity());
+		setContactoRecepcion(NumericHelper.CERO);
+		setDireccion(TextHelper.EMPTY);
+		setDescripcion(TextHelper.EMPTY);
 	}
 	
 	public String getName() {
@@ -44,7 +47,7 @@ public class ResidentialComplexEntity extends DomainEntity {
 		return city;
 	}
 
-	public void setState(final CityEntity state) {
+	public void setCity(final CityEntity state) {
 		this.city = ObjectHelper.getDefault(state, new CityEntity());
 	}
 	
@@ -55,13 +58,29 @@ public class ResidentialComplexEntity extends DomainEntity {
 	public void setAdministrator(final AdministratorEntity administrador) {
 		this.administrador = ObjectHelper.getDefault(administrador, new AdministratorEntity());
 	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public int getContactoRecepcion() {
+		return contactoRecepcion;
+	}
+
+	public void setContactoRecepcion(int contactoRecepcion) {
+		this.contactoRecepcion = contactoRecepcion;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 	
-	
-//	public static void main(String[] args) {
-//		CountryDTO country = new CountryDTO();
-//		country.setId(null);
-//		
-//		System.out.println(country.getId());
-//		System.out.println(country.getName());
-//	}
 }

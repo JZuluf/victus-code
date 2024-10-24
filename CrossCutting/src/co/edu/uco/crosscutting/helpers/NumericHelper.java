@@ -3,6 +3,7 @@ package co.edu.uco.crosscutting.helpers;
 public final class NumericHelper {
 
 	private static final NumericHelper instance;
+	public static final int CERO = 0; //nueva linea para poner un numero por defecto
 
 	static {
 		instance = new NumericHelper();

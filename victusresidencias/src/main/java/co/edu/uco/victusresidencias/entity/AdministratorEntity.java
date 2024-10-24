@@ -1,7 +1,5 @@
 package co.edu.uco.victusresidencias.entity;
 
-import java.util.List;
-
 import java.util.UUID;
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
