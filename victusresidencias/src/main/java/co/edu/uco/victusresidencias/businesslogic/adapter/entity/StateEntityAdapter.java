@@ -1,11 +1,12 @@
-package co.edu.uco.ucobet.businesslogic.adapter.entity;
+package co.edu.uco.victusresidencias.businesslogic.adapter.entity;
 
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
+
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.ucobet.businesslogic.adapter.Adapter;
-import co.edu.uco.ucobet.domain.StateDomain;
-import co.edu.uco.ucobet.entity.StateEntity;
+import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
+import co.edu.uco.victusresidencias.domain.StateDomain;
+import co.edu.uco.victusresidencias.entity.StateEntity;
 
 public class StateEntityAdapter implements Adapter<StateEntity,StateDomain>{
 	

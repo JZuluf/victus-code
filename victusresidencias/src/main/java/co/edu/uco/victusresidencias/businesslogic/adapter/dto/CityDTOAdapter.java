@@ -1,14 +1,15 @@
-package co.edu.uco.ucobet.businesslogic.adapter.dto;
+package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
+
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.ucobet.businesslogic.adapter.Adapter;
+import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 
-import co.edu.uco.ucobet.dto.CityDTO;
-import co.edu.uco.ucobet.domain.CityDomain;
-import co.edu.uco.ucobet.domain.CountryDomain;
-import co.edu.uco.ucobet.domain.StateDomain;
+import co.edu.uco.victusresidencias.dto.CityDTO;
+import co.edu.uco.victusresidencias.domain.CityDomain;
+import co.edu.uco.victusresidencias.domain.CountryDomain;
+import co.edu.uco.victusresidencias.domain.StateDomain;
 
 
 public class CityDTOAdapter implements Adapter<CityDomain, CityDTO>{

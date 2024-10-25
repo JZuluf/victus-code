@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.victusresidencias.crosscutting.exceptions.DataUcoBetException;
+import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.StateDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.CountryEntity;
@@ -81,7 +81,7 @@ final class StateSqlServerDAO extends SqlDAO implements StateDAO {
 	            "Problema ejecutando la consulta de estados en la base de datos." : 
 	            "Problema preparando la consulta de estados en la base de datos.";
 	        
-	        throw DataUcoBetException.crear(userMessage, technicalMessage, exception);
+	        throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
 	    }
 	    
 	    return resultSelect;

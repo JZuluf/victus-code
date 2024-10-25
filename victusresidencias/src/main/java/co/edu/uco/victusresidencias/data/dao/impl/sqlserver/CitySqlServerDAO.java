@@ -10,13 +10,13 @@ import java.util.UUID;
 
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.victusresidencias.crosscutting.exceptions.DataUcoBetException;
+import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.CityDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.CityEntity;
 import co.edu.uco.victusresidencias.entity.StateEntity;
 
-final class CitySqlServerDAO extends SqlDAO implements CityDTO {
+final class CitySqlServerDAO extends SqlDAO implements CityDAO {
 	
 	protected CitySqlServerDAO(final Connection connection) {
 		super(connection);
@@ -83,7 +83,7 @@ final class CitySqlServerDAO extends SqlDAO implements CityDTO {
 	            "Problema ejecutando la consulta de ciudades en la base de datos." : 
 	            "Problema preparando la consulta de ciudades en la base de datos.";
 	        
-	        throw DataUcoBetException.crear(userMessage, technicalMessage, exception);
+	        throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
 	    }
 	    
 	    return resultSelect;
@@ -106,7 +106,7 @@ final class CitySqlServerDAO extends SqlDAO implements CityDTO {
 			var userMessage = "Se ha presentado un problema tratando de llevar a cabo el registro de la información del nuevo país. Por favor intente de nuevo y si el problema persiste reporte la novedad...";
 			var technicalMessage = "Se ha presentado un problema al tratar de registrar la informaciòn del nuevo país en la base de datos SQL Server. Por favor valide el log de errores para encontrar mayores detalles del problema presentado...";
  
-			throw DataUcoBetException.crear(userMessage, technicalMessage, exception);
+			throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
 		}
 	}
 	
@@ -125,7 +125,7 @@ final class CitySqlServerDAO extends SqlDAO implements CityDTO {
 	        var userMessage = "Se ha presentado un problema tratando de eliminar la ciudad seleccionada. Por favor intente de nuevo y si el problema persiste reporte la novedad...";
 	        var technicalMessage = "Se ha presentado un problema al tratar de eliminar la ciudad en la base de datos SQL Server. Por favor valide el log de errores para encontrar mayores detalles del problema presentado...";
 
-	        throw DataUcoBetException.crear(userMessage, technicalMessage, exception);
+	        throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
 	    }
 		
 	}
@@ -146,7 +146,7 @@ final class CitySqlServerDAO extends SqlDAO implements CityDTO {
 	        var userMessage = "Se ha presentado un problema tratando de actualizar la información de la ciudad. Por favor intente de nuevo y si el problema persiste reporte la novedad...";
 	        var technicalMessage = "Se ha presentado un problema al tratar de actualizar la información de la ciudad en la base de datos SQL Server. Por favor valide el log de errores para encontrar mayores detalles del problema presentado...";
 
-	        throw DataUcoBetException.crear(userMessage, technicalMessage, exception);
+	        throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
 	    }
 		
 	}

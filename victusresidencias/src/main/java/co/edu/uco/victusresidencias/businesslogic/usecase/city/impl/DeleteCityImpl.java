@@ -1,8 +1,9 @@
-package co.edu.uco.ucobet.businesslogic.usecase.city.impl;
+package co.edu.uco.victusresidencias.businesslogic.usecase.city.impl;
 
 import java.util.UUID;
 
-import co.edu.uco.ucobet.businesslogic.usecase.city.DeleteCity;
+
+import co.edu.uco.victusresidencias.businesslogic.usecase.city.DeleteCity;
 
 public final class DeleteCityImpl implements DeleteCity{
 

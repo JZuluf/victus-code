@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.businesslogic.adapter;
+package co.edu.uco.victusresidencias.businesslogic.adapter;
 
 public interface Adapter<D,T> {
 	D adaptSource(T data);

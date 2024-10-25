@@ -1,12 +1,13 @@
-package co.edu.uco.ucobet.businesslogic.usecase.city.impl;
+package co.edu.uco.victusresidencias.businesslogic.usecase.city.impl;
 
 
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.ucobet.businesslogic.adapter.entity.CityEntityAdapter;
-import co.edu.uco.ucobet.businesslogic.usecase.city.UpdateCity;
-import co.edu.uco.ucobet.crosscutting.exceptions.BusinessLogicUcoBetException;
-import co.edu.uco.ucobet.data.dao.DAOFactory;
-import co.edu.uco.ucobet.domain.CityDomain;
+
+import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CityEntityAdapter;
+import co.edu.uco.victusresidencias.businesslogic.usecase.city.UpdateCity;
+import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
+import co.edu.uco.victusresidencias.data.dao.DAOFactory;
+import co.edu.uco.victusresidencias.domain.CityDomain;
 
 public final class UpdateCityImpl implements UpdateCity{
 	
@@ -20,7 +21,7 @@ public final class UpdateCityImpl implements UpdateCity{
 		if (ObjectHelper.isNull(daoFactory)) {
 			var userMessage = "Se ha presentado un problema inesperado, tratando de llevar a cabo la modificación de la información de la ciudad deseada. Por favor intente de nuevo y si el problema persiste, llame a Luz Mery Rios Alzate...";
 			var technicalMessage = "El DAO factory requerido para crear la clase que actualiza la ciudad llegó nula...";
-			throw BusinessLogicUcoBetException.create(userMessage, technicalMessage);
+			throw BusinessLogicVictusResidenciasException.create(userMessage, technicalMessage);
 		}
 		this.daoFactory = daoFactory;
 	}

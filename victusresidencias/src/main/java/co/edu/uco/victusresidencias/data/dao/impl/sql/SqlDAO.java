@@ -2,8 +2,10 @@ package co.edu.uco.victusresidencias.data.dao.impl.sql;
 
 import java.sql.Connection;
 
+
 import co.edu.uco.crosscutting.helpers.SqlConnectionHelper;
-import co.edu.uco.ucobet.crosscutting.exceptions.DataUcoBetException;
+import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
+
 
 public class SqlDAO {
 	private Connection connection;
@@ -28,7 +30,7 @@ public class SqlDAO {
 			var technicalMessage = "No es posible crear un acceso a datos de tipo sql con una "
 					+ "conexión nula o cerrada...";
 			
-			throw DataUcoBetException.crear(userMessage, technicalMessage);
+			throw DataVictusResidenciasException.crear(userMessage, technicalMessage);
 		}
 	}
 	

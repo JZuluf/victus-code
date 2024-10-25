@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.businesslogic.usecase;
+package co.edu.uco.victusresidencias.businesslogic.usecase;
 
 public interface UseWithReturn <D, R>{
 
