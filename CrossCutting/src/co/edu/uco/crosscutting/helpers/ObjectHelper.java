@@ -15,11 +15,5 @@ public class ObjectHelper {
 		return isNull(object) ? defaultObject : object;
 		// si es True=NUll da defaultObject y si es False=objeto da el objeto
 	}
-	
-//	public static void main(String[] args) {  
-//		String a = null; 
-//		String b = "feo";
-//		System.out.println(getDefault(a,b)); 
-//	}
 
 }

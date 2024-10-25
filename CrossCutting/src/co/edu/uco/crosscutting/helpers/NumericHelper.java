@@ -46,4 +46,9 @@ public final class NumericHelper {
 		return (includeInitialLimit ? isGreatOrEqual(number, initialLimit) : isGreat(number, initialLimit))
 				&& (includeFinalLimit ? isLessOrEqual(number, finalLimit) : isLess(number, finalLimit));
 	}
+	
+	public static <O> O getDefault(final O object, final O defaultObject) {
+		return ObjectHelper.isNull(object) ? defaultObject : object;
+		// si es True=NUll da defaultObject y si es False=objeto da el objeto
+	}
 }

@@ -9,7 +9,7 @@ import co.edu.uco.victusresidencias.entity.CityEntity;
 public interface CityDAO 
 extends RetrieveDAO<CityEntity, UUID>,
 CreateDAO<CityEntity>,
-DeleteDAO<CityEntity>,
-UpdateDAO<UUID> {
+DeleteDAO<UUID>,
+UpdateDAO<CityEntity> {
 
 }

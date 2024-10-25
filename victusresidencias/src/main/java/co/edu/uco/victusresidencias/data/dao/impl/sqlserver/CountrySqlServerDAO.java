@@ -10,20 +10,12 @@ import java.util.UUID;
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
+import co.edu.uco.victusresidencias.crosscutting.exceptions.DataUcoBetException;
 import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.CountryEntity;
 
-public final class CountrySqlServerDAO extends SqlDAO implements CountryDAO {
-
-//	private final String url = "jdbc:sqlserver://ucobet-server.database.windows.net:1433;database=ucobet-db";
-//	private final String user = "ucobetdbuser";
-//	private final String password = "uc0b3tdbus3r!";
-	
-//	private final String url = "jdbc:postgresql://localhost:5432/baseJavaPractica";
-//	private final String user = "postgres";
-//	private final String password = "123456";
+final class CountrySqlServerDAO extends SqlDAO implements CountryDAO {
 	
 	public CountrySqlServerDAO(Connection connection) {
 		super(connection);
@@ -91,7 +83,7 @@ public final class CountrySqlServerDAO extends SqlDAO implements CountryDAO {
 						+ "la informacion de los paises por el filtro deseado en la "
 						+ "base de datos SQL server tratando de ejecutar la sentencia SQL. Por favor valide el log de errores para encontrar mayores detalles del problema presentado...";
 			}
-			throw DataVictusResidenciasException.crear(userMessage, technicalMessege, exception);
+			throw DataUcoBetException.crear(userMessage, technicalMessege, exception);
 		}
 	    return null;//resultSelect; 
 	}
