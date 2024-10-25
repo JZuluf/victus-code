@@ -43,7 +43,7 @@ public class ResidentialComplexEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public CityEntity getState() {
+	public CityEntity getCity() {
 		return city;
 	}
 

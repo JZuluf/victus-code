@@ -16,16 +16,16 @@ public class PropertyZoneEntity extends DomainEntity {
 
 	public PropertyZoneEntity() {
 		super(UUIDHelper.getDefault());
-		setTipoZonaInmueble(TextHelper.EMPTY);
+		setPropertyZoneType(TextHelper.EMPTY);
 		setNumeroZonaInmueble(NumericHelper.CERO);
-		setConjuntoResidencial(new ResidentialComplexEntity());
+		setResidentialComplex(new ResidentialComplexEntity());
 	}
 	
-	public String getTipoZonaInmueble() {
+	public String getPropertyZoneType() {
 		return tipoZonaInmueble;
 	}
 
-	public void setTipoZonaInmueble(String tipoZonaInmueble) {
+	public void setPropertyZoneType(String tipoZonaInmueble) {
 		this.tipoZonaInmueble = TextHelper.applyTrim(tipoZonaInmueble);
 	}
 	
@@ -46,11 +46,11 @@ public class PropertyZoneEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public ResidentialComplexEntity getConjuntoResidencial() {
+	public ResidentialComplexEntity getResidentialComplex() {
 		return conjuntoResidencial;
 	}
 
-	public void setConjuntoResidencial(final ResidentialComplexEntity conjuntoResidencial) {
+	public void setResidentialComplex(final ResidentialComplexEntity conjuntoResidencial) {
 		this.conjuntoResidencial = ObjectHelper.getDefault(conjuntoResidencial, new ResidentialComplexEntity());
 	}
 	

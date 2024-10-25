@@ -7,7 +7,7 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 public class AdministratorEntity extends DomainEntity {
 	
 	private String name;
-	private String apellido;
+	private String lastName;
 	private String tipoDocumento;
 	private int numeroDocumento;
 	private int numeroContacto;
@@ -37,12 +37,12 @@ public class AdministratorEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public String getApellido() {
-		return apellido;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = TextHelper.applyTrim(apellido);
+	public void setLastName(String apellido) {
+		this.lastName = TextHelper.applyTrim(apellido);
 	}
 
 	public String getTipoDocumento() {
