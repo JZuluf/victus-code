@@ -53,7 +53,7 @@ public class createDefault {
 			NumericHelper.CERO,
 			TextHelper.EMPTY,
 			TextHelper.EMPTY,
-			RESIDENTIAL_COMPLEX<>);
+			RESIDENTIAL_COMPLEX);
 	
 	
 }
