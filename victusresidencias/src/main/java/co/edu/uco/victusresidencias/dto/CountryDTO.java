@@ -33,8 +33,4 @@ public class CountryDTO extends DomainDTO{
 		return super.getId();
 	}
 	
-	
-	
-	
-	
 }

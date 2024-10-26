@@ -6,6 +6,7 @@ import java.sql.Connection;
 import co.edu.uco.crosscutting.helpers.SqlConnectionHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 
+
 public class SqlDAO {
 	private Connection connection;
 	

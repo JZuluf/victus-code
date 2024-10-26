@@ -2,6 +2,7 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
+import co.edu.uco.crosscutting.helpers.NumericHelper;
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
@@ -15,6 +16,7 @@ public class PropertyEntity extends DomainEntity {
 	public PropertyEntity() {
 		super(UUIDHelper.getDefault());
 		setTipoInmueble(TextHelper.EMPTY);
+		setNumeroVivienda(NumericHelper.CERO);
 		setZonaInmueble(new PropertyZoneEntity());
 	}
 	
@@ -52,12 +54,4 @@ public class PropertyEntity extends DomainEntity {
 		this.zonaInmueble = ObjectHelper.getDefault(zonaInmueble, new PropertyZoneEntity());
 	}
 	
-	
-//	public static void main(String[] args) {
-//		CountryDTO country = new CountryDTO();
-//		country.setId(null);
-//		
-//		System.out.println(country.getId());
-//		System.out.println(country.getName());
-//	}
 }

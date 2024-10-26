@@ -2,7 +2,7 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
-
+import co.edu.uco.crosscutting.helpers.NumericHelper;
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
@@ -10,29 +10,30 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 public class PropertyZoneEntity extends DomainEntity {
 	
 	private String tipoZonaInmueble;
-	private String numeroZonaInmueble;
+	private int numeroZonaInmueble;
 	private ResidentialComplexEntity conjuntoResidencial;
 
 
 	public PropertyZoneEntity() {
 		super(UUIDHelper.getDefault());
-		setTipoZonaInmueble(TextHelper.EMPTY);
-		setConjuntoResidencial(new ResidentialComplexEntity());
+		setPropertyZoneType(TextHelper.EMPTY);
+		setNumeroZonaInmueble(NumericHelper.CERO);
+		setResidentialComplex(new ResidentialComplexEntity());
 	}
 	
-	public String getTipoZonaInmueble() {
+	public String getPropertyZoneType() {
 		return tipoZonaInmueble;
 	}
 
-	public void setTipoZonaInmueble(String tipoZonaInmueble) {
+	public void setPropertyZoneType(String tipoZonaInmueble) {
 		this.tipoZonaInmueble = TextHelper.applyTrim(tipoZonaInmueble);
 	}
 	
-	public String getNumeroZonaInmueble() {
+	public int getNumeroZonaInmueble() {
 		return numeroZonaInmueble;
 	}
 
-	public void setNumeroZonaInmueble(String numeroZonaInmueble) {
+	public void setNumeroZonaInmueble(int numeroZonaInmueble) {
 		this.numeroZonaInmueble = numeroZonaInmueble;
 	}
 
@@ -45,20 +46,12 @@ public class PropertyZoneEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public ResidentialComplexEntity getConjuntoResidencial() {
+	public ResidentialComplexEntity getResidentialComplex() {
 		return conjuntoResidencial;
 	}
 
-	public void setConjuntoResidencial(final ResidentialComplexEntity conjuntoResidencial) {
+	public void setResidentialComplex(final ResidentialComplexEntity conjuntoResidencial) {
 		this.conjuntoResidencial = ObjectHelper.getDefault(conjuntoResidencial, new ResidentialComplexEntity());
 	}
 	
-	
-//	public static void main(String[] args) {
-//		CountryDTO country = new CountryDTO();
-//		country.setId(null);
-//		
-//		System.out.println(country.getId());
-//		System.out.println(country.getName());
-//	}
 }

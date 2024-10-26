@@ -34,27 +34,6 @@ public class TextHelper {
 	public static String applyTrim(final String string) {
 		return getDefault(string).trim();
 	}
-	
-//	public static void main(String[] args) {
-//		String a = "Con datos";
-//		String b = getDefault(a);
-//		String c = "    ahora si    ";
-//		String d = applyTrim(c);
-//		String e = getDefault(d);
-//		
-//		//String b = "VAlor por defecto";
-//		System.out.println(isEmpty(b));
-//		System.out.println(e+">dato");
-//		//probando el default #1
-//	}
-	
-//	public static void main(String[] args) {
-//		String a = "";
-//		String b = new String("");
-//		System.out.println(isEmpty(b));
-//		//probando el empty
-//	}
-	
 
 }
 					

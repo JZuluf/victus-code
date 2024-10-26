@@ -2,7 +2,7 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
-
+import co.edu.uco.crosscutting.helpers.NumericHelper;
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.crosscutting.helpers.TextHelper;
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
@@ -10,18 +10,21 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 public class ResidentialComplexEntity extends DomainEntity {
 	
 	private String name;
-	private String direccion;
+	private String Address;
 	private CityEntity city;
-	private int contactoRecepcion;
-	private String descripcion;
-	private AdministratorEntity administrador;
+	private int contactReception;
+	private String description;
+	private AdministratorEntity administrator;
 
 
 	public ResidentialComplexEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
 		setAdministrator(new AdministratorEntity());
-		setState(new CityEntity());
+		setCity(new CityEntity());
+		setContactoRecepcion(NumericHelper.CERO);
+		setAddress(TextHelper.EMPTY);
+		setDescripcion(TextHelper.EMPTY);
 	}
 	
 	public String getName() {
@@ -40,28 +43,44 @@ public class ResidentialComplexEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public CityEntity getState() {
+	public CityEntity getCity() {
 		return city;
 	}
 
-	public void setState(final CityEntity state) {
+	public void setCity(final CityEntity state) {
 		this.city = ObjectHelper.getDefault(state, new CityEntity());
 	}
 	
 	public AdministratorEntity getAdministrator() {
-		return administrador;
+		return administrator;
 	}
 
-	public void setAdministrator(final AdministratorEntity administrador) {
-		this.administrador = ObjectHelper.getDefault(administrador, new AdministratorEntity());
+	public void setAdministrator(final AdministratorEntity administrator) {
+		this.administrator = ObjectHelper.getDefault(administrator, new AdministratorEntity());
+	}
+
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		this.Address = address;
+	}
+
+	public int getContactoRecepcion() {
+		return contactReception;
+	}
+
+	public void setContactoRecepcion(int contactoRecepcion) {
+		this.contactReception = contactoRecepcion;
+	}
+
+	public String getDescripcion() {
+		return description;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.description = descripcion;
 	}
 	
-	
-//	public static void main(String[] args) {
-//		CountryDTO country = new CountryDTO();
-//		country.setId(null);
-//		
-//		System.out.println(country.getId());
-//		System.out.println(country.getName());
-//	}
 }
