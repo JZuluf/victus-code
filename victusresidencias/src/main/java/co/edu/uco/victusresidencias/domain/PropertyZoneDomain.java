@@ -21,7 +21,8 @@ public class PropertyZoneDomain extends Domain {
     }
 
     // Método estático para crear una instancia con parámetros
-    public static PropertyZoneDomain create(final UUID id, final String tipoZonaInmueble, final int numeroZonaInmueble, final ResidentialComplexDomain conjuntoResidencial) {
+    public static PropertyZoneDomain create(final UUID id, final String tipoZonaInmueble, final int numeroZonaInmueble, 
+    		final ResidentialComplexDomain conjuntoResidencial) {
         return new PropertyZoneDomain(id, tipoZonaInmueble, numeroZonaInmueble, conjuntoResidencial);
     }
 

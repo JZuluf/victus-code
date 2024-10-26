@@ -11,12 +11,12 @@ public class ResidentialComplexDomain extends Domain {
     private String name;
     private String direccion;
     private CityDomain city;
-    private int contactoRecepcion;
+    private String contactoRecepcion;
     private String descripcion;
     private AdministratorDomain administrador;
 
     // Constructor privado
-    private ResidentialComplexDomain(final UUID id, final String name, final String direccion, final CityDomain city, final int contactoRecepcion, final String descripcion, final AdministratorDomain administrador) {
+    private ResidentialComplexDomain(final UUID id, final String name, final String direccion, final CityDomain city, final String contactoRecepcion, final String descripcion, final AdministratorDomain administrador) {
         super(id);
         setName(name);
         setDireccion(direccion);
@@ -27,13 +27,14 @@ public class ResidentialComplexDomain extends Domain {
     }
 
     // Método estático para crear una instancia con parámetros
-    public static ResidentialComplexDomain create(final UUID id, final String name, final String direccion, final CityDomain city, final int contactoRecepcion, final String descripcion, final AdministratorDomain administrador) {
+    public static ResidentialComplexDomain create(final UUID id, final String name, final String direccion, final CityDomain city, 
+    		final String contactoRecepcion, final String descripcion, final AdministratorDomain administrador) {
         return new ResidentialComplexDomain(id, name, direccion, city, contactoRecepcion, descripcion, administrador);
     }
 
     // Método estático para crear una instancia vacía por defecto
     public static ResidentialComplexDomain create() {
-        return new ResidentialComplexDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, CityDomain.create(), NumericHelper.CERO, TextHelper.EMPTY, AdministratorDomain.create());
+        return new ResidentialComplexDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, CityDomain.create(),TextHelper.EMPTY, TextHelper.EMPTY, AdministratorDomain.create());
     }
 
     // Getters y Setters
@@ -62,12 +63,12 @@ public class ResidentialComplexDomain extends Domain {
         this.city = (city != null) ? city : CityDomain.create();  // Si city es nulo, establece una ciudad vacía por defecto
     }
 
-    public int getContactoRecepcion() {
+    public String getContactoRecepcion() {
         return contactoRecepcion;
     }
 
-    private void setContactoRecepcion(final int contactoRecepcion) {
-        this.contactoRecepcion = (contactoRecepcion >= 0) ? contactoRecepcion : NumericHelper.CERO;
+    private void setContactoRecepcion(final String contactoRecepcion) {
+        this.contactoRecepcion = TextHelper.applyTrim(contactoRecepcion);
     }
 
     public String getDescripcion() {

@@ -9,12 +9,15 @@ public class ResidentialComplexDTO extends DomainDTO {
     private String address;
     private String phoneNumber;
     private AdministratorDTO administrator;
+    private CityDTO city;
+    private String description;
 
     // Constructor privado
     private ResidentialComplexDTO() {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
         setAddress(TextHelper.EMPTY);
+        setDescription(TextHelper.EMPTY);
         setPhoneNumber(TextHelper.EMPTY);
         setAdministrator(AdministratorDTO.create());
     }
@@ -39,6 +42,15 @@ public class ResidentialComplexDTO extends DomainDTO {
         return address;
     }
 
+    public ResidentialComplexDTO setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
     public ResidentialComplexDTO setAddress(String address) {
         this.address = TextHelper.applyTrim(address);
         return this;
@@ -59,6 +71,14 @@ public class ResidentialComplexDTO extends DomainDTO {
 
     public ResidentialComplexDTO setAdministrator(AdministratorDTO administrator) {
         this.administrator = administrator != null ? administrator : AdministratorDTO.create();
+        return this;
+    }
+    public CityDTO getCity() {
+        return city;
+    }
+
+    public ResidentialComplexDTO setCity(CityDTO city) {
+        this.city = city != null ? city : CityDTO.create();
         return this;
     }
 

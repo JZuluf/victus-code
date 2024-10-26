@@ -10,11 +10,11 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 public class ResidentialComplexEntity extends DomainEntity {
 	
 	private String name;
-	private String direccion;
+	private String Address;
 	private CityEntity city;
-	private int contactoRecepcion;
-	private String descripcion;
-	private AdministratorEntity administrador;
+	private int contactReception;
+	private String description;
+	private AdministratorEntity administrator;
 
 
 	public ResidentialComplexEntity() {
@@ -23,7 +23,7 @@ public class ResidentialComplexEntity extends DomainEntity {
 		setAdministrator(new AdministratorEntity());
 		setCity(new CityEntity());
 		setContactoRecepcion(NumericHelper.CERO);
-		setDireccion(TextHelper.EMPTY);
+		setAddress(TextHelper.EMPTY);
 		setDescripcion(TextHelper.EMPTY);
 	}
 	
@@ -52,35 +52,35 @@ public class ResidentialComplexEntity extends DomainEntity {
 	}
 	
 	public AdministratorEntity getAdministrator() {
-		return administrador;
+		return administrator;
 	}
 
-	public void setAdministrator(final AdministratorEntity administrador) {
-		this.administrador = ObjectHelper.getDefault(administrador, new AdministratorEntity());
+	public void setAdministrator(final AdministratorEntity administrator) {
+		this.administrator = ObjectHelper.getDefault(administrator, new AdministratorEntity());
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getAddress() {
+		return Address;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setAddress(String address) {
+		this.Address = address;
 	}
 
 	public int getContactoRecepcion() {
-		return contactoRecepcion;
+		return contactReception;
 	}
 
 	public void setContactoRecepcion(int contactoRecepcion) {
-		this.contactoRecepcion = contactoRecepcion;
+		this.contactReception = contactoRecepcion;
 	}
 
 	public String getDescripcion() {
-		return descripcion;
+		return description;
 	}
 
 	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+		this.description = descripcion;
 	}
 	
 }

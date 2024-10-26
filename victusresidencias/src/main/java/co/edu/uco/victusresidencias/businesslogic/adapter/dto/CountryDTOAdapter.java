@@ -4,9 +4,10 @@ package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 import co.edu.uco.crosscutting.helpers.ObjectHelper;
 
 
-import co.edu.uco.crosscutting.helpers.TextHelper;
+
 import co.edu.uco.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
+import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.domain.CountryDomain;
 import co.edu.uco.victusresidencias.dto.CountryDTO;
 
@@ -32,7 +33,7 @@ public class CountryDTOAdapter implements Adapter<CountryDomain, CountryDTO> {
 
 	@Override
 	public CountryDTO adaptTarget(final CountryDomain data) {
-	    var domainToAdapt = ObjectHelper.getDefault(data, CountryDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY));
+	    var domainToAdapt = ObjectHelper.getDefault(data, createDefault.COUNTRY);
 	    return CountryDTO.create()
 	            .setId(UUIDHelper.getDefaultAsString()) /*pendiente*/ // Convertimos el UUID a String
 	            .setName(domainToAdapt.getName());
