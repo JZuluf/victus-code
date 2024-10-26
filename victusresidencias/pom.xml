@@ -39,6 +39,8 @@
 		<url />
 	</scm>
 	<properties>
+		<sonar.organization>jzuluf</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<java.version>23</java.version>
 	</properties>
 	<dependencies>
