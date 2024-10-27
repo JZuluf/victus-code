@@ -3,29 +3,29 @@ package co.edu.uco.victusresidencias.entity;
 import java.util.UUID;
 
 
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ReservationEntity extends DomainEntity {
 	
-	private String numeroInvitado;
+	private int numeroInvitado;
 	private TurnEntity turno;
 	private ResidentEntity residente;
 
 
 	public ReservationEntity() {
 		super(UUIDHelper.getDefault());
-		setNumeroInvitado(numeroInvitado);
+		setNumeroInvitado(NumericHelper.CERO);
 		setTurno(new TurnEntity());
 		setResidente(new ResidentEntity());
 	}
 	
-	public String getNumeroInvitado() {
+	public int getNumeroInvitado() {
 		return numeroInvitado;
 	}
 
-	public void setNumeroInvitado(String numeroInvitado) {
+	public void setNumeroInvitado(int numeroInvitado) {
 		this.numeroInvitado = numeroInvitado;
 	}
 
@@ -46,20 +46,13 @@ public class ReservationEntity extends DomainEntity {
 		this.turno = ObjectHelper.getDefault(turno, new TurnEntity());
 	}
 	
-	public TurnEntity getResidente() {
-		return turno;
+	public ResidentEntity getResidente() {
+		return residente;
 	}
 
 	public void setResidente(final ResidentEntity residente) {
 		this.residente = ObjectHelper.getDefault(residente, new ResidentEntity());
 	}
 	
-	
-//	public static void main(String[] args) {
-//		CountryDTO country = new CountryDTO();
-//		country.setId(null);
-//		
-//		System.out.println(country.getId());
-//		System.out.println(country.getName());
-//	}
+
 }

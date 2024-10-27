@@ -2,28 +2,22 @@ package co.edu.uco.victusresidencias.data.dao.impl.sqlserver;
 
 import java.sql.Connection;
 
+
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.CountryEntity;
 
-public final class CountrySqlServerDAO extends SqlDAO implements CountryDAO {
-
-//	private final String url = "jdbc:sqlserver://ucobet-server.database.windows.net:1433;database=ucobet-db";
-//	private final String user = "ucobetdbuser";
-//	private final String password = "uc0b3tdbus3r!";
-	
-//	private final String url = "jdbc:postgresql://localhost:5432/baseJavaPractica";
-//	private final String user = "postgres";
-//	private final String password = "123456";
+final class CountrySqlServerDAO extends SqlDAO implements CountryDAO {
 	
 	public CountrySqlServerDAO(Connection connection) {
 		super(connection);

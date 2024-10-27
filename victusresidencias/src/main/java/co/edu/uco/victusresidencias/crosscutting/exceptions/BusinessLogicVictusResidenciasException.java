@@ -1,6 +1,6 @@
 package co.edu.uco.victusresidencias.crosscutting.exceptions;
 
-import co.edu.uco.crosscutting.exceptions.enums.Layer;
+import co.edu.uco.victusresidencias.crosscutting.exceptions.enums.Layer;
 
 public class BusinessLogicVictusResidenciasException extends VictusResidenciasException {
 
@@ -11,16 +11,16 @@ public class BusinessLogicVictusResidenciasException extends VictusResidenciasEx
 		super(userMessage, technicalMessage, rootException, Layer.BUSINESSLOGIC);
 	}
 
-	public static final BusinessLogicVictusResidenciasException crear(final String userMessage, final String technicalMessage,
+	public static final BusinessLogicVictusResidenciasException create(final String userMessage, final String technicalMessage,
 			final Exception rootException) {
 		return new BusinessLogicVictusResidenciasException(userMessage, technicalMessage, rootException);
 	}
 
-	public static final BusinessLogicVictusResidenciasException crear(final String userMessage) {
+	public static final BusinessLogicVictusResidenciasException create(final String userMessage) {
 		return new BusinessLogicVictusResidenciasException(userMessage, userMessage, new Exception());
 	}
 
-	public static final BusinessLogicVictusResidenciasException crear(final String userMessage, final String technicalMessage) {
+	public static final BusinessLogicVictusResidenciasException create(final String userMessage, final String technicalMessage) {
 		return new BusinessLogicVictusResidenciasException(userMessage, technicalMessage, new Exception());
 	}
 

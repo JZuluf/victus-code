@@ -2,10 +2,10 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
-
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ComunZoneEntity extends DomainEntity {
 	
@@ -21,6 +21,11 @@ public class ComunZoneEntity extends DomainEntity {
 	public ComunZoneEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
+		setDescripcion(TextHelper.EMPTY);
+		setCapacidadPersonas(NumericHelper.CERO);
+		setTiempoUso(NumericHelper.CERO);
+		setUnidadTiempoUso(TextHelper.EMPTY);
+		setNormas(TextHelper.EMPTY);
 		setConjuntoResidencial(new ResidentialComplexEntity());
 	}
 	
@@ -89,13 +94,4 @@ public class ComunZoneEntity extends DomainEntity {
 	public void setConjuntoResidencial(final ResidentialComplexEntity conjuntoResidencial) {
 		this.conjuntoResidencial = ObjectHelper.getDefault(conjuntoResidencial, new ResidentialComplexEntity());
 	}
-	
-	
-//	public static void main(String[] args) {
-//		CountryDTO country = new CountryDTO();
-//		country.setId(null);
-//		
-//		System.out.println(country.getId());
-//		System.out.println(country.getName());
-//	}
 }

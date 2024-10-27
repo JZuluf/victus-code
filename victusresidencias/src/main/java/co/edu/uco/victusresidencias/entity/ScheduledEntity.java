@@ -1,12 +1,13 @@
 package co.edu.uco.victusresidencias.entity;
 
 import java.time.LocalDateTime;
+
 import java.util.UUID;
 
-
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ScheduledEntity extends DomainEntity {
 	
@@ -20,7 +21,10 @@ public class ScheduledEntity extends DomainEntity {
 	public ScheduledEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		setZonaComun(new ComunZoneEntity());
+		setDisponibilidad(true);
+		setFechaHoraInicio(DateHelper.DEFAULT_DATE_TIME);
+		setFechaHoraFin(DateHelper.DEFAULT_DATE_TIME);
+		setComunZone(new ComunZoneEntity());
 	}
 	
 	public String getName() {
@@ -65,20 +69,12 @@ public class ScheduledEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public ComunZoneEntity getZonaComun() {
+	public ComunZoneEntity getComunZone() {
 		return zonaComun;
 	}
 
-	public void setZonaComun(final ComunZoneEntity zonaComun) {
+	public void setComunZone(final ComunZoneEntity zonaComun) {
 		this.zonaComun = ObjectHelper.getDefault(zonaComun, new ComunZoneEntity());
 	}
 	
-	
-//	public static void main(String[] args) {
-//		CountryDTO country = new CountryDTO();
-//		country.setId(null);
-//		
-//		System.out.println(country.getId());
-//		System.out.println(country.getName());
-//	}
 }

@@ -1,6 +1,6 @@
 package co.edu.uco.victusresidencias.crosscutting.exceptions;
 
-import co.edu.uco.crosscutting.exceptions.enums.Layer;
+import co.edu.uco.victusresidencias.crosscutting.exceptions.enums.Layer;
 
 public class EntityVictusResidenciasException extends VictusResidenciasException {
 

@@ -3,6 +3,7 @@ package co.edu.uco.crosscutting.helpers;
 public final class NumericHelper {
 
 	private static final NumericHelper instance;
+	public static final int CERO = 0; //nueva linea para poner un numero por defecto
 
 	static {
 		instance = new NumericHelper();
@@ -44,5 +45,10 @@ public final class NumericHelper {
 			final boolean includeInitialLimit, final boolean includeFinalLimit) {
 		return (includeInitialLimit ? isGreatOrEqual(number, initialLimit) : isGreat(number, initialLimit))
 				&& (includeFinalLimit ? isLessOrEqual(number, finalLimit) : isLess(number, finalLimit));
+	}
+	
+	public static <O> O getDefault(final O object, final O defaultObject) {
+		return ObjectHelper.isNull(object) ? defaultObject : object;
+		// si es True=NUll da defaultObject y si es False=objeto da el objeto
 	}
 }

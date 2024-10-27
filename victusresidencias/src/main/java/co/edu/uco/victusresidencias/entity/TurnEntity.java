@@ -1,12 +1,13 @@
 package co.edu.uco.victusresidencias.entity;
 
 import java.time.LocalDateTime;
+
 import java.util.UUID;
 
-
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class TurnEntity extends DomainEntity {
 	
@@ -21,6 +22,10 @@ public class TurnEntity extends DomainEntity {
 	public TurnEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
+		setNumeroTurno(TextHelper.EMPTY);
+		setHoraInicio(DateHelper.DEFAULT_DATE_TIME);
+		setHoraFin(DateHelper.DEFAULT_DATE_TIME);
+		setEstado(true);
 		setAgenda(new ScheduledEntity());
 	}
 	
@@ -80,13 +85,4 @@ public class TurnEntity extends DomainEntity {
 	public void setAgenda(final ScheduledEntity agenda) {
 		this.agenda = ObjectHelper.getDefault(agenda, new ScheduledEntity());
 	}
-	
-	
-//	public static void main(String[] args) {
-//		CountryDTO country = new CountryDTO();
-//		country.setId(null);
-//		
-//		System.out.println(country.getId());
-//		System.out.println(country.getName());
-//	}
 }

@@ -1,12 +1,14 @@
 package co.edu.uco.victusresidencias.entity;
 
 import java.time.LocalDate;
+
 import java.util.UUID;
 
-
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ResidentEntity extends DomainEntity {
 	
@@ -23,6 +25,12 @@ public class ResidentEntity extends DomainEntity {
 	public ResidentEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
+		setApellido(TextHelper.EMPTY);
+		setTipoDocumento(TextHelper.EMPTY);
+		setNumeroDocumento(NumericHelper.CERO);
+		setFecha(DateHelper.DEFAULT_DATE);
+		setNumeroContacto(NumericHelper.CERO);
+		setContraseña(TextHelper.EMPTY);
 		setInmueble(new PropertyEntity());
 	}
 	
@@ -83,10 +91,6 @@ public class ResidentEntity extends DomainEntity {
 		this.contraseña = contraseña;
 	}
 
-	public PropertyEntity getInmueble() {
-		return inmueble;
-	}
-
 	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
@@ -95,8 +99,8 @@ public class ResidentEntity extends DomainEntity {
 	public UUID getId() {
 		return super.getId();
 	}
-
-	public PropertyEntity getState() {
+	
+	public PropertyEntity getInmueble() {
 		return inmueble;
 	}
 
@@ -105,11 +109,4 @@ public class ResidentEntity extends DomainEntity {
 	}
 	
 	
-//	public static void main(String[] args) {
-//		CountryDTO country = new CountryDTO();
-//		country.setId(null);
-//		
-//		System.out.println(country.getId());
-//		System.out.println(country.getName());
-//	}
 }
