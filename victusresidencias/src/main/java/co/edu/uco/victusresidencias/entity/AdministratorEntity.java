@@ -10,8 +10,8 @@ public class AdministratorEntity extends DomainEntity {
 	private String name;
 	private String lastName;
 	private String tipoDocumento;
-	private int numeroDocumento;
-	private int numeroContacto;
+	private String numeroDocumento;
+	private String numeroContacto;
 	private String correoElectronico;
 	private String contrasena;
 
@@ -54,19 +54,19 @@ public class AdministratorEntity extends DomainEntity {
 		this.tipoDocumento = tipoDocumento;
 	}
 
-	public int getNumeroDocumento() {
+	public String getNumeroDocumento() {
 		return numeroDocumento;
 	}
 
-	public void setNumeroDocumento(int numeroDocumento) {
+	public void setNumeroDocumento(String numeroDocumento) {
 		this.numeroDocumento = numeroDocumento;
 	}
 
-	public int getNumeroContacto() {
+	public String getNumeroContacto() {
 		return numeroContacto;
 	}
 
-	public void setNumeroContacto(int numeroContacto) {
+	public void setNumeroContacto(String numeroContacto) {
 		this.numeroContacto = numeroContacto;
 	}
 

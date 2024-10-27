@@ -5,6 +5,7 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
+import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.domain.CityDomain;
 import co.edu.uco.victusresidencias.entity.CityEntity;
 
@@ -21,7 +22,7 @@ public final class CityEntityAdapter implements Adapter<CityEntity,CityDomain>{
 	@Override
 	public CityEntity adaptSource(CityDomain data) {
 		// Ensure data is not null, use a default value if it is
-        var domainToAdapt = ObjectHelper.getDefault(data, CityDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, null));
+        var domainToAdapt = ObjectHelper.getDefault(data, createDefault.CITY);
 
         // Convert CityDomain to CityEntity
         var entityToAdapt = new CityEntity();
@@ -43,7 +44,5 @@ public final class CityEntityAdapter implements Adapter<CityEntity,CityDomain>{
             StateEntityAdapter.getStateEntityAdapter().adaptTarget(entityToAdapt.getState()) // Adapt StateEntity to StateDomain
         );
 	}
-
-	
 
 }
