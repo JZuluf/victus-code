@@ -5,7 +5,6 @@ package co.edu.uco.victusresidencias.data.dao.impl.sqlserver;
 import java.sql.Connection;
 
 
-
 import co.edu.uco.victusresidencias.crosscutting.helpers.SqlConnectionHelper;
 import co.edu.uco.victusresidencias.data.dao.CityDAO;
 import co.edu.uco.victusresidencias.data.dao.CountryDAO;
