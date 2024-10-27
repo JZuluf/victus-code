@@ -3,7 +3,8 @@ package co.edu.uco.victusresidencias.data.dao.impl.sql;
 import java.sql.Connection;
 
 
-import co.edu.uco.crosscutting.helpers.SqlConnectionHelper;
+
+import co.edu.uco.victusresidencias.crosscutting.helpers.SqlConnectionHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 
 

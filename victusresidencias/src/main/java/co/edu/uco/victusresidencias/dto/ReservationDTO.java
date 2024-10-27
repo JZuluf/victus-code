@@ -1,8 +1,8 @@
 package co.edu.uco.victusresidencias.dto;
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ReservationDTO extends DomainDTO {
 

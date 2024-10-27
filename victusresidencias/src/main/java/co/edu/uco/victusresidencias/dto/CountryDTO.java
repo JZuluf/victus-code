@@ -1,7 +1,7 @@
 package co.edu.uco.victusresidencias.dto;
 
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class CountryDTO extends DomainDTO{
 	

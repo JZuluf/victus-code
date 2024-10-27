@@ -2,10 +2,11 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class PropertyEntity extends DomainEntity {
 	
