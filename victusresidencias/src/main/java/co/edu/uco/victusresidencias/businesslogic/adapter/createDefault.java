@@ -16,7 +16,9 @@ import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
 import co.edu.uco.victusresidencias.domain.StateDomain;
 
 public class createDefault {
-	
+	private createDefault() {
+		
+	}
 	//para los DTO
 	public static final CountryDomain COUNTRY = CountryDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY);
 	public static final StateDomain STATE = StateDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, COUNTRY);
