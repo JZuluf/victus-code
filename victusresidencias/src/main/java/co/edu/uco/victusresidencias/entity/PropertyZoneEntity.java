@@ -9,32 +9,32 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 
 public class PropertyZoneEntity extends DomainEntity {
 	
-	private String tipoZonaInmueble;
-	private int numeroZonaInmueble;
-	private ResidentialComplexEntity conjuntoResidencial;
+	private String propertyZoneType;
+	private int propertyZoneNumber;
+	private ResidentialComplexEntity residentialComplex;
 
 
 	public PropertyZoneEntity() {
 		super(UUIDHelper.getDefault());
 		setPropertyZoneType(TextHelper.EMPTY);
-		setNumeroZonaInmueble(NumericHelper.CERO);
+		setPropertyZoneNumber(NumericHelper.CERO);
 		setResidentialComplex(new ResidentialComplexEntity());
 	}
 	
 	public String getPropertyZoneType() {
-		return tipoZonaInmueble;
+		return propertyZoneType;
 	}
 
 	public void setPropertyZoneType(String tipoZonaInmueble) {
-		this.tipoZonaInmueble = TextHelper.applyTrim(tipoZonaInmueble);
+		this.propertyZoneType = TextHelper.applyTrim(tipoZonaInmueble);
 	}
 	
-	public int getNumeroZonaInmueble() {
-		return numeroZonaInmueble;
+	public int getPropertyZoneNumber() {
+		return propertyZoneNumber;
 	}
 
-	public void setNumeroZonaInmueble(int numeroZonaInmueble) {
-		this.numeroZonaInmueble = numeroZonaInmueble;
+	public void setPropertyZoneNumber(int numeroZonaInmueble) {
+		this.propertyZoneNumber = numeroZonaInmueble;
 	}
 
 	@Override
@@ -47,11 +47,11 @@ public class PropertyZoneEntity extends DomainEntity {
 	}
 
 	public ResidentialComplexEntity getResidentialComplex() {
-		return conjuntoResidencial;
+		return residentialComplex;
 	}
 
-	public void setResidentialComplex(final ResidentialComplexEntity conjuntoResidencial) {
-		this.conjuntoResidencial = ObjectHelper.getDefault(conjuntoResidencial, new ResidentialComplexEntity());
+	public void setResidentialComplex(final ResidentialComplexEntity residentialComplex) {
+		this.residentialComplex = ObjectHelper.getDefault(residentialComplex, new ResidentialComplexEntity());
 	}
 	
 }

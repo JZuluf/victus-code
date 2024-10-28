@@ -68,10 +68,10 @@ public final class PropertySqlServerDAO extends SqlDAO implements PropertyDAO {
                 //var residentEntityTmp = new ResidentEntity();
 
                 propertyEntityTmp.setId(UUID.fromString(result.getString("id")));
-                propertyEntityTmp.setTipoInmueble(result.getString("name"));//(result.getString("name"));
+                propertyEntityTmp.setPropertyType(result.getString("name"));//(result.getString("name"));
 
                 propertyZoneEntityTmp.setId(UUID.fromString(result.getString("propertyZone")));
-                propertyEntityTmp.setZonaInmueble(propertyZoneEntityTmp);//(propertyZoneEntityTmp);
+                propertyEntityTmp.setPropertyZone(propertyZoneEntityTmp);//(propertyZoneEntityTmp);
 
 //                residentEntityTmp.setId(UUID.fromString(result.getString("resident")));
 //                propertyEntityTmp.setResident(residentEntityTmp);
@@ -97,8 +97,8 @@ public final class PropertySqlServerDAO extends SqlDAO implements PropertyDAO {
 
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setObject(1, data.getId());
-            preparedStatement.setString(2, data.getTipoInmueble());
-            preparedStatement.setObject(3, data.getZonaInmueble().getId());
+            preparedStatement.setString(2, data.getPropertyType());
+            preparedStatement.setObject(3, data.getPropertyZone().getId());
             //preparedStatement.setObject(4, data.getResident().getId());
 
             preparedStatement.executeUpdate();
@@ -134,8 +134,8 @@ public final class PropertySqlServerDAO extends SqlDAO implements PropertyDAO {
         statement.append("UPDATE Property SET name = ?, propertyZone = ?, resident = ? WHERE id = ?");
 
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
-            preparedStatement.setString(1, data.getTipoInmueble());
-            preparedStatement.setObject(2, data.getZonaInmueble().getId());
+            preparedStatement.setString(1, data.getPropertyType());
+            preparedStatement.setObject(2, data.getPropertyZone().getId());
             //preparedStatement.setObject(3, data.getResident().getId());
             preparedStatement.setObject(4, data.getId());
 
@@ -163,16 +163,16 @@ public final class PropertySqlServerDAO extends SqlDAO implements PropertyDAO {
             parameters.add(filter.getId());
         }
 
-        if (!TextHelper.isEmpty(filter.getTipoInmueble())) {
+        if (!TextHelper.isEmpty(filter.getPropertyType())) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("name = ? ");
-            parameters.add(filter.getTipoInmueble());
+            parameters.add(filter.getPropertyType());
         }
 
-        if (!UUIDHelper.isDefault(filter.getZonaInmueble().getId())) {
+        if (!UUIDHelper.isDefault(filter.getPropertyZone().getId())) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("propertyZone = ? ");
-            parameters.add(filter.getZonaInmueble().getId());
+            parameters.add(filter.getPropertyZone().getId());
         }
 
 //        if (!UUIDHelper.isDefault(filter.getResident().getId())) {

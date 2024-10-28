@@ -56,7 +56,7 @@ final class AdministratorSqlServerDAO extends SqlDAO implements AdministratorDAO
                 var adminEntityTmp = new AdministratorEntity();
                 adminEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
                 adminEntityTmp.setName(result.getString("name"));
-                adminEntityTmp.setCorreoElectronico(result.getString("email"));
+                adminEntityTmp.setEmail(result.getString("email"));
                 
                 resultSelect.add(adminEntityTmp);
             }
@@ -79,7 +79,7 @@ final class AdministratorSqlServerDAO extends SqlDAO implements AdministratorDAO
         try (var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setObject(1, data.getId());
             preparedStatement.setString(2, data.getName());
-            preparedStatement.setString(3, data.getCorreoElectronico());
+            preparedStatement.setString(3, data.getEmail());
 
             preparedStatement.executeUpdate();
         } catch (final SQLException exception) {
@@ -112,7 +112,7 @@ final class AdministratorSqlServerDAO extends SqlDAO implements AdministratorDAO
 
         try (var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setString(1, data.getName());
-            preparedStatement.setString(2, data.getCorreoElectronico());
+            preparedStatement.setString(2, data.getEmail());
             preparedStatement.setObject(3, data.getId());
 
             preparedStatement.executeUpdate();
@@ -143,10 +143,10 @@ final class AdministratorSqlServerDAO extends SqlDAO implements AdministratorDAO
             parameters.add(filter.getName());
         }
 
-        if (!TextHelper.isEmpty(filter.getCorreoElectronico())) {
+        if (!TextHelper.isEmpty(filter.getEmail())) {
             statement.append(parameters.isEmpty() ? "WHERE " : "AND ");
             statement.append("email = ? ");
-            parameters.add(filter.getCorreoElectronico());
+            parameters.add(filter.getEmail());
         }
     }
 

@@ -66,7 +66,7 @@ public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO 
 
                 comunZoneEntityTmp.setId(UUID.fromString(result.getString("id")));
                 comunZoneEntityTmp.setName(result.getString("name"));
-                comunZoneEntityTmp.setDescripcion(result.getString("description"));
+                comunZoneEntityTmp.setDescription(result.getString("description"));
 
                 resultSelect.add(comunZoneEntityTmp);
             }
@@ -90,7 +90,7 @@ public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO 
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setObject(1, data.getId());
             preparedStatement.setString(2, data.getName());
-            preparedStatement.setString(3, data.getDescripcion());
+            preparedStatement.setString(3, data.getDescription());
 
             preparedStatement.executeUpdate();
 
@@ -126,7 +126,7 @@ public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO 
 
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setString(1, data.getName());
-            preparedStatement.setString(2, data.getDescripcion());
+            preparedStatement.setString(2, data.getDescription());
             preparedStatement.setObject(3, data.getId());
 
             preparedStatement.executeUpdate();
@@ -159,10 +159,10 @@ public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO 
             parameters.add(filter.getName());
         }
 
-        if (!TextHelper.isEmpty(filter.getDescripcion())) {
+        if (!TextHelper.isEmpty(filter.getDescription())) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("description = ? ");
-            parameters.add(filter.getDescripcion());
+            parameters.add(filter.getDescription());
         }
     }
 

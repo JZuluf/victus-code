@@ -13,8 +13,7 @@ public class AdministratorDTO extends DomainDTO {
     private String correoElectronico;
     private String contrasena;
 
-    // Constructor privado
-    private AdministratorDTO() {
+    public AdministratorDTO() {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
         setApellido(TextHelper.EMPTY);

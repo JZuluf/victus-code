@@ -10,23 +10,23 @@ import co.edu.uco.crosscutting.helpers.UUIDHelper;
 public class ComunZoneEntity extends DomainEntity {
 	
 	private String name;
-	private String descripcion;
-	private int capacidadPersonas;
-	private int tiempoUso;
-	private String unidadTiempoUso;
-	private String normas;
-	private ResidentialComplexEntity conjuntoResidencial;
+	private String description;
+	private int peopleCapacity;
+	private int usingTime;
+	private String usingTimeUnit;
+	private String rule;
+	private ResidentialComplexEntity residentialComplex;
 
 
 	public ComunZoneEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		setDescripcion(TextHelper.EMPTY);
-		setCapacidadPersonas(NumericHelper.CERO);
-		setTiempoUso(NumericHelper.CERO);
-		setUnidadTiempoUso(TextHelper.EMPTY);
-		setNormas(TextHelper.EMPTY);
-		setConjuntoResidencial(new ResidentialComplexEntity());
+		setDescription(TextHelper.EMPTY);
+		setPeopleCapacity(NumericHelper.CERO);
+		setUsingTime(NumericHelper.CERO);
+		setUsingTimeUnit(TextHelper.EMPTY);
+		setRule(TextHelper.EMPTY);
+		setResidentialComplex(new ResidentialComplexEntity());
 	}
 	
 	public String getName() {
@@ -38,44 +38,44 @@ public class ComunZoneEntity extends DomainEntity {
 	}
 	
 	
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public int getCapacidadPersonas() {
-		return capacidadPersonas;
+	public int getPeopleCapacity() {
+		return peopleCapacity;
 	}
 
-	public void setCapacidadPersonas(int capacidadPersonas) {
-		this.capacidadPersonas = capacidadPersonas;
+	public void setPeopleCapacity(int peopleCapacity) {
+		this.peopleCapacity = peopleCapacity;
 	}
 
-	public int getTiempoUso() {
-		return tiempoUso;
+	public int getUsingTime() {
+		return usingTime;
 	}
 
-	public void setTiempoUso(int tiempoUso) {
-		this.tiempoUso = tiempoUso;
+	public void setUsingTime(int usingTime) {
+		this.usingTime = usingTime;
 	}
 
-	public String getUnidadTiempoUso() {
-		return unidadTiempoUso;
+	public String getUsingTimeUnit() {
+		return usingTimeUnit;
 	}
 
-	public void setUnidadTiempoUso(String unidadTiempoUso) {
-		this.unidadTiempoUso = unidadTiempoUso;
+	public void setUsingTimeUnit(String usingTimeUnit) {
+		this.usingTimeUnit = usingTimeUnit;
 	}
 
-	public String getNormas() {
-		return normas;
+	public String getRule() {
+		return rule;
 	}
 
-	public void setNormas(String normas) {
-		this.normas = normas;
+	public void setRule(String rule) {
+		this.rule = rule;
 	}
 
 	@Override
@@ -87,11 +87,11 @@ public class ComunZoneEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public ResidentialComplexEntity getConjuntoResidencial() {
-		return conjuntoResidencial;
+	public ResidentialComplexEntity getResidentialComplex() {
+		return residentialComplex;
 	}
 
-	public void setConjuntoResidencial(final ResidentialComplexEntity conjuntoResidencial) {
-		this.conjuntoResidencial = ObjectHelper.getDefault(conjuntoResidencial, new ResidentialComplexEntity());
+	public void setResidentialComplex(final ResidentialComplexEntity residentialComplex) {
+		this.residentialComplex = ObjectHelper.getDefault(residentialComplex, new ResidentialComplexEntity());
 	}
 }

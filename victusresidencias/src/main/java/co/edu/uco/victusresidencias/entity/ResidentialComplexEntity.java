@@ -71,16 +71,16 @@ public class ResidentialComplexEntity extends DomainEntity {
 		return contactReception;
 	}
 
-	public void setContactoRecepcion(int contactoRecepcion) {
-		this.contactReception = contactoRecepcion;
+	public void setContactoRecepcion(int contactReception) {
+		this.contactReception = contactReception;
 	}
 
 	public String getDescripcion() {
 		return description;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.description = descripcion;
+	public void setDescripcion(String description) {
+		this.description = description;
 	}
 	
 }

@@ -15,6 +15,7 @@ public class AdministratorDomain extends Domain {
     private String correoElectronico;
     private String contrasena;
 
+    //construtor privado solo el Domain
     private AdministratorDomain(final UUID id, final String name, final String apellido, final String tipoDocumento, 
                                 final int numeroDocumento, final int numeroContacto, final String correoElectronico, final String contrasena) {
         super(id);
