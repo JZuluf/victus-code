@@ -2,9 +2,9 @@ package co.edu.uco.victusresidencias.domain;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ComunZoneDomain extends Domain {
     

@@ -1,10 +1,10 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter;
 
-import co.edu.uco.crosscutting.helpers.DateHelper;
-import co.edu.uco.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
 
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.CityDomain;
 import co.edu.uco.victusresidencias.domain.ComunZoneDomain;
