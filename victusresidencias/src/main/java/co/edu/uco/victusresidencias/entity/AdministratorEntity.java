@@ -9,19 +9,13 @@ public class AdministratorEntity extends DomainEntity {
 	
 	private String name;
 	private String lastName;
-<<<<<<< HEAD
+
 	private String documentType;
-	private int documentNumber;
-	private int contactNumber;
+	private String documentNumber;
+	private String contactNumber;
 	private String email;
 	private String password;
-=======
-	private String tipoDocumento;
-	private String numeroDocumento;
-	private String numeroContacto;
-	private String correoElectronico;
-	private String contrasena;
->>>>>>> f487df55e6c65a4aac9e4b366a4be304afb92f1d
+
 
 
 	public AdministratorEntity() {
@@ -62,37 +56,20 @@ public class AdministratorEntity extends DomainEntity {
 		this.documentType = documentType;
 	}
 
-<<<<<<< HEAD
-	public int getDocumentNumber() {
+	public String getDocumentNumber() {
 		return documentNumber;
 	}
 
-	public void setDocumentNumber(int documentNumber) {
+	public void setDocumentNumber(String documentNumber) {
 		this.documentNumber = documentNumber;
 	}
 
-	public int getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
-=======
-	public String getNumeroDocumento() {
-		return numeroDocumento;
-	}
-
-	public void setNumeroDocumento(String numeroDocumento) {
-		this.numeroDocumento = numeroDocumento;
-	}
-
-	public String getNumeroContacto() {
-		return numeroContacto;
-	}
-
-	public void setNumeroContacto(String numeroContacto) {
-		this.numeroContacto = numeroContacto;
->>>>>>> f487df55e6c65a4aac9e4b366a4be304afb92f1d
 	}
 
 	public String getEmail() {

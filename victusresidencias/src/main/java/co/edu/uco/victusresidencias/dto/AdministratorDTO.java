@@ -8,8 +8,8 @@ public class AdministratorDTO extends DomainDTO {
     private String name;
     private String apellido;
     private String tipoDocumento;
-    private int numeroDocumento;
-    private int numeroContacto;
+    private String numeroDocumento;
+    private String numeroContacto;
     private String correoElectronico;
     private String contrasena;
 
@@ -39,7 +39,7 @@ public class AdministratorDTO extends DomainDTO {
     }
 
     public String getApellido() {
-        return apellido;
+        return this.apellido;
     }
 
     public AdministratorDTO setApellido(String apellido) {
@@ -56,21 +56,21 @@ public class AdministratorDTO extends DomainDTO {
         return this;
     }
 
-    public int getNumeroDocumento() {
+    public String getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    public AdministratorDTO setNumeroDocumento(int numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    public AdministratorDTO setNumeroDocumento(final String numeroDocumento) {
+        this.numeroDocumento = TextHelper.applyTrim(numeroDocumento);
         return this;
     }
 
-    public int getNumeroContacto() {
+    public String getNumeroContacto() {
         return numeroContacto;
     }
 
-    public AdministratorDTO setNumeroContacto(int numeroContacto) {
-        this.numeroContacto = numeroContacto;
+    public AdministratorDTO setNumeroContacto(String numeroContacto) {
+        this.numeroContacto = TextHelper.applyTrim(numeroContacto);
         return this;
     }
 

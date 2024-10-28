@@ -38,6 +38,8 @@ public class PropertyDTOAdapter implements Adapter<PropertyDomain, PropertyDTO> 
     public PropertyDTO adaptTarget(PropertyDomain data) {
         // Si el Domain es nulo, usamos un Domain por defecto
         var domainToAdapt = ObjectHelper.getDefault(data,createDefault.PROPERTY);
+        
+        
 
         // Convertimos el Domain a DTO
 //        return PropertyDTO.create()

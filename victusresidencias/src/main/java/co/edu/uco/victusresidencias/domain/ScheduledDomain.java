@@ -14,11 +14,11 @@ public class ScheduledDomain extends Domain {
     private Boolean disponibilidad;
     private LocalDateTime fechaHoraInicio;
     private LocalDateTime fechaHoraFin;
-    private ComunZoneDomain zonaComun;
+    private CommonZoneDomain zonaComun;
 
     // Constructor privado
     private ScheduledDomain(final UUID id, final String name, final Boolean disponibilidad, final LocalDateTime fechaHoraInicio,
-                            final LocalDateTime fechaHoraFin, final ComunZoneDomain zonaComun) {
+                            final LocalDateTime fechaHoraFin, final CommonZoneDomain zonaComun) {
         super(id);
         setName(name);
         setDisponibilidad(disponibilidad);
@@ -29,14 +29,14 @@ public class ScheduledDomain extends Domain {
 
     // Método estático para crear una instancia con parámetros
     public static ScheduledDomain create(final UUID id, final String name, final Boolean disponibilidad, final LocalDateTime fechaHoraInicio, 
-                                         final LocalDateTime fechaHoraFin, final ComunZoneDomain zonaComun) {
+                                         final LocalDateTime fechaHoraFin, final CommonZoneDomain zonaComun) {
         return new ScheduledDomain(id, name, disponibilidad, fechaHoraInicio, fechaHoraFin, zonaComun);
     }
 
     // Método estático para crear una instancia vacía por defecto
     public static ScheduledDomain create() {
         return new ScheduledDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, true, DateHelper.DEFAULT_DATE_TIME, 
-                                   DateHelper.DEFAULT_DATE_TIME, ComunZoneDomain.create());
+                                   DateHelper.DEFAULT_DATE_TIME, CommonZoneDomain.create());
     }
 
     // Getters y Setters
@@ -73,12 +73,12 @@ public class ScheduledDomain extends Domain {
         this.fechaHoraFin = (fechaHoraFin != null) ? fechaHoraFin : DateHelper.DEFAULT_DATE_TIME;
     }
 
-    public ComunZoneDomain getZonaComun() {
+    public CommonZoneDomain getZonaComun() {
         return zonaComun;
     }
 
-    private void setZonaComun(final ComunZoneDomain zonaComun) {
-        this.zonaComun = (zonaComun != null) ? zonaComun : ComunZoneDomain.create();
+    private void setZonaComun(final CommonZoneDomain zonaComun) {
+        this.zonaComun = (zonaComun != null) ? zonaComun : CommonZoneDomain.create();
     }
 
     @Override

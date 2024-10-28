@@ -47,9 +47,9 @@ public class AdministratorDTOAdapter implements Adapter<AdministratorDomain, Adm
         return AdministratorDTO.create()
                 .setId(UUIDHelper.getDefaultAsString())
                 .setName(domainToAdapt.getName())
-                .setApellido(domainToAdapt.getApellido())
-                .setTipoDocumento(domainToAdapt.getTipoDocumento())
-                .setNumeroDocumento(domainToAdapt.getNumeroDocumento());
+                .setApellido(domainToAdapt.getLastName())
+                .setTipoDocumento(domainToAdapt.getIdType())
+                .setNumeroDocumento(domainToAdapt.getIdNumber());
                 
     }
 }

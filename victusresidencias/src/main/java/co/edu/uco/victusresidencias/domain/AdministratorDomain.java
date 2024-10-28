@@ -9,36 +9,36 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 public class AdministratorDomain extends Domain {
 
     private String name;
-    private String apellido;
-    private String tipoDocumento;
-    private int numeroDocumento;
-    private int numeroContacto;
-    private String correoElectronico;
-    private String contrasena;
+    private String lastName;
+    private String idType;
+    private String idNumber;
+    private String contactNumber;
+    private String email;
+    private String password;
 
     //construtor privado solo el Domain
-    private AdministratorDomain(final UUID id, final String name, final String apellido, final String tipoDocumento, 
-                                final int numeroDocumento, final int numeroContacto, final String correoElectronico, final String contrasena) {
+    private AdministratorDomain(final UUID id, final String name, final String apellidolastName, final String idType, 
+                                final String idNumber, final String contactNumber, final String Email, final String password) {
         super(id);
         setName(name);
-        setApellido(apellido);
-        setTipoDocumento(tipoDocumento);
-        setNumeroDocumento(numeroDocumento);
-        setNumeroContacto(numeroContacto);
-        setCorreoElectronico(correoElectronico);
-        setContrasena(contrasena);
+        setLastName(lastName);
+        setIdType(idType);
+        setIdNumber(idNumber);
+        setContactNumber(contactNumber);
+        setEmail(email);
+        setPassword(password);
     }
 
     // Método estático para crear una instancia
-    public static final AdministratorDomain create(final UUID id, final String name, final String apellido, 
-                                                   final String tipoDocumento, final int numeroDocumento, final int numeroContacto, 
-                                                   final String correoElectronico, final String contrasena) {
-        return new AdministratorDomain(id, name, apellido, tipoDocumento, numeroDocumento, numeroContacto, correoElectronico, contrasena);
+    public static final AdministratorDomain create(final UUID id, final String name, final String lastName, 
+                                                   final String idType, final String idNumber, final String contactNumber, 
+                                                   final String email, final String password) {
+        return new AdministratorDomain(id, name, lastName, idType, idNumber, contactNumber, email, password);
     }
 
     // Método estático para crear una instancia vacía por defecto
     public static final AdministratorDomain create() {
-        return new AdministratorDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, 0, 0, TextHelper.EMPTY, TextHelper.EMPTY);
+        return new AdministratorDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY);
     }
 
     // Getters y Setters
@@ -51,52 +51,52 @@ public class AdministratorDomain extends Domain {
         this.name = TextHelper.applyTrim(name);
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getLastName() {
+        return this.lastName;
     }
 
-    private void setApellido(final String apellido) {
-        this.apellido = TextHelper.applyTrim(apellido);
+    private void setLastName(final String lastName) {
+        this.lastName = TextHelper.applyTrim(lastName);
     }
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
+    public String getIdType() {
+        return this.idType;
     }
 
-    private void setTipoDocumento(final String tipoDocumento) {
-        this.tipoDocumento = TextHelper.applyTrim(tipoDocumento);
+    private void setIdType(final String idType) {
+        this.idType = TextHelper.applyTrim(idType);
     }
 
-    public int getNumeroDocumento() {
-        return numeroDocumento;
+    public String getIdNumber() {
+        return this.idNumber;
     }
 
-    private void setNumeroDocumento(final int numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    private void setIdNumber(final String idNumber) {
+        this.idNumber = idNumber;
     }
 
-    public int getNumeroContacto() {
-        return numeroContacto;
+    public String getContactNumber() {
+        return this.contactNumber;
     }
 
-    private void setNumeroContacto(final int numeroContacto) {
-        this.numeroContacto = numeroContacto;
+    private void setContactNumber(final String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
+    public String getEmail() {
+        return email;
     }
 
-    private void setCorreoElectronico(final String correoElectronico) {
-        this.correoElectronico = TextHelper.applyTrim(correoElectronico);
+    private void setEmail(final String email) {
+        this.email = TextHelper.applyTrim(email);
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return this.password;
     }
 
-    private void setContrasena(final String contrasena) {
-        this.contrasena = TextHelper.applyTrim(contrasena);
+    private void setPassword(final String password) {
+        this.password = TextHelper.applyTrim(password);
     }
 
     @Override
