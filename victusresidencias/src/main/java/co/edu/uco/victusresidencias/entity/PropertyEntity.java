@@ -11,7 +11,7 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 public class PropertyEntity extends DomainEntity {
 	
 	private String propertyType;
-	private int homeNumber;
+	private int propertyNumber;
 	private PropertyZoneEntity propertyZone;
 	
 	public PropertyEntity() {
@@ -30,12 +30,12 @@ public class PropertyEntity extends DomainEntity {
 	}
 	
 	
-	public int getHomeNumber() {
-		return homeNumber;
+	public int getPropertyNumber() {
+		return propertyNumber;
 	}
 
-	public void setHomeNumber(int homeNumber) {
-		this.homeNumber = homeNumber;
+	public void setPrpertyNumber(int propertyNumber) {
+		this.propertyNumber = propertyNumber;
 	}
 
 	@Override

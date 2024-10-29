@@ -7,53 +7,48 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class PropertyZoneDTO extends DomainDTO {
     
-    private String tipoZonaInmueble;
-    private int numeroZonaInmueble;
-    private ResidentialComplexDTO conjuntoResidencial;
+    private String propertyZoneType;
+    private int propertyZoneNumber;
+    private ResidentialComplexDTO residentialComplex;
 
-    // Constructor privado
     private PropertyZoneDTO() {
         super(UUIDHelper.getDefaultAsString());
-        setTipoZonaInmueble(TextHelper.EMPTY);
-        setNumeroZonaInmueble(NumericHelper.CERO);
-        setConjuntoResidencial(ResidentialComplexDTO.create());
+        setPropertyZoneType(TextHelper.EMPTY);
+        setPropertyZoneNumber(NumericHelper.ZERO);
+        setResidentialComplex(ResidentialComplexDTO.create());
     }
 
-    // Método estático para crear una instancia
     public static PropertyZoneDTO create() {
         return new PropertyZoneDTO();
     }
 
-    // Getters y Setters con return this para fluidez
-
-    public String getTipoZonaInmueble() {
-        return tipoZonaInmueble;
+    public String getPropertyZoneType() {
+        return propertyZoneType;
     }
 
-    public PropertyZoneDTO setTipoZonaInmueble(String tipoZonaInmueble) {
-        this.tipoZonaInmueble = TextHelper.applyTrim(tipoZonaInmueble);
+    public PropertyZoneDTO setPropertyZoneType(String propertyZoneType) {
+        this.propertyZoneType = TextHelper.applyTrim(propertyZoneType);
         return this;
     }
 
-    public int getNumeroZonaInmueble() {
-        return numeroZonaInmueble;
+    public int getPropertyZoneNumber() {
+        return propertyZoneNumber;
     }
 
-    public PropertyZoneDTO setNumeroZonaInmueble(int numeroZonaInmueble) {
-        this.numeroZonaInmueble = numeroZonaInmueble;
+    public PropertyZoneDTO setPropertyZoneNumber(int propertyZoneNumber) {
+        this.propertyZoneNumber = propertyZoneNumber;
         return this;
     }
 
-    public ResidentialComplexDTO getConjuntoResidencial() {
-        return conjuntoResidencial;
+    public ResidentialComplexDTO getResidentialComplex() {
+        return residentialComplex;
     }
 
-    public PropertyZoneDTO setConjuntoResidencial(ResidentialComplexDTO conjuntoResidencial) {
-        this.conjuntoResidencial = ObjectHelper.getDefault(conjuntoResidencial, ResidentialComplexDTO.create());
+    public PropertyZoneDTO setResidentialComplex(ResidentialComplexDTO residentialComplex) {
+        this.residentialComplex = ObjectHelper.getDefault(residentialComplex, ResidentialComplexDTO.create());
         return this;
     }
 
-    // Métodos para el manejo del ID heredado de DomainDTO
     public PropertyZoneDTO setId(final String id) {
         super.setIdentifier(id);
         return this;

@@ -6,28 +6,25 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 public class AdministratorDTO extends DomainDTO {
     
     private String name;
-    private String apellido;
-    private String tipoDocumento;
-    private String numeroDocumento;
-    private String numeroContacto;
-    private String correoElectronico;
-    private String contrasena;
+    private String lastName;
+    private String idType;
+    private String idNumber;
+    private String contactNumber;
+    private String email;
+    private String password;
 
     public AdministratorDTO() {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
-        setApellido(TextHelper.EMPTY);
-        setTipoDocumento(TextHelper.EMPTY);
-        setCorreoElectronico(TextHelper.EMPTY);
-        setContrasena(TextHelper.EMPTY);
+        setLastName(TextHelper.EMPTY);
+        setIdType(TextHelper.EMPTY);
+        setEmail(TextHelper.EMPTY);
+        setPassword(TextHelper.EMPTY);
     }
 
-    // Método estático para crear una instancia
     public static AdministratorDTO create() {
         return new AdministratorDTO();
     }
-
-    // Getters y Setters con return this para fluidez
 
     public String getName() {
         return name;
@@ -38,61 +35,60 @@ public class AdministratorDTO extends DomainDTO {
         return this;
     }
 
-    public String getApellido() {
-        return this.apellido;
+    public String getLastName() {
+        return this.lastName;
     }
 
-    public AdministratorDTO setApellido(String apellido) {
-        this.apellido = TextHelper.applyTrim(apellido);
+    public AdministratorDTO setLastName(String lastName) {
+        this.lastName = TextHelper.applyTrim(lastName);
         return this;
     }
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
+    public String getIdType() {
+        return idType;
     }
 
-    public AdministratorDTO setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = TextHelper.applyTrim(tipoDocumento);
+    public AdministratorDTO setIdType(String idType) {
+        this.idType = TextHelper.applyTrim(idType);
         return this;
     }
 
-    public String getNumeroDocumento() {
-        return numeroDocumento;
+    public String getIdNumber() {
+        return idNumber;
     }
 
-    public AdministratorDTO setNumeroDocumento(final String numeroDocumento) {
-        this.numeroDocumento = TextHelper.applyTrim(numeroDocumento);
+    public AdministratorDTO setIdNumber(final String idNumber) {
+        this.idNumber = TextHelper.applyTrim(idNumber);
         return this;
     }
 
-    public String getNumeroContacto() {
-        return numeroContacto;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public AdministratorDTO setNumeroContacto(String numeroContacto) {
-        this.numeroContacto = TextHelper.applyTrim(numeroContacto);
+    public AdministratorDTO setContactNumber(String contactNumber) {
+        this.contactNumber = TextHelper.applyTrim(contactNumber);
         return this;
     }
 
-    public String getCorreoElectronico() {
-        return correoElectronico;
+    public String getEmail() {
+        return email;
     }
 
-    public AdministratorDTO setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = TextHelper.applyTrim(correoElectronico);
+    public AdministratorDTO setEmail(String email) {
+        this.email = TextHelper.applyTrim(email);
         return this;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getPassword() {
+        return password;
     }
 
-    public AdministratorDTO setContrasena(String contrasena) {
-        this.contrasena = TextHelper.applyTrim(contrasena);
+    public AdministratorDTO setPassword(String password) {
+        this.password = TextHelper.applyTrim(password);
         return this;
     }
 
-    // Métodos para el manejo del ID heredado de DomainDTO
     public AdministratorDTO setId(final String id) {
         super.setIdentifier(id);
         return this;

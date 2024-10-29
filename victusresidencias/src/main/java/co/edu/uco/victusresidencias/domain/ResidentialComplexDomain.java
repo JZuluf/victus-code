@@ -8,35 +8,37 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 public class ResidentialComplexDomain extends Domain {
 
     private String name;
-    private String direccion;
+    private String address; // Cambiado de direccion a address
     private CityDomain city;
-    private String contactoRecepcion;
-    private String descripcion;
-    private AdministratorDomain administrador;
+    private String receptionContact; // Cambiado de contactoRecepcion a receptionContact
+    private String description; // Cambiado de descripcion a description
+    private AdministratorDomain administrator; // Cambiado de administrador a administrator
 
-    // Constructor privado
-    private ResidentialComplexDomain(final UUID id, final String name, final String direccion, final CityDomain city, final String contactoRecepcion, final String descripcion, final AdministratorDomain administrador) {
+    // Private constructor
+    private ResidentialComplexDomain(final UUID id, final String name, final String address, final CityDomain city, 
+                                      final String receptionContact, final String description, final AdministratorDomain administrator) {
         super(id);
         setName(name);
-        setDireccion(direccion);
+        setAddress(address);
         setCity(city);
-        setContactoRecepcion(contactoRecepcion);
-        setDescripcion(descripcion);
-        setAdministrador(administrador);
+        setReceptionContact(receptionContact);
+        setDescription(description);
+        setAdministrator(administrator);
     }
 
-    // Método estático para crear una instancia con parámetros
-    public static ResidentialComplexDomain create(final UUID id, final String name, final String direccion, final CityDomain city, 
-    		final String contactoRecepcion, final String descripcion, final AdministratorDomain administrador) {
-        return new ResidentialComplexDomain(id, name, direccion, city, contactoRecepcion, descripcion, administrador);
+    // Static method to create an instance with parameters
+    public static ResidentialComplexDomain create(final UUID id, final String name, final String address, final CityDomain city, 
+                                                   final String receptionContact, final String description, final AdministratorDomain administrator) {
+        return new ResidentialComplexDomain(id, name, address, city, receptionContact, description, administrator);
     }
 
-    // Método estático para crear una instancia vacía por defecto
+    // Static method to create an empty default instance
     public static ResidentialComplexDomain create() {
-        return new ResidentialComplexDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, CityDomain.create(),TextHelper.EMPTY, TextHelper.EMPTY, AdministratorDomain.create());
+        return new ResidentialComplexDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, CityDomain.create(),
+                                             TextHelper.EMPTY, TextHelper.EMPTY, AdministratorDomain.create());
     }
 
-    // Getters y Setters
+    // Getters and Setters
 
     public String getName() {
         return name;
@@ -46,12 +48,12 @@ public class ResidentialComplexDomain extends Domain {
         this.name = TextHelper.applyTrim(name);
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getAddress() { // Cambiado de getDireccion a getAddress
+        return address;
     }
 
-    private void setDireccion(final String direccion) {
-        this.direccion = TextHelper.applyTrim(direccion);
+    private void setAddress(final String address) { // Cambiado de setDireccion a setAddress
+        this.address = TextHelper.applyTrim(address);
     }
 
     public CityDomain getCity() {
@@ -59,31 +61,31 @@ public class ResidentialComplexDomain extends Domain {
     }
 
     private void setCity(final CityDomain city) {
-        this.city = (city != null) ? city : CityDomain.create();  // Si city es nulo, establece una ciudad vacía por defecto
+        this.city = (city != null) ? city : CityDomain.create(); // If city is null, set a default empty city
     }
 
-    public String getContactoRecepcion() {
-        return contactoRecepcion;
+    public String getReceptionContact() { // Cambiado de getContactoRecepcion a getReceptionContact
+        return receptionContact;
     }
 
-    private void setContactoRecepcion(final String contactoRecepcion) {
-        this.contactoRecepcion = TextHelper.applyTrim(contactoRecepcion);
+    private void setReceptionContact(final String receptionContact) { // Cambiado de setContactoRecepcion a setReceptionContact
+        this.receptionContact = TextHelper.applyTrim(receptionContact);
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() { // Cambiado de getDescripcion a getDescription
+        return description;
     }
 
-    private void setDescripcion(final String descripcion) {
-        this.descripcion = TextHelper.applyTrim(descripcion);
+    private void setDescription(final String description) { // Cambiado de setDescripcion a setDescription
+        this.description = TextHelper.applyTrim(description);
     }
 
-    public AdministratorDomain getAdministrador() {
-        return administrador;
+    public AdministratorDomain getAdministrator() { // Cambiado de getAdministrador a getAdministrator
+        return administrator;
     }
 
-    private void setAdministrador(final AdministratorDomain administrador) {
-        this.administrador = (administrador != null) ? administrador : AdministratorDomain.create();  // Si el administrador es nulo, se crea uno por defecto
+    private void setAdministrator(final AdministratorDomain administrator) { // Cambiado de setAdministrador a setAdministrator
+        this.administrator = (administrator != null) ? administrator : AdministratorDomain.create(); // If the administrator is null, create a default one
     }
 
     @Override

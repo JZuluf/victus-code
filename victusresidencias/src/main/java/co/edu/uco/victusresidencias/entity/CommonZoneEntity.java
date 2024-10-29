@@ -12,7 +12,7 @@ public class CommonZoneEntity extends DomainEntity {
 	private String name;
 	private String description;
 	private int peopleCapacity;
-	private int usingTime;
+	private int usageTime;
 	private String usingTimeUnit;
 	private String rule;
 	private ResidentialComplexEntity residentialComplex;

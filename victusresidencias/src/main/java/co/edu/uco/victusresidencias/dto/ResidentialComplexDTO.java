@@ -12,7 +12,7 @@ public class ResidentialComplexDTO extends DomainDTO {
     private CityDTO city;
     private String description;
 
-    // Constructor privado
+    // Private constructor
     private ResidentialComplexDTO() {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
@@ -22,12 +22,12 @@ public class ResidentialComplexDTO extends DomainDTO {
         setAdministrator(AdministratorDTO.create());
     }
 
-    // Método estático para crear una instancia
+    // Static method to create an instance
     public static ResidentialComplexDTO create() {
         return new ResidentialComplexDTO();
     }
 
-    // Getters y Setters con return this para fluidez
+    // Getters and Setters with return this for fluency
 
     public String getName() {
         return name;
@@ -73,6 +73,7 @@ public class ResidentialComplexDTO extends DomainDTO {
         this.administrator = administrator != null ? administrator : AdministratorDTO.create();
         return this;
     }
+    
     public CityDTO getCity() {
         return city;
     }
@@ -82,7 +83,7 @@ public class ResidentialComplexDTO extends DomainDTO {
         return this;
     }
 
-    // Métodos para el manejo del ID heredado de DomainDTO
+    // Methods for handling the ID inherited from DomainDTO
     public ResidentialComplexDTO setId(final String id) {
         super.setIdentifier(id);
         return this;

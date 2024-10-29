@@ -5,100 +5,95 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
-public class ComunZoneDTO extends DomainDTO {
+public class CommonZoneDTO extends DomainDTO {
 
     private String name;
-    private String descripcion;
-    private int capacidadPersonas;
-    private int tiempoUso;
-    private String unidadTiempoUso;
-    private String normas;
-    private ResidentialComplexDTO conjuntoResidencial;
+    private String description;
+    private int capacityPeople;
+    private int usageTime;
+    private String usageTimeUnit;
+    private String rules;
+    private ResidentialComplexDTO residentialComplex;
 
-    // Constructor privado
-    private ComunZoneDTO() {
+    private CommonZoneDTO() {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
-        setDescripcion(TextHelper.EMPTY);
-        setCapacidadPersonas(NumericHelper.CERO);
-        setTiempoUso(NumericHelper.CERO);
-        setUnidadTiempoUso(TextHelper.EMPTY);
-        setNormas(TextHelper.EMPTY);
-        setConjuntoResidencial(ResidentialComplexDTO.create());
+        setDescription(TextHelper.EMPTY);
+        setCapacityPeople(NumericHelper.ZERO);
+        setUsageTime(NumericHelper.ZERO);
+        setUsageTimeUnit(TextHelper.EMPTY);
+        setRules(TextHelper.EMPTY);
+        setResidentialComplex(ResidentialComplexDTO.create());
     }
 
-    // Método estático para crear una instancia
-    public static ComunZoneDTO create() {
-        return new ComunZoneDTO();
+    public static CommonZoneDTO create() {
+        return new CommonZoneDTO();
     }
-
-    // Getters y Setters con return this para fluidez
 
     public String getName() {
         return name;
     }
 
-    public ComunZoneDTO setName(String name) {
+    public CommonZoneDTO setName(String name) {
         this.name = TextHelper.applyTrim(name);
         return this;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public ComunZoneDTO setDescripcion(String descripcion) {
-        this.descripcion = TextHelper.applyTrim(descripcion);
+    public CommonZoneDTO setDescription(String description) {
+        this.description = TextHelper.applyTrim(description);
         return this;
     }
 
-    public int getCapacidadPersonas() {
-        return capacidadPersonas;
+    public int getCapacityPeople() {
+        return capacityPeople;
     }
 
-    public ComunZoneDTO setCapacidadPersonas(int capacidadPersonas) {
-        this.capacidadPersonas = capacidadPersonas;
+    public CommonZoneDTO setCapacityPeople(int capacityPeople) {
+        this.capacityPeople = capacityPeople;
         return this;
     }
 
-    public int getTiempoUso() {
-        return tiempoUso;
+    public int getUsageTime() {
+        return usageTime;
     }
 
-    public ComunZoneDTO setTiempoUso(int tiempoUso) {
-        this.tiempoUso = tiempoUso;
+    public CommonZoneDTO setUsageTime(int usageTime) {
+        this.usageTime = usageTime;
         return this;
     }
 
-    public String getUnidadTiempoUso() {
-        return unidadTiempoUso;
+    public String getUsageTimeUnit() {
+        return usageTimeUnit;
     }
 
-    public ComunZoneDTO setUnidadTiempoUso(String unidadTiempoUso) {
-        this.unidadTiempoUso = TextHelper.applyTrim(unidadTiempoUso);
+    public CommonZoneDTO setUsageTimeUnit(String usageTimeUnit) {
+        this.usageTimeUnit = TextHelper.applyTrim(usageTimeUnit);
         return this;
     }
 
-    public String getNormas() {
-        return normas;
+    public String getRules() {
+        return rules;
     }
 
-    public ComunZoneDTO setNormas(String normas) {
-        this.normas = TextHelper.applyTrim(normas);
+    public CommonZoneDTO setRules(String rules) {
+        this.rules = TextHelper.applyTrim(rules);
         return this;
     }
 
-    public ResidentialComplexDTO getConjuntoResidencial() {
-        return conjuntoResidencial;
+    public ResidentialComplexDTO getResidentialComplex() {
+        return residentialComplex;
     }
 
-    public ComunZoneDTO setConjuntoResidencial(ResidentialComplexDTO conjuntoResidencial) {
-        this.conjuntoResidencial = ObjectHelper.getDefault(conjuntoResidencial, ResidentialComplexDTO.create());
+    public CommonZoneDTO setResidentialComplex(ResidentialComplexDTO residentialComplex) {
+        this.residentialComplex = ObjectHelper.getDefault(residentialComplex, ResidentialComplexDTO.create());
         return this;
     }
 
-    // Métodos para el manejo del ID heredado de DomainDTO
-    public ComunZoneDTO setId(final String id) {
+    public CommonZoneDTO setId(final String id) {
         super.setIdentifier(id);
         return this;
     }

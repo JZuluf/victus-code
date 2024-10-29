@@ -2,7 +2,6 @@ package co.edu.uco.victusresidencias.dto;
 
 import java.time.LocalDateTime;
 
-
 import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
@@ -11,27 +10,27 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 public class ScheduledDTO extends DomainDTO {
 
     private String name;
-    private Boolean disponibilidad;
-    private LocalDateTime fechaHoraInicio;
-    private LocalDateTime fechaHoraFin;
-    private ComunZoneDTO zonaComun;
+    private Boolean availability;
+    private LocalDateTime startDateTime;
+    private LocalDateTime endDateTime;
+    private ComunZoneDTO commonArea;
 
-    // Constructor privado
+    // Private constructor
     private ScheduledDTO() {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
-        setDisponibilidad(true);
-        setFechaHoraInicio(DateHelper.DEFAULT_DATE_TIME);
-        setFechaHoraFin(DateHelper.DEFAULT_DATE_TIME);
-        setZonaComun(ComunZoneDTO.create());
+        setAvailability(true);
+        setStartDateTime(DateHelper.DEFAULT_DATE_TIME);
+        setEndDateTime(DateHelper.DEFAULT_DATE_TIME);
+        setCommonArea(ComunZoneDTO.create());
     }
 
-    // Método estático para crear una instancia
+    // Static method to create an instance
     public static ScheduledDTO create() {
         return new ScheduledDTO();
     }
 
-    // Getters y Setters con return this para fluidez
+    // Getters and Setters with return this for fluency
 
     public String getName() {
         return name;
@@ -42,43 +41,43 @@ public class ScheduledDTO extends DomainDTO {
         return this;
     }
 
-    public Boolean getDisponibilidad() {
-        return disponibilidad;
+    public Boolean getAvailability() {
+        return availability;
     }
 
-    public ScheduledDTO setDisponibilidad(Boolean disponibilidad) {
-        this.disponibilidad = disponibilidad;
+    public ScheduledDTO setAvailability(Boolean availability) {
+        this.availability = availability;
         return this;
     }
 
-    public LocalDateTime getFechaHoraInicio() {
-        return fechaHoraInicio;
+    public LocalDateTime getStartDateTime() {
+        return startDateTime;
     }
 
-    public ScheduledDTO setFechaHoraInicio(LocalDateTime fechaHoraInicio) {
-        this.fechaHoraInicio = ObjectHelper.getDefault(fechaHoraInicio, DateHelper.DEFAULT_DATE_TIME);
+    public ScheduledDTO setStartDateTime(LocalDateTime startDateTime) {
+        this.startDateTime = ObjectHelper.getDefault(startDateTime, DateHelper.DEFAULT_DATE_TIME);
         return this;
     }
 
-    public LocalDateTime getFechaHoraFin() {
-        return fechaHoraFin;
+    public LocalDateTime getEndDateTime() {
+        return endDateTime;
     }
 
-    public ScheduledDTO setFechaHoraFin(LocalDateTime fechaHoraFin) {
-        this.fechaHoraFin = ObjectHelper.getDefault(fechaHoraFin, DateHelper.DEFAULT_DATE_TIME);
+    public ScheduledDTO setEndDateTime(LocalDateTime endDateTime) {
+        this.endDateTime = ObjectHelper.getDefault(endDateTime, DateHelper.DEFAULT_DATE_TIME);
         return this;
     }
 
-    public ComunZoneDTO getZonaComun() {
-        return zonaComun;
+    public ComunZoneDTO getCommonArea() {
+        return commonArea;
     }
 
-    public ScheduledDTO setZonaComun(ComunZoneDTO zonaComun) {
-        this.zonaComun = ObjectHelper.getDefault(zonaComun, ComunZoneDTO.create());
+    public ScheduledDTO setCommonArea(ComunZoneDTO commonArea) {
+        this.commonArea = ObjectHelper.getDefault(commonArea, ComunZoneDTO.create());
         return this;
     }
 
-    // Métodos para el manejo del ID heredado de DomainDTO
+    // Methods for handling the ID inherited from DomainDTO
     public ScheduledDTO setId(final String id) {
         super.setIdentifier(id);
         return this;

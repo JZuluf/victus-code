@@ -7,53 +7,48 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class PropertyDTO extends DomainDTO {
     
-    private String tipoInmueble;
-    private int numeroVivienda;
-    private PropertyZoneDTO zonaInmueble;
+    private String propertyType;
+    private int housingNumber;
+    private PropertyZoneDTO propertyZone;
 
-    // Constructor privado
     private PropertyDTO() {
         super(UUIDHelper.getDefaultAsString());
-        setTipoInmueble(TextHelper.EMPTY);
-        setNumeroVivienda(NumericHelper.CERO);
-        setZonaInmueble(PropertyZoneDTO.create());
+        setPropertyType(TextHelper.EMPTY);
+        setHousingNumber(NumericHelper.ZERO);
+        setPropertyZone(PropertyZoneDTO.create());
     }
 
-    // Método estático para crear una instancia
     public static PropertyDTO create() {
         return new PropertyDTO();
     }
 
-    // Getters y Setters con return this para fluidez
-
-    public String getTipoInmueble() {
-        return tipoInmueble;
+    public String getPropertyType() {
+        return propertyType;
     }
 
-    public PropertyDTO setTipoInmueble(String tipoInmueble) {
-        this.tipoInmueble = TextHelper.applyTrim(tipoInmueble);
+    public PropertyDTO setPropertyType(String propertyType) {
+        this.propertyType = TextHelper.applyTrim(propertyType);
         return this;
     }
 
-    public int getNumeroVivienda() {
-        return numeroVivienda;
+    public int getHousingNumber() {
+        return housingNumber;
     }
 
-    public PropertyDTO setNumeroVivienda(int numeroVivienda) {
-        this.numeroVivienda = numeroVivienda;
+    public PropertyDTO setHousingNumber(int housingNumber) {
+        this.housingNumber = housingNumber;
         return this;
     }
 
-    public PropertyZoneDTO getZonaInmueble() {
-        return zonaInmueble;
+    public PropertyZoneDTO getPropertyZone() {
+        return propertyZone;
     }
 
-    public PropertyDTO setZonaInmueble(PropertyZoneDTO zonaInmueble) {
-        this.zonaInmueble = ObjectHelper.getDefault(zonaInmueble, PropertyZoneDTO.create());
+    public PropertyDTO setPropertyZone(PropertyZoneDTO propertyZone) {
+        this.propertyZone = ObjectHelper.getDefault(propertyZone, PropertyZoneDTO.create());
         return this;
     }
 
-    // Métodos para el manejo del ID heredado de DomainDTO
     public PropertyDTO setId(final String id) {
         super.setIdentifier(id);
         return this;

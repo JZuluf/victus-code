@@ -1,47 +1,46 @@
 package co.edu.uco.victusresidencias.domain;
 
 import java.time.LocalDateTime;
-
 import java.util.UUID;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
-public class TurnDomain extends Domain {
+public class ShiftDomain extends Domain {
     
     private String name;
-    private String numeroTurno;
-    private LocalDateTime horaInicio;
-    private LocalDateTime horaFin;
-    private Boolean estado;
-    private ScheduledDomain agenda;
+    private String shiftNumber; // Cambiado de numeroTurno a shiftNumber
+    private LocalDateTime startTime; // Cambiado de horaInicio a startTime
+    private LocalDateTime endTime; // Cambiado de horaFin a endTime
+    private Boolean status; // Cambiado de estado a status
+    private ScheduledDomain schedule; // Cambiado de agenda a schedule
 
-    // Constructor privado
-    private TurnDomain(final UUID id, final String name, final String numeroTurno, final LocalDateTime horaInicio,
-                       final LocalDateTime horaFin, final Boolean estado, final ScheduledDomain agenda) {
+    // Private constructor
+    private ShiftDomain(final UUID id, final String name, final String shiftNumber, final LocalDateTime startTime,
+                        final LocalDateTime endTime, final Boolean status, final ScheduledDomain schedule) {
         super(id);
         setName(name);
-        setNumeroTurno(numeroTurno);
-        setHoraInicio(horaInicio);
-        setHoraFin(horaFin);
-        setEstado(estado);
-        setAgenda(agenda);
+        setShiftNumber(shiftNumber);
+        setStartTime(startTime);
+        setEndTime(endTime);
+        setStatus(status);
+        setSchedule(schedule);
     }
 
-    // Método estático para crear una instancia con parámetros
-    public static TurnDomain create(final UUID id, final String name, final String numeroTurno, final LocalDateTime horaInicio, 
-                                    final LocalDateTime horaFin, final Boolean estado, final ScheduledDomain agenda) {
-        return new TurnDomain(id, name, numeroTurno, horaInicio, horaFin, estado, agenda);
+    // Static method to create an instance with parameters
+    public static ShiftDomain create(final UUID id, final String name, final String shiftNumber, final LocalDateTime startTime, 
+                                     final LocalDateTime endTime, final Boolean status, final ScheduledDomain schedule) {
+        return new ShiftDomain(id, name, shiftNumber, startTime, endTime, status, schedule);
     }
 
-    // Método estático para crear una instancia vacía por defecto
-    public static TurnDomain create() {
-        return new TurnDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, DateHelper.DEFAULT_DATE_TIME,
-                              DateHelper.DEFAULT_DATE_TIME, true, ScheduledDomain.create());
+    // Static method to create an empty default instance
+    public static ShiftDomain create() {
+        return new ShiftDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, DateHelper.DEFAULT_DATE_TIME,
+                               DateHelper.DEFAULT_DATE_TIME, true, ScheduledDomain.create());
     }
 
-    // Getters y Setters
+    // Getters and Setters
 
     public String getName() {
         return name;
@@ -51,44 +50,44 @@ public class TurnDomain extends Domain {
         this.name = TextHelper.applyTrim(name);
     }
 
-    public String getNumeroTurno() {
-        return numeroTurno;
+    public String getShiftNumber() { // Cambiado de getNumeroTurno a getShiftNumber
+        return shiftNumber;
     }
 
-    private void setNumeroTurno(final String numeroTurno) {
-        this.numeroTurno = TextHelper.applyTrim(numeroTurno);
+    private void setShiftNumber(final String shiftNumber) { // Cambiado de setNumeroTurno a setShiftNumber
+        this.shiftNumber = TextHelper.applyTrim(shiftNumber);
     }
 
-    public LocalDateTime getHoraInicio() {
-        return horaInicio;
+    public LocalDateTime getStartTime() { // Cambiado de getHoraInicio a getStartTime
+        return startTime;
     }
 
-    private void setHoraInicio(final LocalDateTime horaInicio) {
-        this.horaInicio = (horaInicio != null) ? horaInicio : DateHelper.DEFAULT_DATE_TIME;
+    private void setStartTime(final LocalDateTime startTime) { // Cambiado de setHoraInicio a setStartTime
+        this.startTime = (startTime != null) ? startTime : DateHelper.DEFAULT_DATE_TIME;
     }
 
-    public LocalDateTime getHoraFin() {
-        return horaFin;
+    public LocalDateTime getEndTime() { // Cambiado de getHoraFin a getEndTime
+        return endTime;
     }
 
-    private void setHoraFin(final LocalDateTime horaFin) {
-        this.horaFin = (horaFin != null) ? horaFin : DateHelper.DEFAULT_DATE_TIME;
+    private void setEndTime(final LocalDateTime endTime) { // Cambiado de setHoraFin a setEndTime
+        this.endTime = (endTime != null) ? endTime : DateHelper.DEFAULT_DATE_TIME;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Boolean getStatus() { // Cambiado de getEstado a getStatus
+        return status;
     }
 
-    private void setEstado(final Boolean estado) {
-        this.estado = (estado != null) ? estado : Boolean.TRUE;
+    private void setStatus(final Boolean status) { // Cambiado de setEstado a setStatus
+        this.status = (status != null) ? status : Boolean.TRUE;
     }
 
-    public ScheduledDomain getAgenda() {
-        return agenda;
+    public ScheduledDomain getSchedule() { // Cambiado de getAgenda a getSchedule
+        return schedule;
     }
 
-    private void setAgenda(final ScheduledDomain agenda) {
-        this.agenda = (agenda != null) ? agenda : ScheduledDomain.create();
+    private void setSchedule(final ScheduledDomain schedule) { // Cambiado de setAgenda a setSchedule
+        this.schedule = (schedule != null) ? schedule : ScheduledDomain.create();
     }
 
     @Override

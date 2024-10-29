@@ -1,7 +1,6 @@
 package co.edu.uco.victusresidencias.domain;
 
 import java.time.LocalDateTime;
-
 import java.util.UUID;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
@@ -11,35 +10,35 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 public class ScheduledDomain extends Domain {
     
     private String name;
-    private Boolean disponibilidad;
-    private LocalDateTime fechaHoraInicio;
-    private LocalDateTime fechaHoraFin;
-    private CommonZoneDomain zonaComun;
+    private Boolean availability; // Cambiado de disponibilidad a availability
+    private LocalDateTime startDateTime; // Cambiado de fechaHoraInicio a startDateTime
+    private LocalDateTime endDateTime; // Cambiado de fechaHoraFin a endDateTime
+    private CommonZoneDomain commonZone; // Cambiado de zonaComun a commonZone
 
-    // Constructor privado
-    private ScheduledDomain(final UUID id, final String name, final Boolean disponibilidad, final LocalDateTime fechaHoraInicio,
-                            final LocalDateTime fechaHoraFin, final CommonZoneDomain zonaComun) {
+    // Private constructor
+    private ScheduledDomain(final UUID id, final String name, final Boolean availability, final LocalDateTime startDateTime,
+                            final LocalDateTime endDateTime, final CommonZoneDomain commonZone) {
         super(id);
         setName(name);
-        setDisponibilidad(disponibilidad);
-        setFechaHoraInicio(fechaHoraInicio);
-        setFechaHoraFin(fechaHoraFin);
-        setZonaComun(zonaComun);
+        setAvailability(availability);
+        setStartDateTime(startDateTime);
+        setEndDateTime(endDateTime);
+        setCommonZone(commonZone);
     }
 
-    // Método estático para crear una instancia con parámetros
-    public static ScheduledDomain create(final UUID id, final String name, final Boolean disponibilidad, final LocalDateTime fechaHoraInicio, 
-                                         final LocalDateTime fechaHoraFin, final CommonZoneDomain zonaComun) {
-        return new ScheduledDomain(id, name, disponibilidad, fechaHoraInicio, fechaHoraFin, zonaComun);
+    // Static method to create an instance with parameters
+    public static ScheduledDomain create(final UUID id, final String name, final Boolean availability, final LocalDateTime startDateTime, 
+                                         final LocalDateTime endDateTime, final CommonZoneDomain commonZone) {
+        return new ScheduledDomain(id, name, availability, startDateTime, endDateTime, commonZone);
     }
 
-    // Método estático para crear una instancia vacía por defecto
+    // Static method to create an empty default instance
     public static ScheduledDomain create() {
         return new ScheduledDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, true, DateHelper.DEFAULT_DATE_TIME, 
                                    DateHelper.DEFAULT_DATE_TIME, CommonZoneDomain.create());
     }
 
-    // Getters y Setters
+    // Getters and Setters
 
     public String getName() {
         return name;
@@ -49,36 +48,36 @@ public class ScheduledDomain extends Domain {
         this.name = TextHelper.applyTrim(name);
     }
 
-    public Boolean getDisponibilidad() {
-        return disponibilidad;
+    public Boolean getAvailability() { // Cambiado de getDisponibilidad a getAvailability
+        return availability;
     }
 
-    private void setDisponibilidad(final Boolean disponibilidad) {
-        this.disponibilidad = (disponibilidad != null) ? disponibilidad : Boolean.TRUE;
+    private void setAvailability(final Boolean availability) { // Cambiado de setDisponibilidad a setAvailability
+        this.availability = (availability != null) ? availability : Boolean.TRUE;
     }
 
-    public LocalDateTime getFechaHoraInicio() {
-        return fechaHoraInicio;
+    public LocalDateTime getStartDateTime() { // Cambiado de getFechaHoraInicio a getStartDateTime
+        return startDateTime;
     }
 
-    private void setFechaHoraInicio(final LocalDateTime fechaHoraInicio) {
-        this.fechaHoraInicio = (fechaHoraInicio != null) ? fechaHoraInicio : DateHelper.DEFAULT_DATE_TIME;
+    private void setStartDateTime(final LocalDateTime startDateTime) { // Cambiado de setFechaHoraInicio a setStartDateTime
+        this.startDateTime = (startDateTime != null) ? startDateTime : DateHelper.DEFAULT_DATE_TIME;
     }
 
-    public LocalDateTime getFechaHoraFin() {
-        return fechaHoraFin;
+    public LocalDateTime getEndDateTime() { // Cambiado de getFechaHoraFin a getEndDateTime
+        return endDateTime;
     }
 
-    private void setFechaHoraFin(final LocalDateTime fechaHoraFin) {
-        this.fechaHoraFin = (fechaHoraFin != null) ? fechaHoraFin : DateHelper.DEFAULT_DATE_TIME;
+    private void setEndDateTime(final LocalDateTime endDateTime) { // Cambiado de setFechaHoraFin a setEndDateTime
+        this.endDateTime = (endDateTime != null) ? endDateTime : DateHelper.DEFAULT_DATE_TIME;
     }
 
-    public CommonZoneDomain getZonaComun() {
-        return zonaComun;
+    public CommonZoneDomain getCommonZone() { // Cambiado de getZonaComun a getCommonZone
+        return commonZone;
     }
 
-    private void setZonaComun(final CommonZoneDomain zonaComun) {
-        this.zonaComun = (zonaComun != null) ? zonaComun : CommonZoneDomain.create();
+    private void setCommonZone(final CommonZoneDomain commonZone) { // Cambiado de setZonaComun a setCommonZone
+        this.commonZone = (commonZone != null) ? commonZone : CommonZoneDomain.create();
     }
 
     @Override

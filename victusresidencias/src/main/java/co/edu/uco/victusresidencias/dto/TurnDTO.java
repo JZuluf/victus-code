@@ -2,7 +2,6 @@ package co.edu.uco.victusresidencias.dto;
 
 import java.time.LocalDateTime;
 
-
 import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
@@ -11,29 +10,29 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 public class TurnDTO extends DomainDTO {
 
     private String name;
-    private String numeroTurno;
-    private LocalDateTime horaInicio;
-    private LocalDateTime horaFin;
-    private Boolean estado;
-    private ScheduledDTO agenda;
+    private String shiftNumber;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private Boolean status;
+    private ScheduledDTO schedule;
 
-    // Constructor privado
+    // Private constructor
     private TurnDTO() {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
-        setNumeroTurno(TextHelper.EMPTY);
-        setHoraInicio(DateHelper.DEFAULT_DATE_TIME);
-        setHoraFin(DateHelper.DEFAULT_DATE_TIME);
-        setEstado(true);
-        setAgenda(ScheduledDTO.create());
+        setShiftNumber(TextHelper.EMPTY);
+        setStartTime(DateHelper.DEFAULT_DATE_TIME);
+        setEndTime(DateHelper.DEFAULT_DATE_TIME);
+        setStatus(true);
+        setSchedule(ScheduledDTO.create());
     }
 
-    // Método estático para crear una instancia
+    // Static method to create an instance
     public static TurnDTO create() {
         return new TurnDTO();
     }
 
-    // Getters y Setters con return this para fluidez
+    // Getters and Setters with return this for fluency
 
     public String getName() {
         return name;
@@ -44,52 +43,52 @@ public class TurnDTO extends DomainDTO {
         return this;
     }
 
-    public String getNumeroTurno() {
-        return numeroTurno;
+    public String getShiftNumber() {
+        return shiftNumber;
     }
 
-    public TurnDTO setNumeroTurno(String numeroTurno) {
-        this.numeroTurno = TextHelper.applyTrim(numeroTurno);
+    public TurnDTO setShiftNumber(String shiftNumber) {
+        this.shiftNumber = TextHelper.applyTrim(shiftNumber);
         return this;
     }
 
-    public LocalDateTime getHoraInicio() {
-        return horaInicio;
+    public LocalDateTime getStartTime() {
+        return startTime;
     }
 
-    public TurnDTO setHoraInicio(LocalDateTime horaInicio) {
-        this.horaInicio = ObjectHelper.getDefault(horaInicio, DateHelper.DEFAULT_DATE_TIME);
+    public TurnDTO setStartTime(LocalDateTime startTime) {
+        this.startTime = ObjectHelper.getDefault(startTime, DateHelper.DEFAULT_DATE_TIME);
         return this;
     }
 
-    public LocalDateTime getHoraFin() {
-        return horaFin;
+    public LocalDateTime getEndTime() {
+        return endTime;
     }
 
-    public TurnDTO setHoraFin(LocalDateTime horaFin) {
-        this.horaFin = ObjectHelper.getDefault(horaFin, DateHelper.DEFAULT_DATE_TIME);
+    public TurnDTO setEndTime(LocalDateTime endTime) {
+        this.endTime = ObjectHelper.getDefault(endTime, DateHelper.DEFAULT_DATE_TIME);
         return this;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public TurnDTO setEstado(Boolean estado) {
-        this.estado = ObjectHelper.getDefault(estado, true);
+    public TurnDTO setStatus(Boolean status) {
+        this.status = ObjectHelper.getDefault(status, true);
         return this;
     }
 
-    public ScheduledDTO getAgenda() {
-        return agenda;
+    public ScheduledDTO getSchedule() {
+        return schedule;
     }
 
-    public TurnDTO setAgenda(ScheduledDTO agenda) {
-        this.agenda = ObjectHelper.getDefault(agenda, ScheduledDTO.create());
+    public TurnDTO setSchedule(ScheduledDTO schedule) {
+        this.schedule = ObjectHelper.getDefault(schedule, ScheduledDTO.create());
         return this;
     }
 
-    // Métodos para el manejo del ID heredado de DomainDTO
+    // Methods for handling the ID inherited from DomainDTO
     public TurnDTO setId(final String id) {
         super.setIdentifier(id);
         return this;

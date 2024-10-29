@@ -10,18 +10,15 @@ public class AdministratorEntity extends DomainEntity {
 	private String name;
 	private String lastName;
 
-	private String documentType;
-	private String documentNumber;
+	private String idType; // Cambiado de documentType a idType
+	private String idNumber; // Cambiado de documentNumber a idNumber
 	private String contactNumber;
 	private String email;
 	private String password;
 
-
-
 	public AdministratorEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		
 	}
 	
 	public String getName() {
@@ -31,10 +28,12 @@ public class AdministratorEntity extends DomainEntity {
 	public void setName(String name) {
 		this.name = TextHelper.applyTrim(name);
 	}
+
 	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
 	}
+
 	@Override
 	public UUID getId() {
 		return super.getId();
@@ -48,20 +47,20 @@ public class AdministratorEntity extends DomainEntity {
 		this.lastName = TextHelper.applyTrim(lastName);
 	}
 
-	public String getDocumentType() {
-		return documentType;
+	public String getIdType() { // Cambiado de getDocumentType a getIdType
+		return idType;
 	}
 
-	public void setDocumentType(String documentType) {
-		this.documentType = documentType;
+	public void setIdType(String idType) { // Cambiado de setDocumentType a setIdType
+		this.idType = idType;
 	}
 
-	public String getDocumentNumber() {
-		return documentNumber;
+	public String getIdNumber() { // Cambiado de getDocumentNumber a getIdNumber
+		return idNumber;
 	}
 
-	public void setDocumentNumber(String documentNumber) {
-		this.documentNumber = documentNumber;
+	public void setIdNumber(String idNumber) { // Cambiado de setDocumentNumber a setIdNumber
+		this.idNumber = idNumber;
 	}
 
 	public String getContactNumber() {

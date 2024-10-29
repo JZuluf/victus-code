@@ -6,53 +6,48 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ReservationDTO extends DomainDTO {
 
-    private int numeroInvitado;
-    private TurnDTO turno;
-    private ResidentDTO residente;
+    private int guestNumber;
+    private TurnDTO turn;
+    private ResidentDTO resident;
 
-    // Constructor privado
     private ReservationDTO() {
         super(UUIDHelper.getDefaultAsString());
-        setNumeroInvitado(NumericHelper.CERO);
-        setTurno(TurnDTO.create());
-        setResidente(ResidentDTO.create());
+        setGuestNumber(NumericHelper.ZERO);
+        setTurn(TurnDTO.create());
+        setResident(ResidentDTO.create());
     }
 
-    // Método estático para crear una instancia
     public static ReservationDTO create() {
         return new ReservationDTO();
     }
 
-    // Getters y Setters con return this para fluidez
-
-    public int getNumeroInvitado() {
-        return numeroInvitado;
+    public int getGuestNumber() {
+        return guestNumber;
     }
 
-    public ReservationDTO setNumeroInvitado(int numeroInvitado) {
-        this.numeroInvitado = NumericHelper.getDefault(numeroInvitado, NumericHelper.CERO);
+    public ReservationDTO setGuestNumber(int guestNumber) {
+        this.guestNumber = NumericHelper.getDefault(guestNumber, NumericHelper.ZERO);
         return this;
     }
 
-    public TurnDTO getTurno() {
-        return turno;
+    public TurnDTO getTurn() {
+        return turn;
     }
 
-    public ReservationDTO setTurno(TurnDTO turno) {
-        this.turno = ObjectHelper.getDefault(turno, TurnDTO.create());
+    public ReservationDTO setTurn(TurnDTO turn) {
+        this.turn = ObjectHelper.getDefault(turn, TurnDTO.create());
         return this;
     }
 
-    public ResidentDTO getResidente() {
-        return residente;
+    public ResidentDTO getResident() {
+        return resident;
     }
 
-    public ReservationDTO setResidente(ResidentDTO residente) {
-        this.residente = ObjectHelper.getDefault(residente, ResidentDTO.create());
+    public ReservationDTO setResident(ResidentDTO resident) {
+        this.resident = ObjectHelper.getDefault(resident, ResidentDTO.create());
         return this;
     }
 
-    // Métodos para el manejo del ID heredado de DomainDTO
     public ReservationDTO setId(final String id) {
         super.setIdentifier(id);
         return this;

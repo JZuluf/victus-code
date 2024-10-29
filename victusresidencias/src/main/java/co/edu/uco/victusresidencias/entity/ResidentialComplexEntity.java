@@ -2,86 +2,84 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
-
-import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ResidentialComplexEntity extends DomainEntity {
-	
-	private String name;
-	private String Address;
-	private CityEntity city;
-	private int contactReception;
-	private String description;
-	private AdministratorEntity administrator;
 
+    private String name;
+    private String address; // Corregido a minúscula para seguir convención de nombres
+    private CityEntity city;
+    private String contactReception; // Cambiado a String
+    private String description;
+    private AdministratorEntity administrator;
 
-	public ResidentialComplexEntity() {
-		super(UUIDHelper.getDefault());
-		setName(TextHelper.EMPTY);
-		setAdministrator(new AdministratorEntity());
-		setCity(new CityEntity());
-		setContactoRecepcion(NumericHelper.CERO);
-		setAddress(TextHelper.EMPTY);
-		setDescripcion(TextHelper.EMPTY);
-	}
-	
-	public String getName() {
-		return name;
-	}
+    public ResidentialComplexEntity() {
+        super(UUIDHelper.getDefault());
+        setName(TextHelper.EMPTY);
+        setAdministrator(new AdministratorEntity());
+        setCity(new CityEntity());
+        setContactReception(TextHelper.EMPTY); // Inicializado a TextHelper.EMPTY
+        setAddress(TextHelper.EMPTY);
+        setDescription(TextHelper.EMPTY); // Corregido a setDescription
+    }
 
-	public void setName(String name) {
-		this.name = TextHelper.applyTrim(name);
-	}
-	@Override
-	public void setId(final UUID id) {
-		super.setId(id);
-	}
-	@Override
-	public UUID getId() {
-		return super.getId();
-	}
+    public String getName() {
+        return name;
+    }
 
-	public CityEntity getCity() {
-		return city;
-	}
+    public void setName(String name) {
+        this.name = TextHelper.applyTrim(name);
+    }
 
-	public void setCity(final CityEntity state) {
-		this.city = ObjectHelper.getDefault(state, new CityEntity());
-	}
-	
-	public AdministratorEntity getAdministrator() {
-		return administrator;
-	}
+    @Override
+    public void setId(final UUID id) {
+        super.setId(id);
+    }
 
-	public void setAdministrator(final AdministratorEntity administrator) {
-		this.administrator = ObjectHelper.getDefault(administrator, new AdministratorEntity());
-	}
+    @Override
+    public UUID getId() {
+        return super.getId();
+    }
 
-	public String getAddress() {
-		return Address;
-	}
+    public CityEntity getCity() {
+        return city;
+    }
 
-	public void setAddress(String address) {
-		this.Address = address;
-	}
+    public void setCity(final CityEntity city) {
+        this.city = ObjectHelper.getDefault(city, new CityEntity());
+    }
 
-	public int getContactoRecepcion() {
-		return contactReception;
-	}
+    public AdministratorEntity getAdministrator() {
+        return administrator;
+    }
 
-	public void setContactoRecepcion(int contactReception) {
-		this.contactReception = contactReception;
-	}
+    public void setAdministrator(final AdministratorEntity administrator) {
+        this.administrator = ObjectHelper.getDefault(administrator, new AdministratorEntity());
+    }
 
-	public String getDescripcion() {
-		return description;
-	}
+    public String getAddress() {
+        return address; // Corregido a minúscula
+    }
 
-	public void setDescripcion(String description) {
-		this.description = description;
-	}
-	
+    public void setAddress(String address) {
+        this.address = address; // Corregido a minúscula
+    }
+
+    public String getContactReception() { // Cambiado a String
+        return contactReception; // Cambiado a String
+    }
+
+    public void setContactReception(String contactReception) { // Cambiado a String
+        this.contactReception = contactReception; // Cambiado a String
+    }
+
+    public String getDescription() { // Corregido a getDescription
+        return description; // Corregido a description
+    }
+
+    public void setDescription(String description) { // Corregido a setDescription
+        this.description = description; // Corregido a description
+    }
 }

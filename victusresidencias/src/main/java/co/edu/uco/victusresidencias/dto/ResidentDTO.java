@@ -9,35 +9,35 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ResidentDTO extends DomainDTO {
-    
-    private String name;
-    private String apellido;
-    private String tipoDocumento;
-    private int numeroDocumento;
-    private LocalDate fecha;
-    private int numeroContacto;
-    private String contraseña;
-    private PropertyDTO inmueble;
 
-    // Constructor privado
+    private String name;
+    private String lastName;
+    private String idType;
+    private int idNumber;
+    private LocalDate date;
+    private int contactNumber;
+    private String password;
+    private PropertyDTO property;
+
+    // Private constructor
     private ResidentDTO() {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
-        setApellido(TextHelper.EMPTY);
-        setTipoDocumento(TextHelper.EMPTY);
-        setNumeroDocumento(NumericHelper.CERO);
-        setFecha(DateHelper.DEFAULT_DATE);
-        setNumeroContacto(NumericHelper.CERO);
-        setContraseña(TextHelper.EMPTY);
-        setInmueble(PropertyDTO.create());
+        setLastName(TextHelper.EMPTY);
+        setIdType(TextHelper.EMPTY);
+        setIdNumber(NumericHelper.ZERO);
+        setDate(DateHelper.DEFAULT_DATE);
+        setContactNumber(NumericHelper.ZERO);
+        setPassword(TextHelper.EMPTY);
+        setProperty(PropertyDTO.create());
     }
 
-    // Método estático para crear una instancia
+    // Static method to create an instance
     public static ResidentDTO create() {
         return new ResidentDTO();
     }
 
-    // Getters y Setters con return this para fluidez
+    // Getters and Setters with return this for fluency
 
     public String getName() {
         return name;
@@ -48,70 +48,70 @@ public class ResidentDTO extends DomainDTO {
         return this;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getLastName() {
+        return lastName;
     }
 
-    public ResidentDTO setApellido(String apellido) {
-        this.apellido = TextHelper.applyTrim(apellido);
+    public ResidentDTO setLastName(String lastName) {
+        this.lastName = TextHelper.applyTrim(lastName);
         return this;
     }
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
+    public String getIdType() {
+        return idType;
     }
 
-    public ResidentDTO setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = TextHelper.applyTrim(tipoDocumento);
+    public ResidentDTO setIdType(String idType) {
+        this.idType = TextHelper.applyTrim(idType);
         return this;
     }
 
-    public int getNumeroDocumento() {
-        return numeroDocumento;
+    public int getIdNumber() {
+        return idNumber;
     }
 
-    public ResidentDTO setNumeroDocumento(int numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    public ResidentDTO setIdNumber(int idNumber) {
+        this.idNumber = idNumber;
         return this;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public ResidentDTO setFecha(LocalDate fecha) {
-        this.fecha = ObjectHelper.getDefault(fecha, DateHelper.DEFAULT_DATE);
+    public ResidentDTO setDate(LocalDate date) {
+        this.date = ObjectHelper.getDefault(date, DateHelper.DEFAULT_DATE);
         return this;
     }
 
-    public int getNumeroContacto() {
-        return numeroContacto;
+    public int getContactNumber() {
+        return contactNumber;
     }
 
-    public ResidentDTO setNumeroContacto(int numeroContacto) {
-        this.numeroContacto = numeroContacto;
+    public ResidentDTO setContactNumber(int contactNumber) {
+        this.contactNumber = contactNumber;
         return this;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public ResidentDTO setContraseña(String contraseña) {
-        this.contraseña = TextHelper.applyTrim(contraseña);
+    public ResidentDTO setPassword(String password) {
+        this.password = TextHelper.applyTrim(password);
         return this;
     }
 
-    public PropertyDTO getInmueble() {
-        return inmueble;
+    public PropertyDTO getProperty() {
+        return property;
     }
 
-    public ResidentDTO setInmueble(PropertyDTO inmueble) {
-        this.inmueble = ObjectHelper.getDefault(inmueble, PropertyDTO.create());
+    public ResidentDTO setProperty(PropertyDTO property) {
+        this.property = ObjectHelper.getDefault(property, PropertyDTO.create());
         return this;
     }
 
-    // Métodos para el manejo del ID heredado de DomainDTO
+    // Methods for handling the ID inherited from DomainDTO
     public ResidentDTO setId(final String id) {
         super.setIdentifier(id);
         return this;
