@@ -49,8 +49,8 @@ public class PropertyZoneDTOAdapter implements Adapter<PropertyZoneDomain, Prope
         // Convertimos el Domain a DTO
         return PropertyZoneDTO.create()
                 .setId(UUIDHelper.getDefaultAsString())
-                .setTipoZonaInmueble(domainToAdapt.getTipoZonaInmueble())
-                .setNumeroZonaInmueble(domainToAdapt.getNumeroZonaInmueble())
-                .setConjuntoResidencial(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptTarget(domainToAdapt.getConjuntoResidencial()));
+                .setTipoZonaInmueble(domainToAdapt.getPropertyZoneType())
+                .setNumeroZonaInmueble(domainToAdapt.getPropertyZoneNumber())
+                .setConjuntoResidencial(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptTarget(domainToAdapt.getResidentialComplex()));
     }
 }

@@ -1,11 +1,11 @@
 package co.edu.uco.victusresidencias.data.dao;
 
 import java.util.UUID;
-import co.edu.uco.victusresidencias.entity.ComunZoneEntity;
+import co.edu.uco.victusresidencias.entity.CommonZoneEntity;
 
 public interface ComunZoneDAO 
-    extends RetrieveDAO<ComunZoneEntity, UUID>,
-            CreateDAO<ComunZoneEntity>,
+    extends RetrieveDAO<CommonZoneEntity, UUID>,
+            CreateDAO<CommonZoneEntity>,
             DeleteDAO<UUID>,
-            UpdateDAO<ComunZoneEntity> {
+            UpdateDAO<CommonZoneEntity> {
 }

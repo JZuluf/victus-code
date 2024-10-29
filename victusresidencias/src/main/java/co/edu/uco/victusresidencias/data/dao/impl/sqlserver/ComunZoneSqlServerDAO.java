@@ -11,7 +11,7 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.ComunZoneDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
-import co.edu.uco.victusresidencias.entity.ComunZoneEntity;
+import co.edu.uco.victusresidencias.entity.CommonZoneEntity;
 
 public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO {
 
@@ -20,24 +20,24 @@ public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO 
     }
 
 	@Override
-	public ComunZoneEntity fingByID(UUID id) {
-		var comunZoneEntityFilter = new ComunZoneEntity();
+	public CommonZoneEntity fingByID(UUID id) {
+		var comunZoneEntityFilter = new CommonZoneEntity();
         comunZoneEntityFilter.setId(id);
 
         var result = findByFilter(comunZoneEntityFilter);
-        return (result.isEmpty()) ? new ComunZoneEntity() : result.get(0);
+        return (result.isEmpty()) ? new CommonZoneEntity() : result.get(0);
 	}
 
     @Override
-    public List<ComunZoneEntity> findAll() {
-        return findByFilter(new ComunZoneEntity());
+    public List<CommonZoneEntity> findAll() {
+        return findByFilter(new CommonZoneEntity());
     }
 
     @Override
-    public List<ComunZoneEntity> findByFilter(ComunZoneEntity filter) {
+    public List<CommonZoneEntity> findByFilter(CommonZoneEntity filter) {
         final var statement = new StringBuilder();
         final var parameters = new ArrayList<>();
-        final var resultSelect = new ArrayList<ComunZoneEntity>();
+        final var resultSelect = new ArrayList<CommonZoneEntity>();
         var statementWasPrepared = false;
 
         // Select
@@ -62,7 +62,7 @@ public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO 
 
             final var result = preparedStatement.executeQuery();
             while (result.next()) {
-                var comunZoneEntityTmp = new ComunZoneEntity();
+                var comunZoneEntityTmp = new CommonZoneEntity();
 
                 comunZoneEntityTmp.setId(UUID.fromString(result.getString("id")));
                 comunZoneEntityTmp.setName(result.getString("name"));
@@ -83,7 +83,7 @@ public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO 
     }
 
     @Override
-    public void create(ComunZoneEntity data) {
+    public void create(CommonZoneEntity data) {
         final StringBuilder statement = new StringBuilder();
         statement.append("INSERT INTO ComunZone(id, name, description) VALUES (?, ?, ?)");
 
@@ -120,7 +120,7 @@ public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO 
     }
 
     @Override
-    public void update(ComunZoneEntity data) {
+    public void update(CommonZoneEntity data) {
         final StringBuilder statement = new StringBuilder();
         statement.append("UPDATE ComunZone SET name = ?, description = ? WHERE id = ?");
 
@@ -147,7 +147,7 @@ public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO 
         statement.append("FROM ComunZone ");
     }
 
-    private void createWhere(final StringBuilder statement, final ComunZoneEntity filter, final List<Object> parameters) {
+    private void createWhere(final StringBuilder statement, final CommonZoneEntity filter, final List<Object> parameters) {
         if (!UUIDHelper.isDefault(filter.getId())) {
             statement.append("WHERE id = ? ");
             parameters.add(filter.getId());

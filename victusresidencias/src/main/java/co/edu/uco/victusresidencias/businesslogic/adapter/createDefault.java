@@ -22,7 +22,8 @@ public class createDefault {
 	public static final StateDomain STATE = StateDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, COUNTRY);
 	public static final CityDomain CITY = CityDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, STATE);
 	public static final AdministratorDomain ADMINISTRATOR = AdministratorDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY,TextHelper.EMPTY,TextHelper.EMPTY,TextHelper.EMPTY,TextHelper.EMPTY,TextHelper.EMPTY);
-	public static final ResidentialComplexDomain RESIDENTIAL_COMPLEX = ResidentialComplexDomain.create(UUIDHelper.getDefault(), 
+	public static final ResidentialComplexDomain RESIDENTIAL_COMPLEX = ResidentialComplexDomain.create(
+			UUIDHelper.getDefault(), 
 			TextHelper.EMPTY, 
 			TextHelper.EMPTY,
 			CITY,
@@ -49,7 +50,8 @@ public class createDefault {
 			NumericHelper.CERO,
 			TextHelper.EMPTY,
 			PROPERTY);
-	public static final CommonZoneDomain COMUN_ZONE = CommonZoneDomain.create(UUIDHelper.getDefault(),
+	public static final CommonZoneDomain COMUN_ZONE = CommonZoneDomain.create(
+			UUIDHelper.getDefault(),
 			TextHelper.EMPTY,
 			TextHelper.EMPTY,
 			NumericHelper.CERO,

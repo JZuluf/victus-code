@@ -17,8 +17,8 @@ public class AdministratorDomain extends Domain {
     private String password;
 
     //construtor privado solo el Domain
-    private AdministratorDomain(final UUID id, final String name, final String apellidolastName, final String idType, 
-                                final String idNumber, final String contactNumber, final String Email, final String password) {
+    private AdministratorDomain(final UUID id, final String name, final String lastName, final String idType, 
+                                final String idNumber, final String contactNumber, final String email, final String password) {
         super(id);
         setName(name);
         setLastName(lastName);

@@ -66,9 +66,9 @@ public final class TurnSqlServerDAO extends SqlDAO implements TurnDAO {
                 var turnEntityTmp = new TurnEntity();
 
                 turnEntityTmp.setId(UUID.fromString(result.getString("id")));
-                turnEntityTmp.setAgenda(null);//(result.getString("description"));
-                turnEntityTmp.setHoraInicio(result.getTimestamp("startTime").toLocalDateTime());
-                turnEntityTmp.setHoraFin(result.getTimestamp("endTime").toLocalDateTime());
+                turnEntityTmp.setScheduled(null);//(result.getString("description"));
+                turnEntityTmp.setStartTime(result.getTimestamp("startTime").toLocalDateTime());
+                turnEntityTmp.setEndTime(result.getTimestamp("endTime").toLocalDateTime());
 
                 resultSelect.add(turnEntityTmp);
             }
@@ -92,8 +92,8 @@ public final class TurnSqlServerDAO extends SqlDAO implements TurnDAO {
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setObject(1, data.getId());
             //preparedStatement.setString(2, data.getDescription());
-            preparedStatement.setTimestamp(3, Timestamp.valueOf(data.getHoraInicio()));
-            preparedStatement.setTimestamp(4, Timestamp.valueOf(data.getHoraFin()));
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(data.getStartTime()));
+            preparedStatement.setTimestamp(4, Timestamp.valueOf(data.getEndTime()));
 
             preparedStatement.executeUpdate();
 
@@ -129,8 +129,8 @@ public final class TurnSqlServerDAO extends SqlDAO implements TurnDAO {
 
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setString(1, "pendiente");
-            preparedStatement.setTimestamp(2, Timestamp.valueOf(data.getHoraInicio()));
-            preparedStatement.setTimestamp(3, Timestamp.valueOf(data.getHoraFin()));
+            preparedStatement.setTimestamp(2, Timestamp.valueOf(data.getStartTime()));
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(data.getEndTime()));
             preparedStatement.setObject(4, data.getId());
 
             preparedStatement.executeUpdate();
@@ -163,16 +163,16 @@ public final class TurnSqlServerDAO extends SqlDAO implements TurnDAO {
 //            parameters.add(filter.getDescription());
 //        }
 
-        if (filter.getHoraInicio() != null) {
+        if (filter.getStartTime() != null) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("startTime = ? ");
-            parameters.add(Timestamp.valueOf(filter.getHoraInicio()));
+            parameters.add(Timestamp.valueOf(filter.getStartTime()));
         }
 
-        if (filter.getHoraFin() != null) {
+        if (filter.getEndTime() != null) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("endTime = ? ");
-            parameters.add(Timestamp.valueOf(filter.getHoraFin()));
+            parameters.add(Timestamp.valueOf(filter.getEndTime()));
         }
     }
 

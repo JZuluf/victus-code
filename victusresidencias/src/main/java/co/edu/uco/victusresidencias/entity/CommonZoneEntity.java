@@ -7,7 +7,7 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
-public class ComunZoneEntity extends DomainEntity {
+public class CommonZoneEntity extends DomainEntity {
 	
 	private String name;
 	private String description;
@@ -18,7 +18,7 @@ public class ComunZoneEntity extends DomainEntity {
 	private ResidentialComplexEntity residentialComplex;
 
 
-	public ComunZoneEntity() {
+	public CommonZoneEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
 		setDescription(TextHelper.EMPTY);

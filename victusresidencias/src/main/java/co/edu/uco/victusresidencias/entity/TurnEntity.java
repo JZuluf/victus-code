@@ -12,21 +12,21 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 public class TurnEntity extends DomainEntity {
 	
 	private String name;
-	private String numeroTurno;
-	private LocalDateTime horaInicio;
-	private LocalDateTime horaFin;
-	private Boolean estado;
-	private ScheduledEntity agenda;
+	private String shiftNumber;
+	private LocalDateTime startTime;
+	private LocalDateTime endTime;
+	private Boolean status;
+	private ScheduledEntity scheduled;
 	
 	
 	public TurnEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		setNumeroTurno(TextHelper.EMPTY);
-		setHoraInicio(DateHelper.DEFAULT_DATE_TIME);
-		setHoraFin(DateHelper.DEFAULT_DATE_TIME);
-		setEstado(true);
-		setAgenda(new ScheduledEntity());
+		setShiftNumber(TextHelper.EMPTY);
+		setStartTime(DateHelper.DEFAULT_DATE_TIME);
+		setEndTime(DateHelper.DEFAULT_DATE_TIME);
+		setStatus(true);
+		setScheduled(new ScheduledEntity());
 	}
 	
 	public String getName() {
@@ -37,36 +37,36 @@ public class TurnEntity extends DomainEntity {
 		this.name = TextHelper.applyTrim(name);
 	}
 	
-	public String getNumeroTurno() {
-		return numeroTurno;
+	public String getShiftNumber() {
+		return shiftNumber;
 	}
 
-	public void setNumeroTurno(String numeroTurno) {
-		this.numeroTurno = numeroTurno;
+	public void setShiftNumber(String shiftNumber) {
+		this.shiftNumber = shiftNumber;
 	}
 
-	public LocalDateTime getHoraInicio() {
-		return horaInicio;
+	public LocalDateTime getStartTime() {
+		return startTime;
 	}
 
-	public void setHoraInicio(LocalDateTime horaInicio) {
-		this.horaInicio = horaInicio;
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
 	}
 
-	public LocalDateTime getHoraFin() {
-		return horaFin;
+	public LocalDateTime getEndTime() {
+		return endTime;
 	}
 
-	public void setHoraFin(LocalDateTime horaFin) {
-		this.horaFin = horaFin;
+	public void setEndTime(LocalDateTime endTime) {
+		this.endTime = endTime;
 	}
 
-	public Boolean getEstado() {
-		return estado;
+	public Boolean getStatus() {
+		return status;
 	}
 
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 	@Override
@@ -78,11 +78,11 @@ public class TurnEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public ScheduledEntity getAgenda() {
-		return agenda;
+	public ScheduledEntity getScheduled() {
+		return scheduled;
 	}
 
-	public void setAgenda(final ScheduledEntity agenda) {
-		this.agenda = ObjectHelper.getDefault(agenda, new ScheduledEntity());
+	public void setScheduled(final ScheduledEntity scheduled) {
+		this.scheduled = ObjectHelper.getDefault(scheduled, new ScheduledEntity());
 	}
 }
