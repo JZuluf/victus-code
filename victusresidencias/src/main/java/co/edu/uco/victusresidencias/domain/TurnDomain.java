@@ -1,11 +1,12 @@
 package co.edu.uco.victusresidencias.domain;
 
 import java.time.LocalDateTime;
+
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.DateHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class TurnDomain extends Domain {
     

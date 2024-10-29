@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.ResidentDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.ResidentEntity;
+
 
 public final class ResidentSqlServerDAO extends SqlDAO implements ResidentDAO {
 
@@ -66,12 +67,12 @@ public final class ResidentSqlServerDAO extends SqlDAO implements ResidentDAO {
             final var result = preparedStatement.executeQuery();
             while (result.next()) {
                 var residentEntityTmp = new ResidentEntity();
-                var phone = residentEntityTmp.getNumeroContacto();
+                var phone = residentEntityTmp.getContactNumber();
 
                 residentEntityTmp.setId(UUID.fromString(result.getString("id")));
                 residentEntityTmp.setName(result.getString("name"));
-                residentEntityTmp.setApellido(result.getString("apellido"));
-                residentEntityTmp.setNumeroContacto(phone);
+                residentEntityTmp.setLastName(result.getString("apellido"));
+                residentEntityTmp.setContactNumber(phone);
 
                 resultSelect.add(residentEntityTmp);
             }
@@ -95,8 +96,8 @@ public final class ResidentSqlServerDAO extends SqlDAO implements ResidentDAO {
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setObject(1, data.getId());
             preparedStatement.setString(2, data.getName());
-            preparedStatement.setString(3, data.getApellido());
-            preparedStatement.setLong(4, data.getNumeroContacto());
+            preparedStatement.setString(3, data.getLastName());
+            preparedStatement.setLong(4, data.getContactNumber());
 
             preparedStatement.executeUpdate();
 
@@ -132,8 +133,8 @@ public final class ResidentSqlServerDAO extends SqlDAO implements ResidentDAO {
 
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setString(1, data.getName());
-            preparedStatement.setString(2, data.getApellido());
-            preparedStatement.setLong(3, data.getNumeroContacto());
+            preparedStatement.setString(2, data.getLastName());
+            preparedStatement.setLong(3, data.getContactNumber());
             preparedStatement.setObject(4, data.getId());
 
             preparedStatement.executeUpdate();
@@ -166,16 +167,16 @@ public final class ResidentSqlServerDAO extends SqlDAO implements ResidentDAO {
             parameters.add(filter.getName());
         }
 
-        if (!TextHelper.isEmpty(filter.getApellido())) {
+        if (!TextHelper.isEmpty(filter.getLastName())) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("email = ? ");
-            parameters.add(filter.getApellido());
+            parameters.add(filter.getLastName());
         }
 
-        if (!ObjectHelper.isNull(filter.getNumeroContacto())) {
+        if (!ObjectHelper.isNull(filter.getContactNumber())) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("phone = ? ");
-            parameters.add(filter.getNumeroContacto());
+            parameters.add(filter.getContactNumber());
         }
     }
 

@@ -1,9 +1,9 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.domain.PropertyDomain;
@@ -38,6 +38,8 @@ public class PropertyDTOAdapter implements Adapter<PropertyDomain, PropertyDTO> 
     public PropertyDTO adaptTarget(PropertyDomain data) {
         // Si el Domain es nulo, usamos un Domain por defecto
         var domainToAdapt = ObjectHelper.getDefault(data,createDefault.PROPERTY);
+        
+        
 
         // Convertimos el Domain a DTO
 //        return PropertyDTO.create()

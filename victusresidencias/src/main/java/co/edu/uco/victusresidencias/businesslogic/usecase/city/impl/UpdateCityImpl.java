@@ -1,7 +1,7 @@
 package co.edu.uco.victusresidencias.businesslogic.usecase.city.impl;
 
 
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CityEntityAdapter;
 import co.edu.uco.victusresidencias.businesslogic.usecase.city.UpdateCity;

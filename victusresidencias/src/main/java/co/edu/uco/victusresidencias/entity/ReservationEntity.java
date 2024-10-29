@@ -2,30 +2,31 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ReservationEntity extends DomainEntity {
 	
-	private int numeroInvitado;
-	private TurnEntity turno;
-	private ResidentEntity residente;
+	private int guestsNumber;
+	private TurnEntity turn;
+	private ResidentEntity resident;
 
 
 	public ReservationEntity() {
 		super(UUIDHelper.getDefault());
-		setNumeroInvitado(NumericHelper.CERO);
-		setTurno(new TurnEntity());
-		setResidente(new ResidentEntity());
+		setGuestsNumber(NumericHelper.CERO);
+		setTurn(new TurnEntity());
+		setResident(new ResidentEntity());
 	}
 	
-	public int getNumeroInvitado() {
-		return numeroInvitado;
+	public int getGuestsNumber() {
+		return guestsNumber;
 	}
 
-	public void setNumeroInvitado(int numeroInvitado) {
-		this.numeroInvitado = numeroInvitado;
+	public void setGuestsNumber(int guestsNumber) {
+		this.guestsNumber = guestsNumber;
 	}
 
 	@Override
@@ -37,20 +38,20 @@ public class ReservationEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public TurnEntity getTurno() {
-		return turno;
+	public TurnEntity getTurn() {
+		return turn;
 	}
 
-	public void setTurno(final TurnEntity turno) {
-		this.turno = ObjectHelper.getDefault(turno, new TurnEntity());
+	public void setTurn(final TurnEntity turn) {
+		this.turn = ObjectHelper.getDefault(turn, new TurnEntity());
 	}
 	
-	public ResidentEntity getResidente() {
-		return residente;
+	public ResidentEntity getResident() {
+		return resident;
 	}
 
-	public void setResidente(final ResidentEntity residente) {
-		this.residente = ObjectHelper.getDefault(residente, new ResidentEntity());
+	public void setResident(final ResidentEntity resident) {
+		this.resident = ObjectHelper.getDefault(resident, new ResidentEntity());
 	}
 	
 

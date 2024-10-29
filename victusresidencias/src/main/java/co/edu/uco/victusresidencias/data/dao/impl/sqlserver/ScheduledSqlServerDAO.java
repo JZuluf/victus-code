@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.ScheduledDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
@@ -68,9 +68,9 @@ public final class ScheduledSqlServerDAO extends SqlDAO implements ScheduledDAO 
 
                 scheduledEntityTmp.setId(UUID.fromString(result.getString("id")));
                 scheduledEntityTmp.setName(result.getString("name"));
-                scheduledEntityTmp.setDisponibilidad(true);//hay que organizarlo despues
-                scheduledEntityTmp.setFechaHoraInicio(result.getTimestamp("startTime").toLocalDateTime());
-                scheduledEntityTmp.setFechaHoraFin(result.getTimestamp("endTime").toLocalDateTime());
+                scheduledEntityTmp.setAvailability(true);//hay que organizarlo despues
+                scheduledEntityTmp.setDateTimeStart(result.getTimestamp("startTime").toLocalDateTime());
+                scheduledEntityTmp.setDateTimeEnd(result.getTimestamp("endTime").toLocalDateTime());
 
                 resultSelect.add(scheduledEntityTmp);
             }
@@ -96,8 +96,8 @@ public final class ScheduledSqlServerDAO extends SqlDAO implements ScheduledDAO 
             preparedStatement.setObject(1, data.getId());
             preparedStatement.setString(2, data.getName());
             preparedStatement.setString(3, dispo);
-            preparedStatement.setTimestamp(4, Timestamp.valueOf(data.getFechaHoraInicio()));
-            preparedStatement.setTimestamp(5, Timestamp.valueOf(data.getFechaHoraFin()));
+            preparedStatement.setTimestamp(4, Timestamp.valueOf(data.getDateTimeStart()));
+            preparedStatement.setTimestamp(5, Timestamp.valueOf(data.getDateTimeEnd()));
 
             preparedStatement.executeUpdate();
 
@@ -135,8 +135,8 @@ public final class ScheduledSqlServerDAO extends SqlDAO implements ScheduledDAO 
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setString(1, data.getName());
             preparedStatement.setString(2, dispo);//organizar despues
-            preparedStatement.setTimestamp(3, Timestamp.valueOf(data.getFechaHoraInicio()));
-            preparedStatement.setTimestamp(4, Timestamp.valueOf(data.getFechaHoraFin()));
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(data.getDateTimeStart()));
+            preparedStatement.setTimestamp(4, Timestamp.valueOf(data.getDateTimeEnd()));
             preparedStatement.setObject(5, data.getId());
 
             preparedStatement.executeUpdate();
@@ -169,22 +169,22 @@ public final class ScheduledSqlServerDAO extends SqlDAO implements ScheduledDAO 
             parameters.add(filter.getName());
         }
 
-        if (!ObjectHelper.isNull(filter.getDisponibilidad())) {
+        if (!ObjectHelper.isNull(filter.getAvailability())) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("description = ? ");
-            parameters.add(filter.getDisponibilidad());
+            parameters.add(filter.getAvailability());
         }
 
-        if (filter.getFechaHoraInicio() != null) {
+        if (filter.getDateTimeStart() != null) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("startTime = ? ");
-            parameters.add(Timestamp.valueOf(filter.getFechaHoraInicio()));
+            parameters.add(Timestamp.valueOf(filter.getDateTimeStart()));
         }
 
-        if (filter.getFechaHoraFin() != null) {
+        if (filter.getDateTimeEnd() != null) {
             statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
             statement.append("endTime = ? ");
-            parameters.add(Timestamp.valueOf(filter.getFechaHoraFin()));
+            parameters.add(Timestamp.valueOf(filter.getDateTimeEnd()));
         }
     }
 

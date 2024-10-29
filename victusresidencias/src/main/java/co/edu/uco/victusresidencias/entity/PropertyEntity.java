@@ -2,39 +2,40 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class PropertyEntity extends DomainEntity {
 	
-	private String tipoInmueble;
-	private int numeroVivienda;
-	private PropertyZoneEntity zonaInmueble;
+	private String propertyType;
+	private int homeNumber;
+	private PropertyZoneEntity propertyZone;
 	
 	public PropertyEntity() {
 		super(UUIDHelper.getDefault());
-		setTipoInmueble(TextHelper.EMPTY);
-		setNumeroVivienda(NumericHelper.CERO);
-		setZonaInmueble(new PropertyZoneEntity());
+		setPropertyType(TextHelper.EMPTY);
+		setHomeNumber(NumericHelper.CERO);
+		setPropertyZone(new PropertyZoneEntity());
 	}
 	
-	public String getTipoInmueble() {
-		return tipoInmueble;
+	public String getPropertyType() {
+		return propertyType;
 	}
 
-	public void setTipoInmueble(String tipoInmueble) {
-		this.tipoInmueble = TextHelper.applyTrim(tipoInmueble);
+	public void setPropertyType(String propertyType) {
+		this.propertyType = TextHelper.applyTrim(propertyType);
 	}
 	
 	
-	public int getNumeroVivienda() {
-		return numeroVivienda;
+	public int getHomeNumber() {
+		return homeNumber;
 	}
 
-	public void setNumeroVivienda(int numeroVivienda) {
-		this.numeroVivienda = numeroVivienda;
+	public void setHomeNumber(int homeNumber) {
+		this.homeNumber = homeNumber;
 	}
 
 	@Override
@@ -46,12 +47,12 @@ public class PropertyEntity extends DomainEntity {
 		return super.getId();
 	}
 
-	public PropertyZoneEntity getZonaInmueble() {
-		return zonaInmueble;
+	public PropertyZoneEntity getPropertyZone() {
+		return propertyZone;
 	}
 
-	public void setZonaInmueble(final PropertyZoneEntity zonaInmueble) {
-		this.zonaInmueble = ObjectHelper.getDefault(zonaInmueble, new PropertyZoneEntity());
+	public void setPropertyZone(final PropertyZoneEntity propertyZone) {
+		this.propertyZone = ObjectHelper.getDefault(propertyZone, new PropertyZoneEntity());
 	}
 	
 }

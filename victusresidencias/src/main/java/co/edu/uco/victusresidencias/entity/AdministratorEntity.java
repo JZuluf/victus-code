@@ -1,18 +1,21 @@
 package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class AdministratorEntity extends DomainEntity {
 	
 	private String name;
 	private String lastName;
-	private String tipoDocumento;
-	private int numeroDocumento;
-	private int numeroContacto;
-	private String correoElectronico;
-	private String contrasena;
+
+	private String documentType;
+	private String documentNumber;
+	private String contactNumber;
+	private String email;
+	private String password;
+
 
 
 	public AdministratorEntity() {
@@ -41,47 +44,47 @@ public class AdministratorEntity extends DomainEntity {
 		return lastName;
 	}
 
-	public void setLastName(String apellido) {
-		this.lastName = TextHelper.applyTrim(apellido);
+	public void setLastName(String lastName) {
+		this.lastName = TextHelper.applyTrim(lastName);
 	}
 
-	public String getTipoDocumento() {
-		return tipoDocumento;
+	public String getDocumentType() {
+		return documentType;
 	}
 
-	public void setTipoDocumento(String tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
+	public void setDocumentType(String documentType) {
+		this.documentType = documentType;
 	}
 
-	public int getNumeroDocumento() {
-		return numeroDocumento;
+	public String getDocumentNumber() {
+		return documentNumber;
 	}
 
-	public void setNumeroDocumento(int numeroDocumento) {
-		this.numeroDocumento = numeroDocumento;
+	public void setDocumentNumber(String documentNumber) {
+		this.documentNumber = documentNumber;
 	}
 
-	public int getNumeroContacto() {
-		return numeroContacto;
+	public String getContactNumber() {
+		return contactNumber;
 	}
 
-	public void setNumeroContacto(int numeroContacto) {
-		this.numeroContacto = numeroContacto;
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
-	public String getCorreoElectronico() {
-		return correoElectronico;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCorreoElectronico(String correoElectronico) {
-		this.correoElectronico = correoElectronico;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getContraseña() {
-		return contrasena;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contrasena = contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

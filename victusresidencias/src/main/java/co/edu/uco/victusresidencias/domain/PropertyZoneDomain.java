@@ -2,28 +2,28 @@ package co.edu.uco.victusresidencias.domain;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class PropertyZoneDomain extends Domain {
 
-    private String tipoZonaInmueble;
-    private int numeroZonaInmueble;
-    private ResidentialComplexDomain conjuntoResidencial;
+    private String propertyZoneType;
+    private int propertyZoneNumber;
+    private ResidentialComplexDomain residentialComplex;
 
     // Constructor privado
-    private PropertyZoneDomain(final UUID id, final String tipoZonaInmueble, final int numeroZonaInmueble, final ResidentialComplexDomain conjuntoResidencial) {
+    private PropertyZoneDomain(final UUID id, final String propertyZoneType, final int propertyZoneNumber, final ResidentialComplexDomain residentialComplex) {
         super(id);
-        setTipoZonaInmueble(tipoZonaInmueble);
-        setNumeroZonaInmueble(numeroZonaInmueble);
-        setConjuntoResidencial(conjuntoResidencial);
+        setPropertyZoneType(propertyZoneType);
+        setPropertyZoneNumber(propertyZoneNumber);
+        setResidentialComplex(residentialComplex);
     }
 
     // Método estático para crear una instancia con parámetros
-    public static PropertyZoneDomain create(final UUID id, final String tipoZonaInmueble, final int numeroZonaInmueble, 
-    		final ResidentialComplexDomain conjuntoResidencial) {
-        return new PropertyZoneDomain(id, tipoZonaInmueble, numeroZonaInmueble, conjuntoResidencial);
+    public static PropertyZoneDomain create(final UUID id, final String propertyZoneType, final int propertyZoneNumber, 
+    		final ResidentialComplexDomain residentialComplex) {
+        return new PropertyZoneDomain(id, propertyZoneType, propertyZoneNumber, residentialComplex);
     }
 
     // Método estático para crear una instancia vacía por defecto
@@ -33,28 +33,28 @@ public class PropertyZoneDomain extends Domain {
 
     // Getters y Setters
 
-    public String getTipoZonaInmueble() {
-        return tipoZonaInmueble;
+    public String getPropertyZoneType() {
+        return propertyZoneType;
     }
 
-    private void setTipoZonaInmueble(final String tipoZonaInmueble) {
-        this.tipoZonaInmueble = TextHelper.applyTrim(tipoZonaInmueble);
+    private void setPropertyZoneType(final String propertyZoneType) {
+        this.propertyZoneType = TextHelper.applyTrim(propertyZoneType);
     }
 
-    public int getNumeroZonaInmueble() {
-        return numeroZonaInmueble;
+    public int getPropertyZoneNumber() {
+        return propertyZoneNumber;
     }
 
-    private void setNumeroZonaInmueble(final int numeroZonaInmueble) {
-        this.numeroZonaInmueble = (numeroZonaInmueble >= 0) ? numeroZonaInmueble : NumericHelper.CERO;
+    private void setPropertyZoneNumber(final int propertyZoneNumber) {
+        this.propertyZoneNumber = (propertyZoneNumber >= 0) ? propertyZoneNumber : NumericHelper.CERO;
     }
 
-    public ResidentialComplexDomain getConjuntoResidencial() {
-        return conjuntoResidencial;
+    public ResidentialComplexDomain getResidentialComplex() {
+        return residentialComplex;
     }
 
-    private void setConjuntoResidencial(final ResidentialComplexDomain conjuntoResidencial) {
-        this.conjuntoResidencial = (conjuntoResidencial != null) ? conjuntoResidencial : ResidentialComplexDomain.create();
+    private void setResidentialComplex(final ResidentialComplexDomain residentialComplex) {
+        this.residentialComplex = (residentialComplex != null) ? residentialComplex: ResidentialComplexDomain.create();
     }
 
     @Override

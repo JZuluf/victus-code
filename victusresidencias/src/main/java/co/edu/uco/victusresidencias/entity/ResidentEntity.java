@@ -1,36 +1,37 @@
 package co.edu.uco.victusresidencias.entity;
 
 import java.time.LocalDate;
+
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.DateHelper;
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ResidentEntity extends DomainEntity {
 	
 	private String name;
-	private String apellido;
-	private String tipoDocumento;
-	private int numeroDocumento;
-	private LocalDate fecha;
-	private int numeroContacto;
-	private String contraseña;
-	private PropertyEntity inmueble;
+	private String lastName;
+	private String documentType;
+	private int documentNumber;
+	private LocalDate birthDate;
+	private int contactNumber;
+	private String password;
+	private PropertyEntity property;
 
 
 	public ResidentEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		setApellido(TextHelper.EMPTY);
-		setTipoDocumento(TextHelper.EMPTY);
-		setNumeroDocumento(NumericHelper.CERO);
-		setFecha(DateHelper.DEFAULT_DATE);
-		setNumeroContacto(NumericHelper.CERO);
-		setContraseña(TextHelper.EMPTY);
-		setInmueble(new PropertyEntity());
+		setLastName(TextHelper.EMPTY);
+		setDocumetType(TextHelper.EMPTY);
+		setDocumentNumber(NumericHelper.CERO);
+		setBirthDate(DateHelper.DEFAULT_DATE);
+		setContactNumber(NumericHelper.CERO);
+		setPassword(TextHelper.EMPTY);
+		setProperty(new PropertyEntity());
 	}
 	
 	public String getName() {
@@ -42,52 +43,52 @@ public class ResidentEntity extends DomainEntity {
 	}
 	
 	
-	public String getApellido() {
-		return apellido;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getTipoDocumento() {
-		return tipoDocumento;
+	public String getDocumentType() {
+		return documentType;
 	}
 
-	public void setTipoDocumento(String tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
+	public void setDocumetType(String documentType) {
+		this.documentType = documentType;
 	}
 
-	public int getNumeroDocumento() {
-		return numeroDocumento;
+	public int getDocumentNumber() {
+		return documentNumber;
 	}
 
-	public void setNumeroDocumento(int numeroDocumento) {
-		this.numeroDocumento = numeroDocumento;
+	public void setDocumentNumber(int documentNumber) {
+		this.documentNumber = documentNumber;
 	}
 
-	public LocalDate getFecha() {
-		return fecha;
+	public LocalDate getBirthDate() {
+		return birthDate;
 	}
 
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
 	}
 
-	public int getNumeroContacto() {
-		return numeroContacto;
+	public int getContactNumber() {
+		return contactNumber;
 	}
 
-	public void setNumeroContacto(int numeroContacto) {
-		this.numeroContacto = numeroContacto;
+	public void setContactNumber(int contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
@@ -99,12 +100,12 @@ public class ResidentEntity extends DomainEntity {
 		return super.getId();
 	}
 	
-	public PropertyEntity getInmueble() {
-		return inmueble;
+	public PropertyEntity getProperty() {
+		return property;
 	}
 
-	public void setInmueble(final PropertyEntity inmueble) {
-		this.inmueble = ObjectHelper.getDefault(inmueble, new PropertyEntity());
+	public void setProperty(final PropertyEntity property) {
+		this.property = ObjectHelper.getDefault(property, new PropertyEntity());
 	}
 	
 	

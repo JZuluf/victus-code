@@ -2,27 +2,28 @@ package co.edu.uco.victusresidencias.domain;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class PropertyDomain extends Domain {
 
-    private String tipoInmueble;
-    private int numeroVivienda;
-    private PropertyZoneDomain zonaInmueble;
+    private String propertyType;
+    private int propertyNumber;
+    private PropertyZoneDomain propertyZone;
 
     // Constructor privado
-    private PropertyDomain(final UUID id, final String tipoInmueble, final int numeroVivienda, final PropertyZoneDomain zonaInmueble) {
+    private PropertyDomain(final UUID id, final String propertyType, final int propertyNumber, final PropertyZoneDomain propertyZone) {
         super(id);
-        setTipoInmueble(tipoInmueble);
-        setNumeroVivienda(numeroVivienda);
-        setZonaInmueble(zonaInmueble);
+        setPropertyType(propertyType);
+        setPropertyNumber(propertyNumber);
+        setPropertyZone(propertyZone);
     }
 
     // Método estático para crear una instancia con parámetros
-    public static PropertyDomain create(final UUID id, final String tipoInmueble, final int numeroVivienda, final PropertyZoneDomain zonaInmueble) {
-        return new PropertyDomain(id, tipoInmueble, numeroVivienda, zonaInmueble);
+    public static PropertyDomain create(final UUID id, final String propertyType, final int propertyNumber, final PropertyZoneDomain propertyZone) {
+        return new PropertyDomain(id, propertyType, propertyNumber, propertyZone);
     }
 
     // Método estático para crear una instancia vacía por defecto
@@ -32,28 +33,28 @@ public class PropertyDomain extends Domain {
 
     // Getters y Setters
 
-    public String getTipoInmueble() {
-        return tipoInmueble;
+    public String getPropertyType() {
+        return this.propertyType;
     }
 
-    private void setTipoInmueble(final String tipoInmueble) {
-        this.tipoInmueble = TextHelper.applyTrim(tipoInmueble);
+    private void setPropertyType(final String propertyType) {
+        this.propertyType = TextHelper.applyTrim(propertyType);
     }
 
-    public int getNumeroVivienda() {
-        return numeroVivienda;
+    public int getPropertyNumber() {
+        return this.propertyNumber;
     }
 
-    private void setNumeroVivienda(final int numeroVivienda) {
-        this.numeroVivienda = (numeroVivienda >= 0) ? numeroVivienda : NumericHelper.CERO;
+    private void setPropertyNumber(final int propertyNumber) {
+        this.propertyNumber = (propertyNumber >= 0) ? propertyNumber : NumericHelper.CERO;
     }
 
-    public PropertyZoneDomain getZonaInmueble() {
-        return zonaInmueble;
+    public PropertyZoneDomain getPropertyZone() {
+        return this.propertyZone;
     }
 
-    private void setZonaInmueble(final PropertyZoneDomain zonaInmueble) {
-        this.zonaInmueble = (zonaInmueble != null) ? zonaInmueble : PropertyZoneDomain.create();
+    private void setPropertyZone(final PropertyZoneDomain propertyZone) {
+        this.propertyZone = ObjectHelper.getDefault(propertyZone , PropertyZoneDomain.create());
     }
 
     @Override

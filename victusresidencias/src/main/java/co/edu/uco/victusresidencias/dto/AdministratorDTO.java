@@ -1,20 +1,19 @@
 package co.edu.uco.victusresidencias.dto;
 
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class AdministratorDTO extends DomainDTO {
     
     private String name;
     private String apellido;
     private String tipoDocumento;
-    private int numeroDocumento;
-    private int numeroContacto;
+    private String numeroDocumento;
+    private String numeroContacto;
     private String correoElectronico;
     private String contrasena;
 
-    // Constructor privado
-    private AdministratorDTO() {
+    public AdministratorDTO() {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
         setApellido(TextHelper.EMPTY);
@@ -40,7 +39,7 @@ public class AdministratorDTO extends DomainDTO {
     }
 
     public String getApellido() {
-        return apellido;
+        return this.apellido;
     }
 
     public AdministratorDTO setApellido(String apellido) {
@@ -57,21 +56,21 @@ public class AdministratorDTO extends DomainDTO {
         return this;
     }
 
-    public int getNumeroDocumento() {
+    public String getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    public AdministratorDTO setNumeroDocumento(int numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    public AdministratorDTO setNumeroDocumento(final String numeroDocumento) {
+        this.numeroDocumento = TextHelper.applyTrim(numeroDocumento);
         return this;
     }
 
-    public int getNumeroContacto() {
+    public String getNumeroContacto() {
         return numeroContacto;
     }
 
-    public AdministratorDTO setNumeroContacto(int numeroContacto) {
-        this.numeroContacto = numeroContacto;
+    public AdministratorDTO setNumeroContacto(String numeroContacto) {
+        this.numeroContacto = TextHelper.applyTrim(numeroContacto);
         return this;
     }
 

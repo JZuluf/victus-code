@@ -2,26 +2,26 @@ package co.edu.uco.victusresidencias.domain;
 
 import java.util.UUID;
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 public class ReservationDomain extends Domain {
 
-    private int numeroInvitado;
-    private TurnDomain turno;
-    private ResidentDomain residente;
+    private int guestNumber;
+    private TurnDomain turn;
+    private ResidentDomain resident;
 
     // Constructor privado
-    private ReservationDomain(final UUID id, final int numeroInvitado, final TurnDomain turno, final ResidentDomain residente) {
+    private ReservationDomain(final UUID id, final int guestNumber, final TurnDomain turn, final ResidentDomain resident) {
         super(id);
-        setNumeroInvitado(numeroInvitado);
-        setTurno(turno);
-        setResidente(residente);
+        setGuestNumber(guestNumber);
+        setTurn(turn);
+        setResident(resident);
     }
 
     // Método estático para crear una instancia con parámetros
-    public static ReservationDomain create(final UUID id, final int numeroInvitado, final TurnDomain turno, final ResidentDomain residente) {
-        return new ReservationDomain(id, numeroInvitado, turno, residente);
+    public static ReservationDomain create(final UUID id, final int guestNumber, final TurnDomain turn, final ResidentDomain resident) {
+        return new ReservationDomain(id, guestNumber, turn, resident);
     }
 
     // Método estático para crear una instancia por defecto
@@ -31,28 +31,28 @@ public class ReservationDomain extends Domain {
 
     // Getters y Setters
 
-    public int getNumeroInvitado() {
-        return numeroInvitado;
+    public int getGuestNumber() {
+        return guestNumber;
     }
 
-    private void setNumeroInvitado(final int numeroInvitado) {
-        this.numeroInvitado = NumericHelper.getDefault(numeroInvitado, NumericHelper.CERO);
+    private void setGuestNumber(final int guestNumber) {
+        this.guestNumber = NumericHelper.getDefault(guestNumber, NumericHelper.CERO);
     }
 
-    public TurnDomain getTurno() {
-        return turno;
+    public TurnDomain getTurn() {
+        return turn;
     }
 
-    private void setTurno(final TurnDomain turno) {
-        this.turno = (turno != null) ? turno : TurnDomain.create();
+    private void setTurn(final TurnDomain turn) {
+        this.turn = (turn != null) ? turn : TurnDomain.create();
     }
 
-    public ResidentDomain getResidente() {
-        return residente;
+    public ResidentDomain getResident() {
+        return resident;
     }
 
-    private void setResidente(final ResidentDomain residente) {
-        this.residente = (residente != null) ? residente : ResidentDomain.create();
+    private void setResident(final ResidentDomain resident) {
+        this.resident = (resident != null) ? resident : ResidentDomain.create();
     }
 
     @Override

@@ -2,10 +2,10 @@ package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
 
 
-import co.edu.uco.crosscutting.helpers.NumericHelper;
-import co.edu.uco.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.crosscutting.helpers.TextHelper;
-import co.edu.uco.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.domain.AdministratorDomain;
@@ -49,8 +49,8 @@ public class PropertyZoneDTOAdapter implements Adapter<PropertyZoneDomain, Prope
         // Convertimos el Domain a DTO
         return PropertyZoneDTO.create()
                 .setId(UUIDHelper.getDefaultAsString())
-                .setTipoZonaInmueble(domainToAdapt.getTipoZonaInmueble())
-                .setNumeroZonaInmueble(domainToAdapt.getNumeroZonaInmueble())
-                .setConjuntoResidencial(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptTarget(domainToAdapt.getConjuntoResidencial()));
+                .setTipoZonaInmueble(domainToAdapt.getPropertyZoneType())
+                .setNumeroZonaInmueble(domainToAdapt.getPropertyZoneNumber())
+                .setConjuntoResidencial(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptTarget(domainToAdapt.getResidentialComplex()));
     }
 }
