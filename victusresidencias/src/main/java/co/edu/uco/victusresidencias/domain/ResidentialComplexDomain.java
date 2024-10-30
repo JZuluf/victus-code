@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.victusresidencias.entity.CityEntity;
 
 public class ResidentialComplexDomain extends Domain {
 

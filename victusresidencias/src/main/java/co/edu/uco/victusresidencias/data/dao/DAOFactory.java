@@ -1,10 +1,10 @@
 package co.edu.uco.victusresidencias.data.dao;
 
-import co.edu.uco.victusresidencias.data.dao.enums.DAOsource;
+import co.edu.uco.victusresidencias.data.dao.enums.DAOSource;
 
 public abstract class DAOFactory {
 	
-	public final static DAOFactory getFactory(final DAOsource source) {
+	public final static DAOFactory getFactory(final DAOSource source) {
 		return null;
 	}
 	protected abstract void openConnection();

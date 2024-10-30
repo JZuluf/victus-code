@@ -13,26 +13,26 @@ public final class UpdateCityImpl implements UpdateCity{
 	
 	private DAOFactory daoFactory;
 	
-	public UpdateCityImpl(DAOFactory daoFactory) {
+	public UpdateCityImpl(DAOFactory daoFactory){
 		setDaoFactory(daoFactory);
+	}
+	
+	@Override
+	public void execute(final CityDomain data) {
+		// Validate policies
+		
+		var cityEntity = CityEntityAdapter.getCityEntityAdapter().adaptSource(data);
+		daoFactory.getCityDAO().update(cityEntity);
+		
 	}
 
 	private void setDaoFactory(final DAOFactory daoFactory) {
 		if (ObjectHelper.isNull(daoFactory)) {
-			var userMessage = "Se ha presentado un problema inesperado, tratando de llevar a cabo la modificación de la información de la ciudad deseada. Por favor intente de nuevo y si el problema persiste, llame a Luz Mery Rios Alzate...";
-			var technicalMessage = "El DAO factory requerido para crear la clase que actualiza la ciudad llegó nula...";
-			throw BusinessLogicVictusResidenciasException.create(userMessage, technicalMessage);
+			var userMessage = "Se ha presentado un problema inesperado, tratando de llevar a cabo la modificación de la información de la ciudad deseada, Por favor intente de nuevo y si el problema persiste cominuquese con soporte...";
+			var technicalMessage = "El dao factory requerido para crear la clase que actualiza la ciudad llegó nula...";
+			throw BusinessLogicVictusResidenciasException.crear(userMessage, technicalMessage);
 		}
+		
 		this.daoFactory = daoFactory;
 	}
-
-	@Override
-	public void execute(final CityDomain data) {
-		var cityEntity = CityEntityAdapter.getCityEntityAdapter().adaptSource(data);
-		daoFactory.getCityDAO().update(cityEntity);
-		//validate Policies
-
-		
-	}
-
 }

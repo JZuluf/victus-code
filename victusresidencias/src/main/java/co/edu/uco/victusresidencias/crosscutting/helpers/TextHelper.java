@@ -2,29 +2,35 @@ package co.edu.uco.victusresidencias.crosscutting.helpers;
 
 public class TextHelper {
 	
-	public static final String EMPTY = "vacio";
-	public static final String LETTER_AND_NUMBER_REGEX = "[A-Za-zÁÉÍÓÚáéíóúÑñ0-9 ]*"; // ajustado para letras y números
-	public static final String LETTER_REGEX = "[A-Za-zÁÉÍÓÚáéíóúÑñ ]";
-	public static final String NUMBER_REGEX = "[0-9 ]";
+	public static final String EMPTY = "";
+	public static final String ONLY_LETTERS_SPACES="[A-Za-záÁéÉíÍóÓúÚñÑ ]*";
+
 	private TextHelper() {
-	}
-	public static boolean patternIsValid(final String string, final String pattern) {
-		return applyTrim(string).matches((concat("^",pattern,"$")));
+
 	}
 	
-	public static boolean contrainsOnlyLettersAndSapces(final String string) {
-		return patternIsValid(string, LETTER_REGEX);
-	} 	
+	public static boolean patternIsValid(final String string, final String pattern) {
+		return applyTrim(string).matches(concat("^",pattern, "$"));
+	}
+	
+	public static boolean containsOnlyLettersAndSpaces(final String string) {
+		return patternIsValid(string, ONLY_LETTERS_SPACES);
+	}
 	
 	public static String concat(final String...strings) {
-		var sb =new StringBuilder(EMPTY);
-		for(String string :strings) {
+		var sb = new StringBuilder(EMPTY);
+		
+		for (String string : strings) {
 			sb.append(getDefault(string));
 		}
+		
 		return sb.toString();
 	}
+	
+	
+
 	public static boolean isNull(final String string) {
-		return ObjectHelper.isNull(string);
+		return ObjectHelper.isNull("");
 	}
 
 	public static String getDefault(final String string, final String defaultValue) {
@@ -32,15 +38,36 @@ public class TextHelper {
 	}
 
 	public static String getDefault(final String string) {
-		return ObjectHelper.getDefault(string, EMPTY);
+		return getDefault(string, EMPTY);
+
 	}
 
 	public static boolean isEmpty(final String string) {
 		return EMPTY.equals(getDefault(string));
 	}
 
-	public static String applyTrim(final String b) {
-		return getDefault(b).trim();
+	public static boolean isEmptyApplyingTrim(final String string) {
+		return isEmpty(applyTrim(string));
+	}
+
+	public static String applyTrim(final String string) {
+		return getDefault(string).trim();
+
 	}
 	
+	public static int len(final String string) {
+		return applyTrim(string).length();
+	}
+	
+	public static boolean lenIsValid(final String string, final int min, final int max) {
+		return minLenIsValid(string, min) && maxLenIsValid(string, max);
+	}
+
+	public static boolean minLenIsValid(final String string, final int min) {
+		return NumericHelper.isGreatOrEqual(len(string), min);
+	}
+	
+	public static boolean maxLenIsValid(final String string, final int max) {
+		return NumericHelper.isLessOrEqual(len(string), max);
+	}
 }
