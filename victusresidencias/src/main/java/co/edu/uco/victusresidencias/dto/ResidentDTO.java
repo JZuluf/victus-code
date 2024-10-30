@@ -25,9 +25,9 @@ public class ResidentDTO extends DomainDTO {
         setName(TextHelper.EMPTY);
         setLastName(TextHelper.EMPTY);
         setIdType(TextHelper.EMPTY);
-        setIdNumber(NumericHelper.ZERO);
+        setIdNumber(NumericHelper.CERO);
         setDate(DateHelper.DEFAULT_DATE);
-        setContactNumber(NumericHelper.ZERO);
+        setContactNumber(NumericHelper.CERO);
         setPassword(TextHelper.EMPTY);
         setProperty(PropertyDTO.create());
     }

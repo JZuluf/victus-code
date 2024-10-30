@@ -97,7 +97,7 @@ public final class ResidentSqlServerDAO extends SqlDAO implements ResidentDAO {
             preparedStatement.setObject(1, data.getId());
             preparedStatement.setString(2, data.getName());
             preparedStatement.setString(3, data.getLastName());
-            preparedStatement.setLong(4, data.getContactNumber());
+            preparedStatement.setString(4, data.getContactNumber());
 
             preparedStatement.executeUpdate();
 
@@ -134,7 +134,7 @@ public final class ResidentSqlServerDAO extends SqlDAO implements ResidentDAO {
         try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
             preparedStatement.setString(1, data.getName());
             preparedStatement.setString(2, data.getLastName());
-            preparedStatement.setLong(3, data.getContactNumber());
+            preparedStatement.setString(3, data.getContactNumber());
             preparedStatement.setObject(4, data.getId());
 
             preparedStatement.executeUpdate();

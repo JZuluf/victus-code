@@ -29,27 +29,30 @@ public class AdministratorDTOAdapter implements Adapter<AdministratorDomain, Adm
         return AdministratorDomain.create(
                 UUIDHelper.convertToUUID(dtoToAdapt.getId()),
                 dtoToAdapt.getName(),
-                dtoToAdapt.getApellido(),
-                dtoToAdapt.getTipoDocumento(),
-                dtoToAdapt.getNumeroDocumento(),
-                dtoToAdapt.getNumeroContacto(),
-                dtoToAdapt.getCorreoElectronico(),
-                dtoToAdapt.getContrasena()
+                dtoToAdapt.getLastName(),
+                dtoToAdapt.getIdType(),
+                dtoToAdapt.getIdNumber(),
+                dtoToAdapt.getContactNumber(),
+                dtoToAdapt.getEmail(),
+                dtoToAdapt.getPassword()
         );
     }
 
     @Override
     public AdministratorDTO adaptTarget(AdministratorDomain data) {
         // Usar un Domain por defecto si el dato es nulo
-        var domainToAdapt = ObjectHelper.getDefault(data, createDefault.ADMINISTRATOR);
+        var domainToAdapt = ObjectHelper.getDefault(data, AdministratorDomain.create());
 
         // Adaptación de Domain a DTO
         return AdministratorDTO.create()
                 .setId(UUIDHelper.getDefaultAsString())
                 .setName(domainToAdapt.getName())
-                .setApellido(domainToAdapt.getLastName())
-                .setTipoDocumento(domainToAdapt.getIdType())
-                .setNumeroDocumento(domainToAdapt.getIdNumber());
+                .setLastName(domainToAdapt.getLastName())
+                .setIdType(domainToAdapt.getIdType())
+                .setIdNumber(domainToAdapt.getIdNumber())
+                .setContactNumber(domainToAdapt.getContactNumber())
+                .setEmail(domainToAdapt.getEmail())
+                .setPassword(domainToAdapt.getPassword());
                 
     }
 }

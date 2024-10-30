@@ -28,9 +28,9 @@ public class PropertyDTOAdapter implements Adapter<PropertyDomain, PropertyDTO> 
         // Convertimos el DTO a Domain
         return PropertyDomain.create(
                 UUIDHelper.convertToUUID(dtoToAdapt.getId()),
-                dtoToAdapt.getTipoInmueble(),
-                dtoToAdapt.getNumeroVivienda(),
-                PropertyZoneDTOAdapter.getPropertyZoneDTOAdapter().adaptSource(dtoToAdapt.getZonaInmueble())
+                dtoToAdapt.getPropertyType(),
+                dtoToAdapt.getHousingNumber(),
+                PropertyZoneDTOAdapter.getPropertyZoneDTOAdapter().adaptSource(dtoToAdapt.getPropertyZone())
         );
     }
 
@@ -39,15 +39,10 @@ public class PropertyDTOAdapter implements Adapter<PropertyDomain, PropertyDTO> 
         // Si el Domain es nulo, usamos un Domain por defecto
         var domainToAdapt = ObjectHelper.getDefault(data,createDefault.PROPERTY);
         
+        return PropertyDTO.create()
+        		.setId(ObjectHelper.getDefault(domainToAdapt.getId().toString(), UUIDHelper.getDefaultAsString()))
+        		.setHousingNumber(domainToAdapt.getPropertyNumber())
+        		.setPropertyZone(PropertyZoneDTOAdapter.getPropertyZoneDTOAdapter().adaptTarget(domainToAdapt.getPropertyZone()));
         
-
-        // Convertimos el Domain a DTO
-//        return PropertyDTO.create()
-//                .setId(UUIDHelper.getDefaultAsString())
-//                .setAddress(domainToAdapt.getAddress())
-//                .setType(domainToAdapt.getType())
-//                .setResidentialComplex(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptTarget(domainToAdapt.getResidentialComplex()))
-//                .setPropertyZone(PropertyZoneDTOAdapter.getPropertyZoneDTOAdapter().adaptTarget(domainToAdapt.getPropertyZone()));
-    return null;
     }
 }

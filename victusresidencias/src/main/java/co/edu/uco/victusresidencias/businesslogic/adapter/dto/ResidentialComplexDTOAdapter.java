@@ -50,7 +50,7 @@ public class ResidentialComplexDTOAdapter implements Adapter<ResidentialComplexD
         return ResidentialComplexDTO.create()
                 .setId(ObjectHelper.getDefault(domainToAdapt.getId().toString(), UUIDHelper.getDefaultAsString()))
                 .setName(domainToAdapt.getName())
-                .setAddress(domainToAdapt.getDireccion())
+                .setAddress(domainToAdapt.getAddress())
                 .setCity(CityDTOAdapter.getCityDTOAdapter().adaptTarget(domainToAdapt.getCity())); // Adaptamos la ciudad
     }
 }

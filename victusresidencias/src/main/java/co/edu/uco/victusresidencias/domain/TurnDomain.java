@@ -7,7 +7,7 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
-public class ShiftDomain extends Domain {
+public class TurnDomain extends Domain {
     
     private String name;
     private String shiftNumber; // Cambiado de numeroTurno a shiftNumber
@@ -17,7 +17,7 @@ public class ShiftDomain extends Domain {
     private ScheduledDomain schedule; // Cambiado de agenda a schedule
 
     // Private constructor
-    private ShiftDomain(final UUID id, final String name, final String shiftNumber, final LocalDateTime startTime,
+    private TurnDomain(final UUID id, final String name, final String shiftNumber, final LocalDateTime startTime,
                         final LocalDateTime endTime, final Boolean status, final ScheduledDomain schedule) {
         super(id);
         setName(name);
@@ -29,14 +29,14 @@ public class ShiftDomain extends Domain {
     }
 
     // Static method to create an instance with parameters
-    public static ShiftDomain create(final UUID id, final String name, final String shiftNumber, final LocalDateTime startTime, 
+    public static TurnDomain create(final UUID id, final String name, final String shiftNumber, final LocalDateTime startTime, 
                                      final LocalDateTime endTime, final Boolean status, final ScheduledDomain schedule) {
-        return new ShiftDomain(id, name, shiftNumber, startTime, endTime, status, schedule);
+        return new TurnDomain(id, name, shiftNumber, startTime, endTime, status, schedule);
     }
 
     // Static method to create an empty default instance
-    public static ShiftDomain create() {
-        return new ShiftDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, DateHelper.DEFAULT_DATE_TIME,
+    public static TurnDomain create() {
+        return new TurnDomain(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, DateHelper.DEFAULT_DATE_TIME,
                                DateHelper.DEFAULT_DATE_TIME, true, ScheduledDomain.create());
     }
 

@@ -19,8 +19,8 @@ public class CommonZoneDTO extends DomainDTO {
         super(UUIDHelper.getDefaultAsString());
         setName(TextHelper.EMPTY);
         setDescription(TextHelper.EMPTY);
-        setCapacityPeople(NumericHelper.ZERO);
-        setUsageTime(NumericHelper.ZERO);
+        setCapacityPeople(NumericHelper.CERO);
+        setUsageTime(NumericHelper.CERO);
         setUsageTimeUnit(TextHelper.EMPTY);
         setRules(TextHelper.EMPTY);
         setResidentialComplex(ResidentialComplexDTO.create());

@@ -17,7 +17,7 @@ public class PropertyEntity extends DomainEntity {
 	public PropertyEntity() {
 		super(UUIDHelper.getDefault());
 		setPropertyType(TextHelper.EMPTY);
-		setHomeNumber(NumericHelper.CERO);
+		setPropertyNumber(NumericHelper.CERO);
 		setPropertyZone(new PropertyZoneEntity());
 	}
 	
@@ -34,7 +34,7 @@ public class PropertyEntity extends DomainEntity {
 		return propertyNumber;
 	}
 
-	public void setPrpertyNumber(int propertyNumber) {
+	public void setPropertyNumber(int propertyNumber) {
 		this.propertyNumber = propertyNumber;
 	}
 

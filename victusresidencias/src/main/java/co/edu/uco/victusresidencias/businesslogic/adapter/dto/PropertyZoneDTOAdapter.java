@@ -35,9 +35,9 @@ public class PropertyZoneDTOAdapter implements Adapter<PropertyZoneDomain, Prope
         // Convertimos el DTO a Domain
         return PropertyZoneDomain.create(
                 UUIDHelper.convertToUUID(dtoToAdapt.getId()),
-                dtoToAdapt.getTipoZonaInmueble(),
-                dtoToAdapt.getNumeroZonaInmueble(),
-                ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptSource(dtoToAdapt.getConjuntoResidencial())
+                dtoToAdapt.getPropertyZoneType(),
+                dtoToAdapt.getPropertyZoneNumber(),
+                ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptSource(dtoToAdapt.getResidentialComplex())
         );
     }
 
@@ -48,9 +48,9 @@ public class PropertyZoneDTOAdapter implements Adapter<PropertyZoneDomain, Prope
 
         // Convertimos el Domain a DTO
         return PropertyZoneDTO.create()
-                .setId(UUIDHelper.getDefaultAsString())
-                .setTipoZonaInmueble(domainToAdapt.getPropertyZoneType())
-                .setNumeroZonaInmueble(domainToAdapt.getPropertyZoneNumber())
-                .setConjuntoResidencial(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptTarget(domainToAdapt.getResidentialComplex()));
+                .setId(ObjectHelper.getDefault(domainToAdapt.getId().toString(), UUIDHelper.getDefaultAsString()))
+                .setPropertyZoneType(domainToAdapt.getPropertyZoneType())
+                .setPropertyZoneNumber(domainToAdapt.getPropertyZoneNumber())
+                .setResidentialComplex(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptTarget(domainToAdapt.getResidentialComplex()));
     }
 }

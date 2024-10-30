@@ -55,11 +55,11 @@ public class CommonZoneEntity extends DomainEntity {
 	}
 
 	public int getUsingTime() {
-		return usingTime;
+		return usageTime;
 	}
 
 	public void setUsingTime(int usingTime) {
-		this.usingTime = usingTime;
+		this.usageTime = usingTime;
 	}
 
 	public String getUsingTimeUnit() {

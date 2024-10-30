@@ -46,6 +46,9 @@ public final class UUIDHelper {
 		return getDefault(convertToUUID(uuidAsString), getDefault()).equals(getDefault());
 	}
 	
+	public static final boolean isEqual(final UUID valueOne, final UUID valueTwo) {
+		return getDefault(valueOne,getDefault()).compareTo(getDefault(valueTwo,getDefault())) == 0;
+	}
 //	public static void main(String[] args) {
 //		
 //		System.out.print(convertToUUID("bd8f3526-ee4b-4b3d-8f8a-76b21e79cb4f"));

@@ -14,7 +14,7 @@ public class PropertyZoneDTO extends DomainDTO {
     private PropertyZoneDTO() {
         super(UUIDHelper.getDefaultAsString());
         setPropertyZoneType(TextHelper.EMPTY);
-        setPropertyZoneNumber(NumericHelper.ZERO);
+        setPropertyZoneNumber(NumericHelper.CERO);
         setResidentialComplex(ResidentialComplexDTO.create());
     }
 

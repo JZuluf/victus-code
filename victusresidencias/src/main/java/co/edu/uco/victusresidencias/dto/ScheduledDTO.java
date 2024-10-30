@@ -13,7 +13,7 @@ public class ScheduledDTO extends DomainDTO {
     private Boolean availability;
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
-    private ComunZoneDTO commonArea;
+    private CommonZoneDTO commonArea;
 
     // Private constructor
     private ScheduledDTO() {
@@ -22,7 +22,7 @@ public class ScheduledDTO extends DomainDTO {
         setAvailability(true);
         setStartDateTime(DateHelper.DEFAULT_DATE_TIME);
         setEndDateTime(DateHelper.DEFAULT_DATE_TIME);
-        setCommonArea(ComunZoneDTO.create());
+        setCommonArea(CommonZoneDTO.create());
     }
 
     // Static method to create an instance
@@ -68,12 +68,12 @@ public class ScheduledDTO extends DomainDTO {
         return this;
     }
 
-    public ComunZoneDTO getCommonArea() {
+    public CommonZoneDTO getCommonArea() {
         return commonArea;
     }
 
-    public ScheduledDTO setCommonArea(ComunZoneDTO commonArea) {
-        this.commonArea = ObjectHelper.getDefault(commonArea, ComunZoneDTO.create());
+    public ScheduledDTO setCommonArea(CommonZoneDTO commonArea) {
+        this.commonArea = ObjectHelper.getDefault(commonArea, CommonZoneDTO.create());
         return this;
     }
 

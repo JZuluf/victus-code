@@ -1,59 +1,57 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
-import java.util.UUID;
+
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.domain.CommonZoneDomain;
-import co.edu.uco.victusresidencias.domain.PropertyDomain;
-import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
-import co.edu.uco.victusresidencias.dto.ComunZoneDTO;
-import co.edu.uco.victusresidencias.dto.PropertyDTO;
+import co.edu.uco.victusresidencias.dto.CommonZoneDTO;
 
-public class CommonZoneDTOAdapter implements Adapter<CommonZoneDomain, ComunZoneDTO>{
+
+public class CommonZoneDTOAdapter implements Adapter<CommonZoneDomain, CommonZoneDTO>{
 	
-	private static final Adapter<CommonZoneDomain, ComunZoneDTO> instance = new CommonZoneDTOAdapter();
+	private static final Adapter<CommonZoneDomain, CommonZoneDTO> instance = new CommonZoneDTOAdapter();
 	 private CommonZoneDTOAdapter() {
 	    }
 
-	    public static Adapter<CommonZoneDomain, ComunZoneDTO> getComunZoneDTOAdapter() {
+	    public static Adapter<CommonZoneDomain, CommonZoneDTO> getComunZoneDTOAdapter() {
 	        return instance;
 	    }
 
 	    @Override
-	    public CommonZoneDomain adaptSource(ComunZoneDTO data) {
+	    public CommonZoneDomain adaptSource(CommonZoneDTO data) {
 	        // Si el DTO es nulo, usamos un DTO por defecto
-	        var dtoToAdapt = ObjectHelper.getDefault(data, ComunZoneDTO.create());
+	        var dtoToAdapt = ObjectHelper.getDefault(data, CommonZoneDTO.create());
 
 	        // Convertimos el DTO a Domain
 	        return CommonZoneDomain.create(
 	                UUIDHelper.convertToUUID(dtoToAdapt.getId()),
 	                dtoToAdapt.getName(),
-	                dtoToAdapt.getDescripcion(),
-	                dtoToAdapt.getCapacidadPersonas(),
-	                dtoToAdapt.getTiempoUso(),
-	                dtoToAdapt.getUnidadTiempoUso(),
-	                dtoToAdapt.getNormas(),
-	                ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptSource(dtoToAdapt.getConjuntoResidencial())
+	                dtoToAdapt.getDescription(),
+	                dtoToAdapt.getCapacityPeople(),
+	                dtoToAdapt.getUsageTime(),
+	                dtoToAdapt.getUsageTimeUnit(),
+	                dtoToAdapt.getRules(),
+	                ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptSource(dtoToAdapt.getResidentialComplex())
 	        );
 	    }
 
 	    @Override
-	    public ComunZoneDTO adaptTarget(CommonZoneDomain data) {
+	    public CommonZoneDTO adaptTarget(CommonZoneDomain data) {
 	        // Si el Domain es nulo, usamos un Domain por defecto
-	        var domainToAdapt = ObjectHelper.getDefault(data,createDefault.COMUN_ZONE);
+	        var domainToAdapt = ObjectHelper.getDefault(data,createDefault.COMMON_ZONE);
 	        
-	        return ComunZoneDTO.create()
+	        return CommonZoneDTO.create()
 	        		.setId(ObjectHelper.getDefault(domainToAdapt.getId().toString(), UUIDHelper.getDefaultAsString()))
 	        		.setName(domainToAdapt.getName())
-	        		.setDescripcion(domainToAdapt.getDescription())
-	        		.setCapacidadPersonas(domainToAdapt.getPeopleLimit())
-	        		.setTiempoUso(domainToAdapt.getUseTime())
-	        		.setUnidadTiempoUso(domainToAdapt.getUseTimeUnit())
-	        		.setNormas(domainToAdapt.getRules())
-	        		.setConjuntoResidencial(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter()
+	        		.setDescription(domainToAdapt.getDescription())
+	        		.setCapacityPeople(domainToAdapt.getPeopleLimit())
+	        		.setUsageTime(domainToAdapt.getUseTime())
+	        		.setUsageTimeUnit(domainToAdapt.getUseTimeUnit())
+	        		.setRules(domainToAdapt.getRules())
+	        		.setResidentialComplex(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter()
 	        				.adaptTarget(domainToAdapt.getResidentialComplex()));
 
 	    }

@@ -12,7 +12,7 @@ public class ReservationDTO extends DomainDTO {
 
     private ReservationDTO() {
         super(UUIDHelper.getDefaultAsString());
-        setGuestNumber(NumericHelper.ZERO);
+        setGuestNumber(NumericHelper.CERO);
         setTurn(TurnDTO.create());
         setResident(ResidentDTO.create());
     }
@@ -26,7 +26,7 @@ public class ReservationDTO extends DomainDTO {
     }
 
     public ReservationDTO setGuestNumber(int guestNumber) {
-        this.guestNumber = NumericHelper.getDefault(guestNumber, NumericHelper.ZERO);
+        this.guestNumber = NumericHelper.getDefault(guestNumber, NumericHelper.CERO);
         return this;
     }
 

@@ -1,5 +1,8 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter;
 
+import java.time.LocalDateTime;
+
+
 import co.edu.uco.victusresidencias.crosscutting.helpers.DateHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
 
@@ -13,7 +16,9 @@ import co.edu.uco.victusresidencias.domain.PropertyDomain;
 import co.edu.uco.victusresidencias.domain.PropertyZoneDomain;
 import co.edu.uco.victusresidencias.domain.ResidentDomain;
 import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
+import co.edu.uco.victusresidencias.domain.ScheduledDomain;
 import co.edu.uco.victusresidencias.domain.StateDomain;
+import co.edu.uco.victusresidencias.domain.TurnDomain;
 
 public class createDefault {
 	
@@ -50,7 +55,7 @@ public class createDefault {
 			NumericHelper.CERO,
 			TextHelper.EMPTY,
 			PROPERTY);
-	public static final CommonZoneDomain COMUN_ZONE = CommonZoneDomain.create(
+	public static final CommonZoneDomain COMMON_ZONE = CommonZoneDomain.create(
 			UUIDHelper.getDefault(),
 			TextHelper.EMPTY,
 			TextHelper.EMPTY,
@@ -59,6 +64,21 @@ public class createDefault {
 			TextHelper.EMPTY,
 			TextHelper.EMPTY,
 			RESIDENTIAL_COMPLEX);
-	
+	public static final ScheduledDomain SCHEDULED = ScheduledDomain.create(
+			UUIDHelper.getDefault(),
+			TextHelper.EMPTY,
+		    false, // Cambiado de disponibilidad a availability
+		    LocalDateTime.MIN, // Cambiado de fechaHoraInicio a startDateTime
+		    LocalDateTime.MIN,// Cambiado de fechaHoraFin a endDateTime
+		    COMMON_ZONE
+			);
+	public static final TurnDomain TURN = TurnDomain.create(
+			UUIDHelper.getDefault(), 
+			TextHelper.EMPTY, 
+			TextHelper.EMPTY, 
+			LocalDateTime.MIN, 
+			LocalDateTime.MIN, 
+			false, 
+			SCHEDULED);
 	
 }

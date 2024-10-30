@@ -15,21 +15,21 @@ public class ResidentDomain extends Domain {
 
     private String name;
     private String lastName;
-    private String documentType;
-    private int documentNumber;
+    private String idType;
+    private int idNumber;
     private LocalDate birthDate;
     private int contactNumber;
     private String password;
     private PropertyDomain property;
 
     // Constructor privado
-    private ResidentDomain(final UUID id, final String name, final String lastName, final String documentType, final int documentNumber, 
+    private ResidentDomain(final UUID id, final String name, final String lastName, final String idType, final int idNumber, 
                            final LocalDate birthDate, final int contactNumber, final String password, final PropertyDomain property) {
         super(id);
         setName(name);
         setLastName(lastName);
-        setDocumentType(documentType);
-        setDocumentNumber(documentNumber);
+        setIdType(idType);
+        setIdNumber(idNumber);
         setBirthDat(birthDate);
         setContactNumber(contactNumber);
         setPassword(password);
@@ -66,20 +66,20 @@ public class ResidentDomain extends Domain {
         this.lastName = TextHelper.applyTrim(lastName);
     }
 
-    public String getDocumentType() {
-        return documentType;
+    public String getIdType() {
+        return idType;
     }
 
-    private void setDocumentType(final String documentType) {
-        this.documentType = TextHelper.applyTrim(documentType);
+    private void setIdType(final String documentType) {
+        this.idType = TextHelper.applyTrim(documentType);
     }
 
-    public int getDocumentNumber() {
-        return documentNumber;
+    public int getIdNumber() {
+        return idNumber;
     }
 
-    private void setDocumentNumber(final int documentNumber) {
-        this.documentNumber = (documentNumber > 0) ? documentNumber : NumericHelper.CERO;
+    private void setIdNumber(final int documentNumber) {
+        this.idNumber = (documentNumber > 0) ? documentNumber : NumericHelper.CERO;
     }
 
     public LocalDate getBirthDate() {
