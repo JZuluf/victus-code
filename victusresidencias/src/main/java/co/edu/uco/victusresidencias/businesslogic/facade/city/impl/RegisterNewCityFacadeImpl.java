@@ -9,7 +9,7 @@ import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.enums.DAOSource;
 import co.edu.uco.victusresidencias.dto.CityDTO;
 
-public class RegisterNewCityFacadeImpl implements RegisterNewCityFacade{
+public final class RegisterNewCityFacadeImpl implements RegisterNewCityFacade{
 	@Override
 	public void execute(final CityDTO data) {
 		

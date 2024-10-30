@@ -11,7 +11,7 @@ import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.enums.DAOSource;
 import co.edu.uco.victusresidencias.dto.CityDTO;
 
-public class FindCityFacadeImpl implements FindCityFacade{
+public final class FindCityFacadeImpl implements FindCityFacade{
 	@Override
 	public List<CityDTO> execute(final CityDTO data){
 		var factory = DAOFactory.getFactory(DAOSource.SQLSERVER);
