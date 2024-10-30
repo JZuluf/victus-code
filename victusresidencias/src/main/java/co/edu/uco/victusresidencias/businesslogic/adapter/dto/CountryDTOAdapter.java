@@ -6,9 +6,15 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
+import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.CountryDomain;
+import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.CountryDTO;
 
 
@@ -37,5 +43,16 @@ public class CountryDTOAdapter implements Adapter<CountryDomain, CountryDTO> {
 	    return CountryDTO.create()
 	            .setId(UUIDHelper.getDefaultAsString()) /*pendiente*/ // Convertimos el UUID a String
 	            .setName(domainToAdapt.getName());
+	}
+	@Override
+	public List<CountryDTO> adaptTarget(final List<CountryDomain> data) {
+		
+		var results = new ArrayList<CountryDTO>();
+		
+		for (CountryDomain domain : data) {
+			results.add(adaptTarget(domain));
+		}
+		
+		return results;
 	}
 }

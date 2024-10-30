@@ -1,10 +1,15 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.TurnDomain;
+import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.TurnDTO;
 
 public class TurnDTOAdapter implements Adapter<TurnDomain, TurnDTO> {
@@ -50,5 +55,16 @@ public class TurnDTOAdapter implements Adapter<TurnDomain, TurnDTO> {
                 
                 
     }
+    @Override
+	public List<TurnDTO> adaptTarget(final List<TurnDomain> data) {
+		
+		var results = new ArrayList<TurnDTO>();
+		
+		for (TurnDomain domain : data) {
+			results.add(adaptTarget(domain));
+		}
+		
+		return results;
+	}
     
 }

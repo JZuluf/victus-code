@@ -6,10 +6,16 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
+import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.CountryDomain;
 import co.edu.uco.victusresidencias.domain.StateDomain;
+import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.StateDTO;
 
 public class StateDTOAdapter implements Adapter<StateDomain, StateDTO>{
@@ -41,6 +47,17 @@ public class StateDTOAdapter implements Adapter<StateDomain, StateDTO>{
 				.setId(UUIDHelper.getDefaultAsString())
 				.setName(domainToAdapt.getName())
 				.setCountry(CountryDTOAdapter.getCountryDTOAdapter().adaptTarget(domainToAdapt.getCountry()));		
+	}
+	@Override
+	public List<StateDTO> adaptTarget(final List<StateDomain> data) {
+		
+		var results = new ArrayList<StateDTO>();
+		
+		for (StateDomain domain : data) {
+			results.add(adaptTarget(domain));
+		}
+		
+		return results;
 	}
 	
 }

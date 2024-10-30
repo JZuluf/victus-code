@@ -1,9 +1,15 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
+import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.PropertyZoneDomain;
+import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.PropertyZoneDTO;
 
 public class PropertyZoneDTOAdapter implements Adapter<PropertyZoneDomain, PropertyZoneDTO> {
@@ -43,4 +49,15 @@ public class PropertyZoneDTOAdapter implements Adapter<PropertyZoneDomain, Prope
                 .setPropertyZoneNumber(domainToAdapt.getPropertyZoneNumber())
                 .setResidentialComplex(ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptTarget(domainToAdapt.getResidentialComplex()));
     }
+    @Override
+	public List<PropertyZoneDTO> adaptTarget(final List<PropertyZoneDomain> data) {
+		
+		var results = new ArrayList<PropertyZoneDTO>();
+		
+		for (PropertyZoneDomain domain : data) {
+			results.add(adaptTarget(domain));
+		}
+		
+		return results;
+	}
 }

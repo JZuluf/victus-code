@@ -1,15 +1,20 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
+
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 
+import java.util.List;
+import java.util.ArrayList;
+
+import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.dto.CityDTO;
 import co.edu.uco.victusresidencias.domain.CityDomain;
 import co.edu.uco.victusresidencias.domain.CountryDomain;
 import co.edu.uco.victusresidencias.domain.StateDomain;
+
 
 
 public class CityDTOAdapter implements Adapter<CityDomain, CityDTO>{
@@ -48,6 +53,18 @@ public class CityDTOAdapter implements Adapter<CityDomain, CityDTO>{
             .setName(domainToAdapt.getName())
             .setState(StateDTOAdapter.getStateDTOAdapter().adaptTarget(domainToAdapt.getState())); // Adaptamos el estado
 	}
+	@Override
+	public List<CityDTO> adaptTarget(final List<CityDomain> data) {
+		
+		var results = new ArrayList<CityDTO>();
+		
+		for (CityDomain domain : data) {
+			results.add(adaptTarget(domain));
+		}
+		
+		return results;
+	}
+
 
 
 

@@ -5,8 +5,14 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
+import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.CountryDomain;
+import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.entity.CountryEntity;
 
 
@@ -36,6 +42,17 @@ public class CountryEntityAdapter implements Adapter<CountryEntity,CountryDomain
 	public CountryDomain adaptTarget(CountryEntity data) {
 		var entityToAdapt = ObjectHelper.getDefault(data, new CountryEntity());
 		return CountryDomain.create(entityToAdapt.getId(), entityToAdapt.getName());
+	}
+	@Override
+	public List<CountryDomain> adaptTarget(final List<CountryEntity> data) {
+		
+		var results = new ArrayList<CountryDomain>();
+		
+		for (CountryEntity entity : data) {
+			results.add(adaptTarget(entity));
+		}
+		
+		return results;
 	}
 	
 

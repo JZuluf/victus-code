@@ -2,11 +2,16 @@ package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.ScheduledDomain;
+import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.ScheduledDTO;
 
 public class ScheduledDTOAdapter implements Adapter<ScheduledDomain, ScheduledDTO>{
@@ -49,5 +54,16 @@ public class ScheduledDTOAdapter implements Adapter<ScheduledDomain, ScheduledDT
                 
                 
     }
+    @Override
+	public List<ScheduledDTO> adaptTarget(final List<ScheduledDomain> data) {
+		
+		var results = new ArrayList<ScheduledDTO>();
+		
+		for (ScheduledDomain domain : data) {
+			results.add(adaptTarget(domain));
 
+		}
+		return results;
+
+    }
 }

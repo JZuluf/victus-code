@@ -2,14 +2,16 @@ package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
-
-
+import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.ResidentDomain;
-
+import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.ResidentDTO;
 
 public class ResidentDTOAdapter implements Adapter<ResidentDomain, ResidentDTO>{
@@ -57,7 +59,17 @@ public class ResidentDTOAdapter implements Adapter<ResidentDomain, ResidentDTO>{
                 .setPassword(domainToAdapt.getPassword())
                 ;
     }
-    
+    @Override
+	public List<ResidentDTO> adaptTarget(final List<ResidentDomain> data) {
+		
+		var results = new ArrayList<ResidentDTO>();
+		
+		for (ResidentDomain domain : data) {
+			results.add(adaptTarget(domain));
+		}
+		
+		return results;
+	}
 
 
 }

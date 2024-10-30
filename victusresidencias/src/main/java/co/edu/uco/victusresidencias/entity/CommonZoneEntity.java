@@ -2,6 +2,7 @@ package co.edu.uco.victusresidencias.entity;
 
 import java.util.UUID;
 
+
 import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
@@ -91,7 +92,7 @@ public class CommonZoneEntity extends DomainEntity {
 		return residentialComplex;
 	}
 
-	public void setResidentialComplex(final ResidentialComplexEntity residentialComplex) {
-		this.residentialComplex = ObjectHelper.getDefault(residentialComplex, new ResidentialComplexEntity());
+	public void setResidentialComplex(final ResidentialComplexEntity residentialComplexEntity) {
+		this.residentialComplex = ObjectHelper.getDefault(residentialComplexEntity, new ResidentialComplexEntity());
 	}
 }

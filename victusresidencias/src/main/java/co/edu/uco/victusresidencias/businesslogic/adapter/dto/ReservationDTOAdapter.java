@@ -1,9 +1,14 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.ReservationDomain;
+import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.ReservationDTO;
 
 public class ReservationDTOAdapter implements Adapter<ReservationDomain,ReservationDTO>{
@@ -40,5 +45,16 @@ public class ReservationDTOAdapter implements Adapter<ReservationDomain,Reservat
                 
                 
     }
+    @Override
+	public List<ReservationDTO> adaptTarget(final List<ReservationDomain> data) {
+		
+		var results = new ArrayList<ReservationDTO>();
+		
+		for (ReservationDomain domain : data) {
+			results.add(adaptTarget(domain));
+		}
+		
+		return results;
+	}
 
 }
