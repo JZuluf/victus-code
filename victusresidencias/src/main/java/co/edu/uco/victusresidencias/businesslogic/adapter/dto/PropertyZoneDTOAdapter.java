@@ -1,19 +1,9 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
-
-
-
-import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
-import co.edu.uco.victusresidencias.domain.AdministratorDomain;
-import co.edu.uco.victusresidencias.domain.CityDomain;
-import co.edu.uco.victusresidencias.domain.CountryDomain;
 import co.edu.uco.victusresidencias.domain.PropertyZoneDomain;
-import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
-import co.edu.uco.victusresidencias.domain.StateDomain;
 import co.edu.uco.victusresidencias.dto.PropertyZoneDTO;
 
 public class PropertyZoneDTOAdapter implements Adapter<PropertyZoneDomain, PropertyZoneDTO> {
