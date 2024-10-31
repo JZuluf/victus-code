@@ -1,6 +1,7 @@
 package co.edu.uco.victusresidencias.businesslogic.facade.city.impl;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CityDTOAdapter;
+
 import co.edu.uco.victusresidencias.businesslogic.facade.city.RegisterNewCityFacade;
 import co.edu.uco.victusresidencias.businesslogic.usecase.city.impl.RegisterNewCityImpl;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;

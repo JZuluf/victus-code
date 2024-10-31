@@ -20,4 +20,5 @@ public abstract class DAOFactory {
 	public abstract CityDAO getCityDAO();
 	public abstract CountryDAO getCountryDAO();
 	public abstract StateDAO getStateDAO();
+	public abstract ResidentialComplexDAO getResidentialComplexDAO();
 }

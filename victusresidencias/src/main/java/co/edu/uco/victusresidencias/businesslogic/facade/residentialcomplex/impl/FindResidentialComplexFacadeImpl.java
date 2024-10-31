@@ -1,27 +1,32 @@
-package co.edu.uco.victusresidencias.businesslogic.facade.city.impl;
+package co.edu.uco.victusresidencias.businesslogic.facade.residentialcomplex.impl;
 
 import java.util.List;
 
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CityDTOAdapter;
+import co.edu.uco.victusresidencias.businesslogic.adapter.dto.ResidentialComplexDTOAdapter;
 import co.edu.uco.victusresidencias.businesslogic.facade.city.FindCityFacade;
+import co.edu.uco.victusresidencias.businesslogic.facade.residentialcomplex.FindResidentialComplexFacade;
 import co.edu.uco.victusresidencias.businesslogic.usecase.city.impl.FindCityImpl;
+import co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.impl.FindResidentialComplexImpl;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.enums.DAOSource;
+import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
 import co.edu.uco.victusresidencias.dto.CityDTO;
+import co.edu.uco.victusresidencias.dto.ResidentialComplexDTO;
 
-public final class FindCityFacadeImpl implements FindCityFacade{
+public final class FindResidentialComplexFacadeImpl implements FindResidentialComplexFacade{
 	@Override
-	public List<CityDTO> execute(final CityDTO data){
+	public List<ResidentialComplexDTO> execute(final ResidentialComplexDTO data){
 		var factory = DAOFactory.getFactory(DAOSource.SQLSERVER);
 		
 		try {
-			var findCityUseCase = new FindCityImpl(factory);//new FindCityImpl(factory);
-			var cityDomain = CityDTOAdapter.getCityDTOAdapter().adaptSource(data);
+			var findResidentialComplexUseCase = new FindResidentialComplexImpl(factory);//new FindCityImpl(factory);
+			var residentialComplexDomain = ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptSource(data);
 			
-			return CityDTOAdapter.getCityDTOAdapter().adaptTarget(findCityUseCase.execute(cityDomain));
+			return ResidentialComplexDTOAdapter.getResidentialComplexDTOAdapter().adaptTarget(findResidentialComplexUseCase.execute(residentialComplexDomain));
 			
 		} catch (final VictusResidenciasException exception) {
 			throw exception;
