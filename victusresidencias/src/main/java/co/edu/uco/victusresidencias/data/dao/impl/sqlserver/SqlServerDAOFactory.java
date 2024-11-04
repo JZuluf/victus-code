@@ -9,6 +9,7 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.SqlConnectionHelper;
 import co.edu.uco.victusresidencias.data.dao.CityDAO;
 import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
+import co.edu.uco.victusresidencias.data.dao.ResidentialComplexDAO;
 import co.edu.uco.victusresidencias.data.dao.StateDAO;
 
 public final class SqlServerDAOFactory extends DAOFactory {
@@ -61,6 +62,12 @@ public final class SqlServerDAOFactory extends DAOFactory {
 	@Override
 	public CountryDAO getCountryDAO() {
 		return new CountrySqlServerDAO(connection);
+	}
+
+	@Override
+	public ResidentialComplexDAO getResidentialComplexDAO() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
