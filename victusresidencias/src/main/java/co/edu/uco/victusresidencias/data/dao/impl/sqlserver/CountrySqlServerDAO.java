@@ -120,4 +120,22 @@ final class CountrySqlServerDAO extends SqlDAO implements CountryDAO {
 	private void createOrderBy(final StringBuilder statement) {
 		statement.append("ORDER BY name ASC");
 	}
+
+	@Override
+	public void create(CountryEntity data) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(UUID data) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(CountryEntity data) {
+		// TODO Auto-generated method stub
+		
+	}
 }

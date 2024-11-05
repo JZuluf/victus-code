@@ -88,7 +88,7 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 			}
 			throw DataVictusResidenciasException.crear(userMessage, technicalMessege, exception);
 		}
-	    return null;//resultSelect; 
+	    return resultSelect;//resultSelect; 
 	}
 	
 	private void createSelect(final StringBuilder statement) {
@@ -120,5 +120,39 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 	
 	private void createOrderBy(final StringBuilder statement) {
 		statement.append("ORDER BY name ASC");
+	}
+
+	@Override
+	public void create(CountryEntity data) {
+		final StringBuilder statement = new StringBuilder();
+		statement.append("INSERT INTO country(id, name) VALUES (?, ?)");
+ 
+		try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
+ 
+			preparedStatement.setObject(1, data.getId());
+			preparedStatement.setString(2, data.getName());
+ 
+			preparedStatement.executeUpdate();
+			System.out.println("Se creo el pais con el nombre "+ data.getName()+ " Exitosamente");
+ 
+		} catch (final SQLException exception) {
+			var userMessage = "Se ha presentado un problema tratando de llevar a cabo el registro de la información del nuevo país. Por favor intente de nuevo y si el problema persiste reporte la novedad...";
+			var technicalMessage = "Se ha presentado un problema al tratar de registrar la informaciòn del nuevo país en la base de datos SQL Server. Por favor valide el log de errores para encontrar mayores detalles del problema presentado...";
+ 
+			throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
+		}
+		
+	}
+
+	@Override
+	public void delete(UUID data) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(CountryEntity data) {
+		// TODO Auto-generated method stub
+		
 	}
 }

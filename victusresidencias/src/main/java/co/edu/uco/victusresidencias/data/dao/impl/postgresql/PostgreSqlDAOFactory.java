@@ -3,16 +3,17 @@ package co.edu.uco.victusresidencias.data.dao.impl.postgresql;
 
 
 import java.sql.Connection;
-
-
+import java.util.UUID;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.SqlConnectionHelper;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.data.dao.CityDAO;
 import co.edu.uco.victusresidencias.data.dao.CommonZoneDAO;
 import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.ResidentialComplexDAO;
 import co.edu.uco.victusresidencias.data.dao.StateDAO;
+import co.edu.uco.victusresidencias.entity.CountryEntity;
 
 public final class PostgreSqlDAOFactory extends DAOFactory {
 
@@ -32,10 +33,15 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 		System.out.println("Buen trabajo se conecto a la base de datos");
 	}
 
-	public static void main(String[] args) {
-		PostgreSqlDAOFactory prueba = new PostgreSqlDAOFactory();
-		prueba.closeConnection();
-	}
+//	public static void main(String[] args) {
+//		PostgreSqlDAOFactory prueba = new PostgreSqlDAOFactory();
+//		CountryPostgreSQLDAO pais = new CountryPostgreSQLDAO(prueba.connection); // repository
+//		CountryEntity paisEntidad = new CountryEntity(); //domain
+//		paisEntidad.setId(UUIDHelper.generate());
+//		paisEntidad.setName("Venezuela");
+//		pais.create(paisEntidad);
+//		prueba.closeConnection();
+//	}
 	@Override
 	public void initTransaction() {
 		SqlConnectionHelper.initTransaction(connection);
