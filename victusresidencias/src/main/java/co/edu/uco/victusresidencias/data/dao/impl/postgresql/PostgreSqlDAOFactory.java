@@ -3,7 +3,6 @@ package co.edu.uco.victusresidencias.data.dao.impl.postgresql;
 
 
 import java.sql.Connection;
-import java.util.UUID;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.SqlConnectionHelper;
 import co.edu.uco.victusresidencias.data.dao.AdministratorDAO;
@@ -13,7 +12,6 @@ import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.ResidentialComplexDAO;
 import co.edu.uco.victusresidencias.data.dao.StateDAO;
-import co.edu.uco.victusresidencias.entity.CountryEntity;
 
 public final class PostgreSqlDAOFactory extends DAOFactory {
 
