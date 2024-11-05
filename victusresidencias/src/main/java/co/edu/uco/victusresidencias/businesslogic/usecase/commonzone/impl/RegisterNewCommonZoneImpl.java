@@ -46,9 +46,9 @@ public final class RegisterNewCommonZoneImpl implements RegisterNewCommonZone{
 	
 	private UUID generateId() {
 		var id = UUIDHelper.generate();
-		var residentialComplexEntity = daoFactory.getResidentialComplexDAO().fingByID(id);    
+		var commonZoneEntity = daoFactory.getCommonZoneDAO().fingByID(id);    
 		
-		if (UUIDHelper.isEqual(residentialComplexEntity.getId(), id)) {
+		if (UUIDHelper.isEqual(commonZoneEntity.getId(), id)) {
 			id = generateId();
 		}
 		
