@@ -6,6 +6,7 @@ import java.sql.Connection;
 
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.SqlConnectionHelper;
+import co.edu.uco.victusresidencias.data.dao.AdministratorDAO;
 import co.edu.uco.victusresidencias.data.dao.CityDAO;
 import co.edu.uco.victusresidencias.data.dao.CommonZoneDAO;
 import co.edu.uco.victusresidencias.data.dao.CountryDAO;
@@ -73,6 +74,12 @@ public final class SqlServerDAOFactory extends DAOFactory {
 
 	@Override
 	public CommonZoneDAO getCommonZoneDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AdministratorDAO getAdministratorDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}

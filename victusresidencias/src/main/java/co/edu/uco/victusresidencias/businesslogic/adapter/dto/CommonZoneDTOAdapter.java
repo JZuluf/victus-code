@@ -21,7 +21,7 @@ public class CommonZoneDTOAdapter implements Adapter<CommonZoneDomain, CommonZon
 	 private CommonZoneDTOAdapter() {
 	    }
 
-	    public static Adapter<CommonZoneDomain, CommonZoneDTO> getComunZoneDTOAdapter() {
+	    public static Adapter<CommonZoneDomain, CommonZoneDTO> getCommonZoneDTOAdapter() {
 	        return instance;
 	    }
 

@@ -34,7 +34,7 @@ public class ScheduledDTOAdapter implements Adapter<ScheduledDomain, ScheduledDT
                 dtoToAdapt.getAvailability(),
                 dtoToAdapt.getStartDateTime(), 
                 dtoToAdapt.getEndDateTime(),
-                CommonZoneDTOAdapter.getComunZoneDTOAdapter().adaptSource(dtoToAdapt.getCommonArea())
+                CommonZoneDTOAdapter.getCommonZoneDTOAdapter().adaptSource(dtoToAdapt.getCommonArea())
         );
     }
     @Override
@@ -49,7 +49,7 @@ public class ScheduledDTOAdapter implements Adapter<ScheduledDomain, ScheduledDT
                 .setAvailability(domainToAdapt.getAvailability())
                 .setStartDateTime(domainToAdapt.getStartDateTime())
                 .setEndDateTime(domainToAdapt.getEndDateTime())
-                .setCommonArea(CommonZoneDTOAdapter.getComunZoneDTOAdapter().adaptTarget(domainToAdapt.getCommonZone()));
+                .setCommonArea(CommonZoneDTOAdapter.getCommonZoneDTOAdapter().adaptTarget(domainToAdapt.getCommonZone()));
                 
                 
                 
