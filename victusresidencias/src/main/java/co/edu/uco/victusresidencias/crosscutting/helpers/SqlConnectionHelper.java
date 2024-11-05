@@ -129,5 +129,17 @@ public final class SqlConnectionHelper {
 			throw new UcoApplicationException(userMessage, technicalMessage, exception, Layer.DATA);
 		}
 	}
+	
+	public static Connection openConnectionPostgreSQL(final String url,final String user,final String password) {
+
+		try {
+			return DriverManager.getConnection(url,user,password);
+		} catch (final SQLException exception) {
+			var userMessage = "Se ha presentado un problema inesperado tratando de llevar a cabo la operación deseada...";
+			var technicalMessage = "Se ha presentado una excepción de tipo SQLException tratando de obtener la conexión con la fuente de datos SQL deseada. Por favor revise el log de errores para tener más detalles del error presentado...";
+			throw new UcoApplicationException(userMessage, technicalMessage, exception, Layer.DATA);
+		}
+	}
+	
 
 }
