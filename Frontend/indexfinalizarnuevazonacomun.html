@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Instalación - Gastroteca</title>
+  <link href="filesCss/stylecreandoZC.css" rel="stylesheet" />
+<body>
+  <div class="contenedor">
+    <!-- Barra lateral -->
+    <aside class="barra-lateral">
+        <div class="logo">
+            <img alt="Reservar Zona Común Logo" height="150" src="imagenes/logo.jpg" width="150"/>
+        </div>
+      <ul>
+        <li>Inicio</li>
+        <li>Usuarios</li>
+        <li>Gestión</li>
+        <li class="activo">Instalaciones
+          <ul>
+            <li>Listado</li>
+            <li>Buscador</li>
+          </ul>
+        </li>
+        <li>Pagos y cobros</li>
+        <li>Domótica</li>
+      </ul>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="contenido-principal">
+      <!-- Encabezado -->
+      <header class="encabezado">
+        <h1>Nueva Zona Común</h1>
+        <p>Instalaciones &raquo; Editar</p>
+      </header>
+
+      <!-- Formulario de edición -->
+      <section class="formulario-edicion">
+        <form>
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre">
+          </div>
+          <div class="campo">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion"></textarea>
+          </div>
+          <div class="campo">
+            <label for="reservable">Reservable</label>
+            <select id="reservable" name="reservable">
+              <option value="no">No</option>
+              <option value="si">Sí</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="foto">Subir foto</label>
+            <input type="file" id="foto" name="foto" accept="image/*">
+          </div>
+          <div class="campo">
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
