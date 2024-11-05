@@ -21,4 +21,5 @@ public abstract class DAOFactory {
 	public abstract CountryDAO getCountryDAO();
 	public abstract StateDAO getStateDAO();
 	public abstract ResidentialComplexDAO getResidentialComplexDAO();
+	public abstract CommonZoneDAO getCommonZoneDAO();
 }

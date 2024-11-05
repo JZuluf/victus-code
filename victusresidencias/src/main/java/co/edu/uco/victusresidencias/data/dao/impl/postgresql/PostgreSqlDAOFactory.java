@@ -8,6 +8,7 @@ import java.sql.Connection;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.SqlConnectionHelper;
 import co.edu.uco.victusresidencias.data.dao.CityDAO;
+import co.edu.uco.victusresidencias.data.dao.CommonZoneDAO;
 import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.ResidentialComplexDAO;
@@ -74,6 +75,12 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 
 	@Override
 	public ResidentialComplexDAO getResidentialComplexDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CommonZoneDAO getCommonZoneDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -9,11 +9,11 @@ import java.util.UUID;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
-import co.edu.uco.victusresidencias.data.dao.ComunZoneDAO;
+import co.edu.uco.victusresidencias.data.dao.CommonZoneDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.CommonZoneEntity;
 
-public final class ComunZoneSqlServerDAO extends SqlDAO implements ComunZoneDAO {
+public final class ComunZoneSqlServerDAO extends SqlDAO implements CommonZoneDAO {
 
     public ComunZoneSqlServerDAO(final Connection connection) {
         super(connection);
