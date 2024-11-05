@@ -12,6 +12,7 @@ import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.ResidentialComplexDAO;
 import co.edu.uco.victusresidencias.data.dao.StateDAO;
+import co.edu.uco.victusresidencias.data.dao.UsageTimeUnitDAO;
 
 public final class PostgreSqlDAOFactory extends DAOFactory {
 
@@ -91,6 +92,12 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 
 	@Override
 	public AdministratorDAO getAdministratorDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UsageTimeUnitDAO getUsageTimeUnitDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -19,11 +19,13 @@ import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
 import co.edu.uco.victusresidencias.domain.ScheduledDomain;
 import co.edu.uco.victusresidencias.domain.StateDomain;
 import co.edu.uco.victusresidencias.domain.TurnDomain;
+import co.edu.uco.victusresidencias.domain.UsageTimeUnitDomain;
 
 public class createDefault {
 	
 	//para los DTO
 	public static final CountryDomain COUNTRY = CountryDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY);
+	public static final UsageTimeUnitDomain USAGE_TIME_UNIT = UsageTimeUnitDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, false, TextHelper.EMPTY);
 	public static final StateDomain STATE = StateDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, COUNTRY);
 	public static final CityDomain CITY = CityDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, STATE);
 	public static final AdministratorDomain ADMINISTRATOR = AdministratorDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY,TextHelper.EMPTY,TextHelper.EMPTY,TextHelper.EMPTY,TextHelper.EMPTY,TextHelper.EMPTY);
@@ -80,5 +82,6 @@ public class createDefault {
 			LocalDateTime.MIN, 
 			false, 
 			SCHEDULED);
+
 	
 }
