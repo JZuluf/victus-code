@@ -2,6 +2,7 @@ package co.edu.uco.victusresidencias.initializer.controller;
 
 import co.edu.uco.victusresidencias.data.dao.impl.postgresql.PostgreSqlDAOFactory;
 import co.edu.uco.victusresidencias.entity.CountryEntity;
+import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,15 @@ public class CountryController {
 
     @GetMapping("/{id}")
     public CountryEntity findById(@PathVariable UUID id) {
-        // Llamamos a findById del DAO
-        return daoFactory.getCountryDAO().fingByID(id);
+    	CountryEntity country = daoFactory.getCountryDAO().fingByID(id);
+        if (country == null) {
+        	var userMessage = "Se ha presentado un problema tratando de llevar a cabo el registro de la información del nuevo país. Por favor intente de nuevo y si el problema persiste reporte la novedad...";
+			var technicalMessage = "Se ha presentado un problema al tratar de registrar la informaciòn del nuevo país en la base de datos SQL Server. Por favor valide el log de errores para encontrar mayores detalles del problema presentado...";
+ 
+			throw DataVictusResidenciasException.crear(userMessage, technicalMessage);
+            //throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Country not found with ID: " + id);
+        }
+        return country;
     }
 
     @PostMapping("/new")

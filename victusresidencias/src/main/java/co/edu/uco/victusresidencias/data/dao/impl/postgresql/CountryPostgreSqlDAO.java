@@ -27,11 +27,12 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 	@Override
 	public CountryEntity fingByID(UUID id) {
 		var countryEntityFilter = new CountryEntity();
-		countryEntityFilter.setId(id);
-		
-		var result = findByFilter(countryEntityFilter);
-		return (result.isEmpty()) ? new CountryEntity() : result.get(0);
+	    countryEntityFilter.setId(id);
+	    
+	    var result = findByFilter(countryEntityFilter);
+	    return (result.isEmpty()) ? null : result.get(0); // Retorna null si no encuentra
 	}
+	
 
 	@Override
 	public List<CountryEntity> findAll() {
@@ -100,22 +101,15 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 	}
 	
 	private void createWhere(final StringBuilder statement, 
-			final CountryEntity filter, 
-			final List<Object> parameters) {
-		if (ObjectHelper.isNull(filter)) {
-			
-			if (!UUIDHelper.isDefault(filter.getId())) {
+            final CountryEntity filter, 
+            final List<Object> parameters) {
+			if (!UUIDHelper.isDefault(filter.getId())) { // Se asegura de que el ID no sea el valor predeterminado
 				statement.append("WHERE id = ? ");
 				parameters.add(filter.getId());
-			}
-			
-			if (TextHelper.isEmpty(filter.getName())) {
-				statement.append((parameters.isEmpty()) ? "WHERE " : "AND ");
-				statement.append("name = ? ");
+			} else if (!TextHelper.isEmpty(filter.getName())) { // Condición para filtro de nombre
+				statement.append("WHERE name = ? ");
 				parameters.add(filter.getName());
 			}
-			
-		}
 	}
 	
 	private void createOrderBy(final StringBuilder statement) {
@@ -146,13 +140,43 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 
 	@Override
 	public void delete(UUID data) {
-		// TODO Auto-generated method stub
-		
+		final StringBuilder statement = new StringBuilder();
+	    statement.append("DELETE FROM country WHERE id = ?");
+
+	    try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
+
+	        preparedStatement.setObject(1, data);
+
+	        preparedStatement.executeUpdate();
+
+	    } catch (final SQLException exception) {
+	        var userMessage = "Se ha presentado un problema tratando de eliminar la ciudad seleccionada. Por favor intente de nuevo y si el problema persiste reporte la novedad...";
+	        var technicalMessage = "Se ha presentado un problema al tratar de eliminar la ciudad en la base de datos SQL Server. Por favor valide el log de errores para encontrar mayores detalles del problema presentado...";
+
+	        throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
+	    }
 	}
 
 	@Override
 	public void update(CountryEntity data) {
-		// TODO Auto-generated method stub
+		final StringBuilder statement = new StringBuilder();
+	    statement.append("UPDATE country SET name = ? WHERE id = ?");
+
+	    try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
+
+	        preparedStatement.setString(1, data.getName());
+	        preparedStatement.setObject(2, data.getId());
+
+	        preparedStatement.executeUpdate();
+
+	    } catch (final SQLException exception) {
+	        var userMessage = "Se ha presentado un problema tratando de actualizar la información de la ciudad. Por favor intente de nuevo y si el problema persiste reporte la novedad...";
+	        var technicalMessage = "Se ha presentado un problema al tratar de actualizar la información de la ciudad en la base de datos SQL Server. Por favor valide el log de errores para encontrar mayores detalles del problema presentado...";
+
+	        throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
+	    }
 		
 	}
+
+	
 }
