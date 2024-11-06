@@ -2,6 +2,7 @@ package co.edu.uco.victusresidencias.controller;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +19,7 @@ import co.edu.uco.victusresidencias.controller.response.concrete.CityResponse;
 import co.edu.uco.victusresidencias.controller.response.concrete.GenericResponse;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.UcoApplicationException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.data.dao.impl.postgresql.PostgreSqlDAOFactory;
 import co.edu.uco.victusresidencias.data.dao.impl.sqlserver.SqlServerDAOFactory;
 import co.edu.uco.victusresidencias.domain.CityDomain;
@@ -40,15 +42,18 @@ public final class CityController {
         return CityDTO.create();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<GenericResponse> create(@RequestBody CityDTO city) {
         var messages = new ArrayList<String>();
         
         try {
-            // Instancia y uso del facade para el registro de una nueva ciudad
-            var registerNewCityFacade = new RegisterNewCityFacadeImpl();
+        	var registerNewCityFacade = new RegisterNewCityFacadeImpl();
             registerNewCityFacade.execute(city);
-            
+
+            CityDomain cityDomain = CityDTOAdapter.getCityDTOAdapter().adaptSource(city);
+            CityEntity cityEntity = CityEntityAdapter.getCityEntityAdapter().adaptSource(cityDomain);
+            daoFactory.getCityDAO().create(cityEntity);
+
             messages.add("La ciudad se registró de forma satisfactoria");
             return GenerateResponse.generateSuccessResponse(messages);
 
@@ -125,14 +130,29 @@ public final class CityController {
         var messages = new ArrayList<String>();
         
         try {
-            // Llamada a findAll para obtener todas las ciudades en SQL Server
-            List<CityEntity> cities = daoFactory.getCityDAO().findAll();
-            //List<CityDTO> cityDTOs = cities.stream().map(CityDTO::fromEntity).toList();
-            
-            //responseWithData.setData(cityDTOs);
-            messages.add("Las ciudades fueron consultadas satisfactoriamente");
+        	// Obtención de todas las ciudades desde la base de datos en formato CityEntity
+            List<CityEntity> cityEntities = daoFactory.getCityDAO().findAll();
+
+            // Conversión de CityEntity a CityDomain utilizando el adaptador
+            List<CityDomain> cityDomains = CityEntityAdapter.getCityEntityAdapter().adaptTarget(cityEntities);
+
+            // Conversión de CityDomain a CityDTO para la respuesta final
+            List<CityDTO> cityDTOs = CityDTOAdapter.getCityDTOAdapter().adaptTarget(cityDomains);
+
+            // Preparación de respuesta exitosa
+            responseWithData.setData(cityDTOs);
+            messages.add("Las ciudades fueron consultadas satisfactoriamente.");
             responseWithData.setMessages(messages);
+
             return new GenerateResponse<CityResponse>().generateSuccessResponseWithData(responseWithData);
+//            // Llamada a findAll para obtener todas las ciudades en SQL Server
+//            List<CityEntity> cities = daoFactory.getCityDAO().findAll();
+//            List<CityDTO> cityDTOs = cities.stream().map(CityDTO::fromEntity).toList();
+//            
+//            responseWithData.setData(cityDTOs);
+//            messages.add("Las ciudades fueron consultadas satisfactoriamente");
+//            responseWithData.setMessages(messages);
+//            return new GenerateResponse<CityResponse>().generateSuccessResponseWithData(responseWithData);
         }catch (final Exception exception) {
             messages.add("Error al consultar la ciudad. Por favor intente nuevamente.");
             exception.printStackTrace();

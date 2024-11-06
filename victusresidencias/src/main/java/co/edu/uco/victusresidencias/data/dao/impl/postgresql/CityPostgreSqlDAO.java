@@ -92,10 +92,9 @@ final class CityPostgreSqlDAO extends SqlDAO implements CityDAO {
 	@Override
 	public void create(CityEntity data) {
 		final StringBuilder statement = new StringBuilder();
-		statement.append("INSERT INTO City(id, name, state) VALUES (?, ?, ?)");
+		statement.append("INSERT INTO city(id, name, state) VALUES (?, ?, ?)");
  
 		try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
- 
 			preparedStatement.setObject(1, data.getId());
 			preparedStatement.setString(2, data.getName());
 			preparedStatement.setObject(3, data.getState().getId());

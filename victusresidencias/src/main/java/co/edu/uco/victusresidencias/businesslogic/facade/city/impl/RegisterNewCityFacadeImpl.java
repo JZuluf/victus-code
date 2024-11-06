@@ -14,7 +14,7 @@ public final class RegisterNewCityFacadeImpl implements RegisterNewCityFacade{
 	@Override
 	public void execute(final CityDTO data) {
 		
-		var factory = DAOFactory.getFactory(DAOSource.SQLSERVER);
+		var factory = DAOFactory.getFactory(DAOSource.POSTGRESQL);
 		
 		try {
 			factory.initTransaction(); 
