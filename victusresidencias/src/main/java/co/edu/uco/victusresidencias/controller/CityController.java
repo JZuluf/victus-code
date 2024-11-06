@@ -10,13 +10,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CityDTOAdapter;
+import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CityEntityAdapter;
 import co.edu.uco.victusresidencias.businesslogic.facade.city.impl.RegisterNewCityFacadeImpl;
 import co.edu.uco.victusresidencias.controller.response.GenerateResponse;
 import co.edu.uco.victusresidencias.controller.response.concrete.CityResponse;
 import co.edu.uco.victusresidencias.controller.response.concrete.GenericResponse;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.UcoApplicationException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
+import co.edu.uco.victusresidencias.data.dao.impl.postgresql.PostgreSqlDAOFactory;
 import co.edu.uco.victusresidencias.data.dao.impl.sqlserver.SqlServerDAOFactory;
+import co.edu.uco.victusresidencias.domain.CityDomain;
 import co.edu.uco.victusresidencias.dto.CityDTO;
 import co.edu.uco.victusresidencias.entity.CityEntity;
 
@@ -24,11 +28,11 @@ import co.edu.uco.victusresidencias.entity.CityEntity;
 @RequestMapping("/api/v1/cities")
 public final class CityController {
 
-    private final SqlServerDAOFactory daoFactory;
+    private final PostgreSqlDAOFactory daoFactory;
 
     @Autowired
     public CityController() {
-        this.daoFactory = new SqlServerDAOFactory();
+        this.daoFactory = new PostgreSqlDAOFactory();
     }
 
     @GetMapping("/dummy")
@@ -46,43 +50,58 @@ public final class CityController {
             registerNewCityFacade.execute(city);
             
             messages.add("La ciudad se registró de forma satisfactoria");
-            return GenerateResponse.genetareSuccessResponse(messages);
+            return GenerateResponse.generateSuccessResponse(messages);
 
         } catch (final VictusResidenciasException exception) {
             messages.add(exception.getUserMessage());
             exception.printStackTrace();
-            return GenerateResponse.genetareFailedResponse(messages);
+            return GenerateResponse.generateFailedResponse(messages);
 
         }catch (final UcoApplicationException exception) {
             messages.add(exception.getUserMessage());
             exception.printStackTrace();
-            return GenerateResponse.genetareFailedResponse(messages);
+            return GenerateResponse.generateFailedResponse(messages);
 
         } catch (final Exception exception) {
             messages.add("Se ha presentado un problema inesperado al registrar la ciudad.");
             exception.printStackTrace();
-            return GenerateResponse.genetareFailedResponse(messages);
+            return GenerateResponse.generateFailedResponse(messages);
         }
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<GenericResponse> update(@PathVariable UUID id, @RequestBody CityDTO city) {
         var messages = new ArrayList<String>();
-        
+
         try {
-            //city.setId(id);//setId(id); // Asigna el ID de la ciudad a actualizar
-            //daoFactory.getCityDAO().update(city);
-            
-            
-            messages.add("La ciudad se actualizó de manera satisfactoria");
-            return GenerateResponse.genetareSuccessResponse(messages);
+            // Verificar si la ciudad con el ID especificado existe en la base de datos
+            var cityDAO = daoFactory.getCityDAO();
+            CityEntity existingCity = cityDAO.fingByID(id);
+
+            if (existingCity == null) {
+                messages.add("No se encontró una ciudad con el ID especificado.");
+                return GenerateResponse.generateFailedResponse(messages);
+            }
+
+            // Asigna el ID al DTO y adapta el DTO a Entity
+            city.setId(id.toString());
+            CityDomain cityDomain = CityDTOAdapter.getCityDTOAdapter().adaptSource(city);
+            CityEntity cityEntity = CityEntityAdapter.getCityEntityAdapter().adaptSource(cityDomain);
+
+            // Actualiza la ciudad en la base de datos
+            cityDAO.update(cityEntity);
+
+            messages.add("La ciudad se actualizó de manera satisfactoria.");
+            return GenerateResponse.generateSuccessResponse(messages);
 
         } catch (final Exception exception) {
             messages.add("Error al actualizar la ciudad. Por favor intente nuevamente.");
             exception.printStackTrace();
-            return GenerateResponse.genetareFailedResponse(messages);
+            return GenerateResponse.generateFailedResponse(messages);
         }
     }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<GenericResponse> delete(@PathVariable UUID id) {
@@ -91,12 +110,12 @@ public final class CityController {
         try {
             daoFactory.getCityDAO().delete(id);
             messages.add("La ciudad se eliminó de manera satisfactoria");
-            return GenerateResponse.genetareSuccessResponse(messages);
+            return GenerateResponse.generateSuccessResponse(messages);
 
         } catch (final Exception exception) {
             messages.add("Error al eliminar la ciudad. Por favor intente nuevamente.");
             exception.printStackTrace();
-            return GenerateResponse.genetareFailedResponse(messages);
+            return GenerateResponse.generateFailedResponse(messages);
         }
     }
 
@@ -113,7 +132,7 @@ public final class CityController {
             //responseWithData.setData(cityDTOs);
             messages.add("Las ciudades fueron consultadas satisfactoriamente");
             responseWithData.setMessages(messages);
-            return new GenerateResponse<CityResponse>().genetareSuccessResponseWithData(responseWithData);
+            return new GenerateResponse<CityResponse>().generateSuccessResponseWithData(responseWithData);
         }catch (final Exception exception) {
             messages.add("Error al consultar la ciudad. Por favor intente nuevamente.");
             exception.printStackTrace();
@@ -140,7 +159,7 @@ public final class CityController {
             messages.add("La ciudad fue consultada satisfactoriamente.");
             responseWithData.setMessages(messages);
             
-            return new GenerateResponse<CityResponse>().genetareSuccessResponseWithData(responseWithData);
+            return new GenerateResponse<CityResponse>().generateSuccessResponseWithData(responseWithData);
 
         } catch (final Exception exception) {
             messages.add("Error al consultar la ciudad. Por favor intente nuevamente.");
