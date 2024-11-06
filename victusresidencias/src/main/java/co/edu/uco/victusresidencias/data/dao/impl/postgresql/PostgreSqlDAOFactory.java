@@ -17,9 +17,12 @@ import co.edu.uco.victusresidencias.data.dao.UsageTimeUnitDAO;
 public final class PostgreSqlDAOFactory extends DAOFactory {
 
 	private Connection connection;
-	private final String url = "jdbc:postgresql://localhost:5432/LocalBaseDatosJava";
-	private final String user = "postgres";
-	private final String password = "123456";
+//	private final String url = "jdbc:postgresql://localhost:5432/LocalBaseDatosJava";
+//	private final String user = "postgres";
+//	private final String password = "123456";
+	private final String url = "jdbc:postgresql://cjjxjjym:C1fGqQx4sC0Jh6Rg3TicDI1WJ1UxAUJk@bubble.db.elephantsql.com";
+	private final String user = "cjjxjjym";
+	private final String password = "C1fGqQx4sC0Jh6Rg3TicDI1WJ1UxAUJk";
 
 	public PostgreSqlDAOFactory() {
 		openConnection();
@@ -28,8 +31,13 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	@Override
 	protected void openConnection() {
 		SqlConnectionHelper.validateIfConnectionIsOpen(connection);
-		connection = SqlConnectionHelper.openConnectionPostgreSQL(url,user,password);
+		connection = SqlConnectionHelper.openConnectionPostgreSQL(url, user, password);
+		//connection = SqlConnectionHelper.openConnectionPostgreSQL(url,user,password);
 		System.out.println("Buen trabajo se conecto a la base de datos");
+	}
+	public static void main(String[] args) {
+		PostgreSqlDAOFactory prueba = new PostgreSqlDAOFactory();
+		prueba.openConnection();
 	}
 
 //	public static void main(String[] args) {
