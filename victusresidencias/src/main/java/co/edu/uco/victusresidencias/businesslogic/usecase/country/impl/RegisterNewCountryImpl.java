@@ -47,17 +47,26 @@ public final class RegisterNewCountryImpl implements RegisterNewCountry{
 		var countryEntity = CountryEntityAdapter.getCountryEntityAdapter().adaptSource(countryDomainToMap);
 		daoFactory.getCountryDAO().create(countryEntity);		
 	}
-	
 	private UUID generateId() {
-		var id = UUIDHelper.generate();
-		var countryEntity = daoFactory.getCountryDAO().fingByID(id);    
-		
-		if (UUIDHelper.isEqual(countryEntity.getId(), id)) {
-			id = generateId();
-		}
-		
-		return id;
-		
+	    UUID id;
+	    do {
+	        id = UUIDHelper.generate();
+	    } while (daoFactory.getCountryDAO().fingByID(id) != null);
+	    
+	    return id;
 	}
+
+	
+//	private UUID generateId() {
+//		var id = UUIDHelper.generate();
+//		var countryEntity = daoFactory.getCountryDAO().fingByID(id);    
+//		
+//		if (UUIDHelper.isEqual(countryEntity.getId(), id)) {
+//			id = generateId();
+//		}
+//		
+//		return id;
+//		
+//	}
 
 }

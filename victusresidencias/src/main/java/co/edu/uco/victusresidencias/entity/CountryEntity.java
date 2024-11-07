@@ -10,7 +10,8 @@ public class CountryEntity extends DomainEntity {
 	private String name;
 
 	public CountryEntity() {
-		super(UUIDHelper.getDefault());
+//		super(UUIDHelper.getDefault());
+		super(UUIDHelper.generate());
 		setName(TextHelper.EMPTY);
 	}
 	
