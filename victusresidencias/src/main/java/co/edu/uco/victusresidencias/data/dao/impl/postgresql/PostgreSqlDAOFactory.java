@@ -4,6 +4,9 @@ package co.edu.uco.victusresidencias.data.dao.impl.postgresql;
 
 import java.sql.Connection;
 
+
+
+
 import co.edu.uco.victusresidencias.crosscutting.helpers.SqlConnectionHelper;
 import co.edu.uco.victusresidencias.data.dao.AdministratorDAO;
 import co.edu.uco.victusresidencias.data.dao.CityDAO;
@@ -17,12 +20,13 @@ import co.edu.uco.victusresidencias.data.dao.UsageTimeUnitDAO;
 public final class PostgreSqlDAOFactory extends DAOFactory {
 
 	private Connection connection;
-//	private final String url = "jdbc:postgresql://localhost:5432/LocalBaseDatosJava";
-//	private final String user = "postgres";
-//	private final String password = "123456";
-	private final String url = "jdbc:postgresql://cjjxjjym:C1fGqQx4sC0Jh6Rg3TicDI1WJ1UxAUJk@bubble.db.elephantsql.com";
-	private final String user = "cjjxjjym";
-	private final String password = "C1fGqQx4sC0Jh6Rg3TicDI1WJ1UxAUJk";
+	private final String url = "jdbc:postgresql://localhost:5432/LocalBaseDatosJava";
+	private final String user = "postgres";
+	private final String password = "123456";
+//	private final String url = "jdbc:postgresql://bubble.db.elephantsql.com/cjjxjjym";
+//	private final String user = "cjjxjjym";
+//	private final String password = "C1fGqQx4sC0Jh6Rg3TicDI1WJ1UxAUJk";
+	
 
 	public PostgreSqlDAOFactory() {
 		openConnection();
@@ -32,13 +36,22 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	protected void openConnection() {
 		SqlConnectionHelper.validateIfConnectionIsOpen(connection);
 		connection = SqlConnectionHelper.openConnectionPostgreSQL(url, user, password);
-		//connection = SqlConnectionHelper.openConnectionPostgreSQL(url,user,password);
 		System.out.println("Buen trabajo se conecto a la base de datos");
 	}
-	public static void main(String[] args) {
-		PostgreSqlDAOFactory prueba = new PostgreSqlDAOFactory();
-		prueba.openConnection();
-	}
+//	public static void main(String[] args) throws SQLException {
+//		try {
+//            Connection conexion = DriverManager.getConnection(
+//                "jdbc:postgresql://bubble.db.elephantsql.com/cjjxjjym",
+//                "cjjxjjym",
+//                "C1fGqQx4sC0Jh6Rg3TicDI1WJ1UxAUJk"
+//            );
+//            System.out.println("Buen trabajo, se conectó a la base de datos");
+//            conexion.close();
+//            System.out.println("Buen trabajo, se cerro a la base de datos");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//	}
 
 //	public static void main(String[] args) {
 //		PostgreSqlDAOFactory prueba = new PostgreSqlDAOFactory();
