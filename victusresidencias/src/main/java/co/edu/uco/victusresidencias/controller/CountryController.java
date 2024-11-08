@@ -20,6 +20,7 @@ import co.edu.uco.victusresidencias.businesslogic.facade.city.impl.RegisterNewCi
 import co.edu.uco.victusresidencias.businesslogic.facade.country.impl.RegisterNewCountryFacadeImpl;
 import co.edu.uco.victusresidencias.controller.response.GenerateResponse;
 import co.edu.uco.victusresidencias.controller.response.concrete.CityResponse;
+import co.edu.uco.victusresidencias.controller.response.concrete.CountryResponse;
 import co.edu.uco.victusresidencias.controller.response.concrete.GenericResponse;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.UcoApplicationException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
@@ -57,10 +58,6 @@ public final class CountryController {
         try {
         	var registerNewCountryFacade = new RegisterNewCountryFacadeImpl();
             registerNewCountryFacade.execute(country);
-
-            CountryDomain countryDomain = CountryDTOAdapter.getCountryDTOAdapter().adaptSource(country);
-            CountryEntity countryEntity = CountryEntityAdapter.getCountryEntityAdapter().adaptSource(countryDomain);
-            daoFactory.getCountryDAO().create(countryEntity);
 
             messages.add("El país se registró de forma satisfactoria");
             return GenerateResponse.generateSuccessResponse(messages);
@@ -121,7 +118,7 @@ public final class CountryController {
         var messages = new ArrayList<String>();
         
         try {
-            daoFactory.getCityDAO().delete(id);
+            daoFactory.getCountryDAO().delete(id);
             messages.add("El país se eliminó de manera satisfactoria");
             return GenerateResponse.generateSuccessResponse(messages);
 
@@ -131,43 +128,81 @@ public final class CountryController {
             return GenerateResponse.generateFailedResponse(messages);
         }
     }
-
+    
     @GetMapping
-    public ResponseEntity<CityResponse> retrieveAll() {
-        var responseWithData = new CityResponse();
-        var messages = new ArrayList<String>();
+    public ResponseEntity<CountryResponse> retrieveAll() {
+        // Inicializar la respuesta y los mensajes
+        CountryResponse responseWithData = new CountryResponse();
+        List<String> messages = new ArrayList<>();
         
         try {
-        	// Obtención de todas las ciudades desde la base de datos en formato CityEntity
-            List<CityEntity> cityEntities = daoFactory.getCityDAO().findAll();
+            // Paso 1: Obtener todas las entidades de países desde la base de datos
+            List<CountryEntity> countryEntities = daoFactory.getCountryDAO().findAll();
 
-            // Conversión de CityEntity a CityDomain utilizando el adaptador
-            List<CityDomain> cityDomains = CityEntityAdapter.getCityEntityAdapter().adaptTarget(cityEntities);
+            // Paso 2: Adaptar las entidades a dominios
+            List<CountryDomain> countryDomains = CountryEntityAdapter.getCountryEntityAdapter().adaptTarget(countryEntities);
 
-            // Conversión de CityDomain a CityDTO para la respuesta final
-            List<CityDTO> cityDTOs = CityDTOAdapter.getCityDTOAdapter().adaptTarget(cityDomains);
+            // Paso 3: Convertir dominios a DTOs para la respuesta
+            List<CountryDTO> countryDTOs = CountryDTOAdapter.getCountryDTOAdapter().adaptTarget(countryDomains);
 
-            // Preparación de respuesta exitosa
-            responseWithData.setData(cityDTOs);
-            messages.add("Los países fueron consultadas satisfactoriamente.");
+            // Paso 4: Preparar la respuesta exitosa
+            responseWithData.setData(countryDTOs);
+            messages.add("Los países fueron consultados satisfactoriamente.");
             responseWithData.setMessages(messages);
 
-            return new GenerateResponse<CityResponse>().generateSuccessResponseWithData(responseWithData);
-//            // Llamada a findAll para obtener todas las ciudades en SQL Server
-//            List<CityEntity> cities = daoFactory.getCityDAO().findAll();
-//            List<CityDTO> cityDTOs = cities.stream().map(CityDTO::fromEntity).toList();
-//            
-//            responseWithData.setData(cityDTOs);
-//            messages.add("Las ciudades fueron consultadas satisfactoriamente");
-//            responseWithData.setMessages(messages);
-//            return new GenerateResponse<CityResponse>().generateSuccessResponseWithData(responseWithData);
-        }catch (final Exception exception) {
-            messages.add("Error al consultar el país. Por favor intente nuevamente.");
+            // Retornar respuesta exitosa con datos
+            return new ResponseEntity<>(responseWithData, HttpStatus.OK);
+
+        } catch (Exception exception) {
+            // Registro de la excepción (para propósitos de depuración)
             exception.printStackTrace();
+
+            // Mensaje de error para el cliente
+            messages.add("Error al consultar los países. Por favor intente nuevamente.");
             responseWithData.setMessages(messages);
+
+            // Retornar respuesta con error interno del servidor
             return new ResponseEntity<>(responseWithData, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
+//    @GetMapping
+//    public ResponseEntity<CityResponse> retrieveAll() {
+//        var responseWithData = new CityResponse();
+//        var messages = new ArrayList<String>();
+//        
+//        try {
+//        	// Obtención de todas las ciudades desde la base de datos en formato CityEntity
+//            List<CityEntity> cityEntities = daoFactory.getCityDAO().findAll();
+//
+//            // Conversión de CityEntity a CityDomain utilizando el adaptador
+//            List<CityDomain> cityDomains = CityEntityAdapter.getCityEntityAdapter().adaptTarget(cityEntities);
+//
+//            // Conversión de CityDomain a CityDTO para la respuesta final
+//            List<CityDTO> cityDTOs = CityDTOAdapter.getCityDTOAdapter().adaptTarget(cityDomains);
+//
+//            // Preparación de respuesta exitosa
+//            responseWithData.setData(cityDTOs);
+//            messages.add("Los países fueron consultadas satisfactoriamente.");
+//            responseWithData.setMessages(messages);
+//
+//            return new GenerateResponse<CityResponse>().generateSuccessResponseWithData(responseWithData);
+////            // Llamada a findAll para obtener todas las ciudades en SQL Server
+////            List<CityEntity> cities = daoFactory.getCityDAO().findAll();
+////            List<CityDTO> cityDTOs = cities.stream().map(CityDTO::fromEntity).toList();
+////            
+////            responseWithData.setData(cityDTOs);
+////            messages.add("Las ciudades fueron consultadas satisfactoriamente");
+////            responseWithData.setMessages(messages);
+////            return new GenerateResponse<CityResponse>().generateSuccessResponseWithData(responseWithData);
+//        }catch (final Exception exception) {
+//            messages.add("Error al consultar el país. Por favor intente nuevamente.");
+//            exception.printStackTrace();
+//            responseWithData.setMessages(messages);
+//            return new ResponseEntity<>(responseWithData, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<CityResponse> retrieveById(@PathVariable UUID id) {

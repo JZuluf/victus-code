@@ -20,6 +20,7 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.domain.CityDomain;
 import co.edu.uco.victusresidencias.domain.CountryDomain;
+import co.edu.uco.victusresidencias.entity.CountryEntity;
 
 public final class RegisterNewCountryImpl implements RegisterNewCountry{
 
@@ -41,12 +42,38 @@ public final class RegisterNewCountryImpl implements RegisterNewCountry{
 	
 	@Override
 	public void execute(final CountryDomain data) {
-		countryNameConsistencyIsValid.execute(data.getName());
-		
-		var countryDomainToMap = CountryDomain.create(generateId(), data.getName());
-		var countryEntity = CountryEntityAdapter.getCountryEntityAdapter().adaptSource(countryDomainToMap);
-		daoFactory.getCountryDAO().create(countryEntity);		
+	    countryNameConsistencyIsValid.execute(data.getName());
+
+	 // Crear un filtro de entidad para buscar si existe un país con el mismo nombre
+	    var countryEntityFilter = new CountryEntity();
+	    countryEntityFilter.setName(data.getName());
+
+	    // Buscar en la base de datos utilizando el filtro
+	    boolean countryExists = !daoFactory.getCountryDAO().findByFilter(countryEntityFilter).isEmpty();
+
+	    // Lanzar excepción si se encuentra un país con el mismo nombre
+	    if (countryExists) {
+	        String userMessage = "El país ya existe";
+	        String technicalMessage = "El país con el nombre '" + data.getName() + "' ya existe en la base de datos.";
+	        
+	        throw BusinessLogicVictusResidenciasException.crear(userMessage, technicalMessage);
+	    }
+
+
+	    // Si no existe, procede a crear el país
+	    var countryDomainToMap = CountryDomain.create(generateId(), data.getName());
+	    var countryEntity = CountryEntityAdapter.getCountryEntityAdapter().adaptSource(countryDomainToMap);
+	    daoFactory.getCountryDAO().create(countryEntity);
 	}
+	
+//	@Override
+//	public void execute(final CountryDomain data) {
+//		countryNameConsistencyIsValid.execute(data.getName());
+//		
+//		var countryDomainToMap = CountryDomain.create(generateId(), data.getName());
+//		var countryEntity = CountryEntityAdapter.getCountryEntityAdapter().adaptSource(countryDomainToMap);
+//		daoFactory.getCountryDAO().create(countryEntity);		
+//	}
 	private UUID generateId() {
 	    UUID id;
 	    do {

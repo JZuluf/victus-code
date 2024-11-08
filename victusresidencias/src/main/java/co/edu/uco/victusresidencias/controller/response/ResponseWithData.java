@@ -15,7 +15,7 @@ public abstract class ResponseWithData<T> extends Response {
 
 	public final void setData(final List<T> data) {
 		
-		this.data = ObjectHelper.getDefault(data, this.data);;
+		this.data = ObjectHelper.getDefault(data, this.data);
 	}
 	
 	
