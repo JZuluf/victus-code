@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CountryDTOAdapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CountryEntityAdapter;
+import co.edu.uco.victusresidencias.businesslogic.facade.country.impl.DeleteCountryFacadeImpl;
 import co.edu.uco.victusresidencias.businesslogic.facade.country.impl.RegisterNewCountryFacadeImpl;
 import co.edu.uco.victusresidencias.controller.response.GenerateResponse;
 import co.edu.uco.victusresidencias.controller.response.concrete.CountryResponse;
@@ -74,13 +75,14 @@ public final class CountryController {
         try {
             // Paso 1: Obtener la entidad del país desde la base de datos
             CountryEntity existingCountryEntity = daoFactory.getCountryDAO().fingByID(id);
-
+            
+            
             if (existingCountryEntity == null) {
                 messages.add("No se encontró un país con el ID especificado.");
                 responseWithData.setMessages(messages);
                 return new ResponseEntity<>(responseWithData, HttpStatus.NOT_FOUND);
             }
-
+            messages.add("El país "+existingCountryEntity.getName()+" se actualizó a .");
             // Asignar el ID al DTO para mantener la coherencia y adaptar a Entity
             country.setId(id.toString());
             CountryDomain countryDomain = CountryDTOAdapter.getCountryDTOAdapter().adaptSource(country);
@@ -88,9 +90,16 @@ public final class CountryController {
 
             // Actualizar el país en la base de datos
             daoFactory.getCountryDAO().update(updatedCountryEntity);
+            
+            List<CountryEntity> countryEntityList = List.of(updatedCountryEntity);
+            List<CountryDomain> countryDomains = CountryEntityAdapter.getCountryEntityAdapter().adaptTarget(countryEntityList);
+
+            // Paso 3: Convertir el dominio a DTO y prepararlo para la respuesta
+            List<CountryDTO> countryDTOs = CountryDTOAdapter.getCountryDTOAdapter().adaptTarget(countryDomains);
 
             // Preparar mensajes de éxito
-            messages.add("El país se actualizó de manera satisfactoria.");
+            messages.add(updatedCountryEntity.getName()+" de manera satisfactoria.");
+            responseWithData.setData(countryDTOs);
             responseWithData.setMessages(messages);
             return new ResponseEntity<>(responseWithData, HttpStatus.OK);
 
@@ -108,9 +117,12 @@ public final class CountryController {
         var messages = new ArrayList<String>();
         
         try {
-            daoFactory.getCountryDAO().delete(id);
+        	var deleteCountryFacade = new DeleteCountryFacadeImpl();
+        	deleteCountryFacade.execute(id);
+
             messages.add("El país se eliminó de manera satisfactoria");
             return GenerateResponse.generateSuccessResponse(messages);
+        	
 
         } catch (final Exception exception) {
             messages.add("Error al eliminar el país. Por favor intente nuevamente.");

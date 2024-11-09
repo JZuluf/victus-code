@@ -4,11 +4,13 @@ package co.edu.uco.victusresidencias.businesslogic.usecase.country.impl;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CityEntityAdapter;
+import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CountryEntityAdapter;
 import co.edu.uco.victusresidencias.businesslogic.usecase.city.UpdateCity;
 import co.edu.uco.victusresidencias.businesslogic.usecase.country.UpdateCountry;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.domain.CityDomain;
+import co.edu.uco.victusresidencias.domain.CountryDomain;
 
 public final class UpdateCountryImpl implements UpdateCountry{
 	
@@ -16,15 +18,6 @@ public final class UpdateCountryImpl implements UpdateCountry{
 	
 	public UpdateCountryImpl(DAOFactory daoFactory){
 		setDaoFactory(daoFactory);
-	}
-	
-	@Override
-	public void execute(final CityDomain data) {
-		// Validate policies
-		
-		var countryEntity = CityEntityAdapter.getCityEntityAdapter().adaptSource(data);
-		daoFactory.getCityDAO().update(countryEntity);
-		
 	}
 
 	private void setDaoFactory(final DAOFactory daoFactory) {
@@ -35,5 +28,12 @@ public final class UpdateCountryImpl implements UpdateCountry{
 		}
 		
 		this.daoFactory = daoFactory;
+	}
+
+	@Override
+	public void execute(CountryDomain data) {
+		var countryEntity = CountryEntityAdapter.getCountryEntityAdapter().adaptSource(data);
+		daoFactory.getCountryDAO().update(countryEntity);
+		
 	}
 }
