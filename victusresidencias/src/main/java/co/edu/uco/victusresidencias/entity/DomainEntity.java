@@ -16,12 +16,7 @@ public class DomainEntity {
 	}
 	
 	protected void setId(final UUID id) {
-	    // Solo asigna el valor predeterminado si el id recibido es null o el valor predeterminado.
-	    this.id = (id != null && !UUIDHelper.isDefault(id)) ? id : UUIDHelper.generate();
+		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
 	}
-
-//	protected void setId(final UUID id) {
-//		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
-//	}
 
 }

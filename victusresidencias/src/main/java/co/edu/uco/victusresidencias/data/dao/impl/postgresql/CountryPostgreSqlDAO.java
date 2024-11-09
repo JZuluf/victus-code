@@ -38,21 +38,23 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 
 	@Override
 	public List<CountryEntity> findAll() {
-		return findByFilter(new CountryEntity());
+		CountryEntity pruebaPais = new CountryEntity();
+		System.out.println("el pais nuevo tiene el id " + pruebaPais.getId());
+		return findByFilter(new CountryEntity());  //default 0000 y name =""
 	}
 	
 
 	@Override
-	public List<CountryEntity> findByFilter(CountryEntity filter) {
-		System.out.println("La carga paso por aqui");
-		final var statement = new StringBuilder();
-	    final var parameters = new ArrayList<>();
-	    final var resultSelect = new ArrayList<CountryEntity>();
-	    var statementWasPrepared = false;		 
+	public List<CountryEntity> findByFilter(CountryEntity filter) { //filter datos 
+		System.out.println("La carga paso por aqui del filter");
+		final var statement = new StringBuilder(); //sentencia SQL
+	    final var parameters = new ArrayList<>();  // ?
+	    final var resultSelect = new ArrayList<CountryEntity>(); //select para una lista entity
+	    var statementWasPrepared = false;	//sentencia fue preparada?	 
 	    
 	    // Select
 	    createSelect(statement);
-	    
+//		SELECT id, name FROM country ORDER BY name ASC
 	    // From
 	    createFrom(statement);
 	    
@@ -67,6 +69,7 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 	            var statementIndex = arrayIndex + 1;
 	            preparedStatement.setObject(statementIndex, parameters.get(arrayIndex));
 	        }
+	        System.out.println("Sentencia preparada " + statement);
 	        
 	        statementWasPrepared = true;
 	        
@@ -75,6 +78,8 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 	            var countryEntityTmp = new CountryEntity();
 	            //var stateEntityTmp = new StateEntity();
 	            countryEntityTmp.setId(UUID.fromString(result.getString("id")));
+	            System.out.println("id que inserta a la lista " + UUID.fromString(result.getString("id")));
+	            
 	            countryEntityTmp.setName(result.getString("name"));
 	            
 	            //stateEntityTmp.setId(UUID.fromString(result.getString("state")));
@@ -102,41 +107,18 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 	private void createFrom(final StringBuilder statement) {
 		statement.append("FROM country ");
 	}
-	
-//	private void createWhere(final StringBuilder statement, 
-//            final CountryEntity filter, 
-//            final List<Object> parameters) {
-//		boolean hasConditions = false;
-//
-//		if (!UUIDHelper.isDefault(filter.getId())) { // Si se pasa un ID
-//			statement.append("WHERE id = ? ");
-//			parameters.add(filter.getId());
-//			hasConditions = true;
-//		} 
-//		if (!TextHelper.isEmpty(filter.getName())) { // Si se pasa un nombre
-//			if (hasConditions) {
-//				statement.append("AND ");
-//			} else {
-//				statement.append("WHERE ");
-//			}
-//			statement.append("name = ? ");
-//			parameters.add(filter.getName());
-//		}
-//
-//// Si no se pasaron filtros, no agregar WHERE.
-//	}
 
-	
 	private void createWhere(final StringBuilder statement, 
             final CountryEntity filter, 
-            final List<Object> parameters) {
+            final List<Object> parameters) {//filter.getId = 0000000
 			if (!UUIDHelper.isDefault(filter.getId())) { // Se asegura de que el ID no sea el valor predeterminado
+				System.out.println("Sentencia preparada con where " + filter.getId());
 				statement.append("WHERE id = ? ");
 				parameters.add(filter.getId());
 			} else if (!TextHelper.isEmpty(filter.getName())) { // Condición para filtro de nombre
 				statement.append("WHERE name = ? ");
 				parameters.add(filter.getName());
-			}
+			}//este if es para filtar por id o por nombre
 	}
 	
 	private void createOrderBy(final StringBuilder statement) {

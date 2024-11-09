@@ -13,6 +13,10 @@ public final class UUIDHelper {
 	public static final UUID convertToUUID(final String uuidAsString) {
 		return UUID.fromString(uuidAsString);
 	}
+	
+	public static final String convertToString(final UUID uuidAsUuid) {
+		return uuidAsUuid.toString();
+	}
 
 	public static final UUID getDefault(final UUID value, final UUID defaultValue) {
 		return ObjectHelper.getDefault(value, defaultValue);
