@@ -50,15 +50,7 @@
     	<sonar.test.inclusions>src/test/java/**</sonar.test.inclusions>
     	<java.version>23</java.version>
 	</properties>
-	
-	<repositories>
-	    <repository>
-	        <id>central</id>
-	        <url>https://repo.maven.apache.org/maven2</url>
-	    </repository>
-	</repositories>
 
-	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

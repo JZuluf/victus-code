@@ -44,6 +44,7 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 
 	@Override
 	public List<CountryEntity> findByFilter(CountryEntity filter) {
+		System.out.println("La carga paso por aqui");
 		final var statement = new StringBuilder();
 	    final var parameters = new ArrayList<>();
 	    final var resultSelect = new ArrayList<CountryEntity>();
