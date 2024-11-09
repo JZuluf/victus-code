@@ -16,7 +16,9 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
+import co.edu.uco.victusresidencias.entity.CityEntity;
 import co.edu.uco.victusresidencias.entity.CountryEntity;
+import co.edu.uco.victusresidencias.entity.StateEntity;
 
 final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 	
@@ -39,114 +41,58 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 		return findByFilter(new CountryEntity());
 	}
 	
+
 	@Override
-	public List<CountryEntity> findByFilter(final CountryEntity filter) {
-	    final var statement = new StringBuilder();
+	public List<CountryEntity> findByFilter(CountryEntity filter) {
+		final var statement = new StringBuilder();
 	    final var parameters = new ArrayList<>();
 	    final var resultSelect = new ArrayList<CountryEntity>();
-	    var statementWasPrepared = false;
-
-	    // Construcción de la sentencia SQL
+	    var statementWasPrepared = false;		 
+	    
+	    // Select
 	    createSelect(statement);
+	    
+	    // From
 	    createFrom(statement);
+	    
+	    // Where
 	    createWhere(statement, filter, parameters);
+	    
+	    // Order By
 	    createOrderBy(statement);
-
-	    System.out.println("Sentencia SQL construida: " + statement.toString());
-	    System.out.println("Parámetros de la sentencia: " + parameters);
-
+	    
 	    try (var preparedStatement = getConnection().prepareStatement(statement.toString())) {
 	        for (var arrayIndex = 0; arrayIndex < parameters.size(); arrayIndex++) {
 	            var statementIndex = arrayIndex + 1;
 	            preparedStatement.setObject(statementIndex, parameters.get(arrayIndex));
 	        }
-
+	        
 	        statementWasPrepared = true;
-
+	        
 	        final var result = preparedStatement.executeQuery();
 	        while (result.next()) {
 	            var countryEntityTmp = new CountryEntity();
-	            countryEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
+	            //var stateEntityTmp = new StateEntity();
+	            countryEntityTmp.setId(UUID.fromString(result.getString("id")));
 	            countryEntityTmp.setName(result.getString("name"));
-
-	            resultSelect.add(countryEntityTmp);
+	            
+	            //stateEntityTmp.setId(UUID.fromString(result.getString("state")));
+	            
+	            //countryEntityTmp.setState(stateEntityTmp);
+	            
+	            resultSelect.add(countryEntityTmp);		
 	        }
-
-	        System.out.println("Número de países encontrados: " + resultSelect.size());
-
 	    } catch (final SQLException exception) {
-	        var userMessage = "Se ha presentado un problema tratando de llevar a cabo la "
-	                + "consulta de los países por el filtro deseado. "
-	                + "Por favor intente de nuevo y si el problema persiste reporte la novedad ...";
-	        var technicalMessage = "Se ha presentado un problema al tratar de consultar la "
-	                + "información de los países por el filtro deseado en la base de datos SQL Server "
-	                + "tratando de preparar la sentencia SQL que se iba a ejecutar. SQL: " + statement;
-
-	        if (statementWasPrepared) {
-	            technicalMessage = "Se ha presentado un problema al tratar de consultar "
-	                    + "la información de los países por el filtro deseado en la base de datos SQL Server "
-	                    + "al ejecutar la sentencia SQL preparada. SQL: " + statement;
-	        }
-	        System.err.println("Error técnico: " + technicalMessage);
+	        var userMessage = "Se ha presentado un problema tratando de llevar a cabo la consulta de los paises.";
+	        var technicalMessage = statementWasPrepared ? 
+	            "Problema ejecutando la consulta de paises en la base de datos." : 
+	            "Problema preparando la consulta de paises en la base de datos.";
+	        
 	        throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
 	    }
-
+	    
 	    return resultSelect;
 	}
-
-
-//	@Override
-//	public List<CountryEntity> findByFilter(final CountryEntity filter) {
-//		final var statement = new StringBuilder();
-//		final var parameters = new ArrayList<>();
-//		final var resultSelect = new ArrayList<CountryEntity>();
-//		var statementWasPrepared = false;		 
-//		
-//		// Select
-//		createSelect(statement);
-//		
-//		// From
-//		createFrom(statement);
-//		
-//		// Where
-//		createWhere(statement, filter, parameters);
-//		
-//		// Order By
-//		createOrderBy(statement);
-//		
-//		try (var preparedStatement = getConnection().prepareStatement(statement.toString())){
-//			for (var arrayIndex = 0; arrayIndex < parameters.size(); arrayIndex++) {
-//				var statementIndex = arrayIndex + 1;
-//				preparedStatement.setObject(statementIndex, parameters.get(arrayIndex));
-//			}
-//			
-//			statementWasPrepared = true;
-//			
-//			final var result = preparedStatement.executeQuery();
-//			while(result.next()) {
-//				var countryEntityTmp = new CountryEntity();
-//				countryEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
-//				countryEntityTmp.setName(result.getString("name"));
-//				
-//				resultSelect.add(countryEntityTmp);		
-//			}
-//		} catch (final SQLException exception) {
-//			var userMessage = "Se ha presentado un problema tratando de llevar a cabo la "
-//					+ "consulta de los paises por el filtro deseado. "
-//					+ "Por favor intente de nuevo y si el problema persiste reporte la novedad ...";
-//			var technicalMessege = "Se ha presentado un problema al tratar de consultar la "
-//					+ "informacion de los paises por el filtro deseado en la base de datos SQL server tratando de preparar "
-//					+ "la sentencia SQL que se iba a ejecutar. Por favor valide el log de errores para encontrar "
-//					+ "mayores detalles del problema presentado...";
-//			if (statementWasPrepared) {
-//				technicalMessege = "Se ha presentado un problema al tratar de consultar "
-//						+ "la informacion de los paises por el filtro deseado en la "
-//						+ "base de datos SQL server tratando de ejecutar la sentencia SQL. Por favor valide el log de errores para encontrar mayores detalles del problema presentado...";
-//			}
-//			throw DataVictusResidenciasException.crear(userMessage, technicalMessege, exception);
-//		}
-//	    return resultSelect;//resultSelect; 
-//	}
 	
 	private void createSelect(final StringBuilder statement) {
 		statement.append("SELECT id, name ");
@@ -156,41 +102,41 @@ final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 		statement.append("FROM country ");
 	}
 	
-	private void createWhere(final StringBuilder statement, 
-            final CountryEntity filter, 
-            final List<Object> parameters) {
-		boolean hasConditions = false;
-
-		if (!UUIDHelper.isDefault(filter.getId())) { // Si se pasa un ID
-			statement.append("WHERE id = ? ");
-			parameters.add(filter.getId());
-			hasConditions = true;
-		} 
-		if (!TextHelper.isEmpty(filter.getName())) { // Si se pasa un nombre
-			if (hasConditions) {
-				statement.append("AND ");
-			} else {
-				statement.append("WHERE ");
-			}
-			statement.append("name = ? ");
-			parameters.add(filter.getName());
-		}
-
-// Si no se pasaron filtros, no agregar WHERE.
-	}
-
-	
 //	private void createWhere(final StringBuilder statement, 
 //            final CountryEntity filter, 
 //            final List<Object> parameters) {
-//			if (!UUIDHelper.isDefault(filter.getId())) { // Se asegura de que el ID no sea el valor predeterminado
-//				statement.append("WHERE id = ? ");
-//				parameters.add(filter.getId());
-//			} else if (!TextHelper.isEmpty(filter.getName())) { // Condición para filtro de nombre
-//				statement.append("WHERE name = ? ");
-//				parameters.add(filter.getName());
+//		boolean hasConditions = false;
+//
+//		if (!UUIDHelper.isDefault(filter.getId())) { // Si se pasa un ID
+//			statement.append("WHERE id = ? ");
+//			parameters.add(filter.getId());
+//			hasConditions = true;
+//		} 
+//		if (!TextHelper.isEmpty(filter.getName())) { // Si se pasa un nombre
+//			if (hasConditions) {
+//				statement.append("AND ");
+//			} else {
+//				statement.append("WHERE ");
 //			}
+//			statement.append("name = ? ");
+//			parameters.add(filter.getName());
+//		}
+//
+//// Si no se pasaron filtros, no agregar WHERE.
 //	}
+
+	
+	private void createWhere(final StringBuilder statement, 
+            final CountryEntity filter, 
+            final List<Object> parameters) {
+			if (!UUIDHelper.isDefault(filter.getId())) { // Se asegura de que el ID no sea el valor predeterminado
+				statement.append("WHERE id = ? ");
+				parameters.add(filter.getId());
+			} else if (!TextHelper.isEmpty(filter.getName())) { // Condición para filtro de nombre
+				statement.append("WHERE name = ? ");
+				parameters.add(filter.getName());
+			}
+	}
 	
 	private void createOrderBy(final StringBuilder statement) {
 		statement.append("ORDER BY name ASC");

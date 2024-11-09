@@ -129,7 +129,7 @@ public final class CountryController {
         }
     }
     
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<CountryResponse> retrieveAll() {
         // Inicializar la respuesta y los mensajes
         CountryResponse responseWithData = new CountryResponse();
@@ -138,13 +138,13 @@ public final class CountryController {
         try {
             // Paso 1: Obtener todas las entidades de países desde la base de datos
             List<CountryEntity> countryEntities = daoFactory.getCountryDAO().findAll();
-
+            System.out.println("pasa por aqui entity " + countryEntities.size());
             // Paso 2: Adaptar las entidades a dominios
             List<CountryDomain> countryDomains = CountryEntityAdapter.getCountryEntityAdapter().adaptTarget(countryEntities);
-
+            System.out.println("pasa por aqui domain " + countryDomains.size());
             // Paso 3: Convertir dominios a DTOs para la respuesta
             List<CountryDTO> countryDTOs = CountryDTOAdapter.getCountryDTOAdapter().adaptTarget(countryDomains);
-
+            System.out.println("pasa por aqui dto " + countryDTOs.size());
             // Paso 4: Preparar la respuesta exitosa
             responseWithData.setData(countryDTOs);
             messages.add("Los países fueron consultados satisfactoriamente.");
