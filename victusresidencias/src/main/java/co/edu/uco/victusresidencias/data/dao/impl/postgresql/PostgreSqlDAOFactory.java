@@ -22,7 +22,8 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	private Connection connection;
 	private final String url = "jdbc:postgresql://localhost:5432/LocalBaseDatosJava";
 	private final String user = "postgres";
-	private final String password = "123456";
+//	private final String password = "123456";
+	private final String password = "Jzulu1041";
 //	private final String url = "jdbc:postgresql://bubble.db.elephantsql.com/cjjxjjym";
 //	private final String user = "cjjxjjym";
 //	private final String password = "C1fGqQx4sC0Jh6Rg3TicDI1WJ1UxAUJk";
