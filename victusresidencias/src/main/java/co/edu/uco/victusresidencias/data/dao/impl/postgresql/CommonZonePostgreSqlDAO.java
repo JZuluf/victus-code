@@ -10,40 +10,40 @@ import java.util.UUID;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
-import co.edu.uco.victusresidencias.data.dao.ResidentialComplexDAO;
+import co.edu.uco.victusresidencias.data.dao.CommonZoneDAO;
 import co.edu.uco.victusresidencias.data.dao.StateDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
-import co.edu.uco.victusresidencias.entity.AdministratorEntity;
+import co.edu.uco.victusresidencias.entity.CommonZoneEntity;
 import co.edu.uco.victusresidencias.entity.CountryEntity;
 import co.edu.uco.victusresidencias.entity.ResidentialComplexEntity;
 import co.edu.uco.victusresidencias.entity.StateEntity;
 
-final class ResidentialComplexPostgreSqlDAO extends SqlDAO implements ResidentialComplexDAO {
+final class CommonZonePostgreSqlDAO extends SqlDAO implements CommonZoneDAO {
 	
-	protected ResidentialComplexPostgreSqlDAO(final Connection connection) {
+	protected CommonZonePostgreSqlDAO(final Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
-	public ResidentialComplexEntity fingByID(UUID id) {
-		var residentialComplexEntityFilter = new ResidentialComplexEntity();
-	    residentialComplexEntityFilter.setId(id);
+	public CommonZoneEntity fingByID(UUID id) {
+		var commonZoneEntityFilter = new CommonZoneEntity();
+		commonZoneEntityFilter.setId(id);
 	    
-	    var result = findByFilter(residentialComplexEntityFilter);
-	    return (result.isEmpty()) ? new ResidentialComplexEntity() : result.get(0);
+	    var result = findByFilter(commonZoneEntityFilter);
+	    return (result.isEmpty()) ? new CommonZoneEntity() : result.get(0);
 	}
 
 	@Override
-	public List<ResidentialComplexEntity> findAll() {
-		return findByFilter(new ResidentialComplexEntity());
+	public List<CommonZoneEntity> findAll() {
+		return findByFilter(new CommonZoneEntity());
 	}
 
 	@Override
-	public List<ResidentialComplexEntity> findByFilter(ResidentialComplexEntity filter) {
+	public List<CommonZoneEntity> findByFilter(CommonZoneEntity filter) {
 		final var statement = new StringBuilder();
 	    final var parameters = new ArrayList<>();
-	    final var resultSelect = new ArrayList<ResidentialComplexEntity>();
+	    final var resultSelect = new ArrayList<CommonZoneEntity>();
 	    var statementWasPrepared = false;		 
 	    
 	    // Select
@@ -68,21 +68,21 @@ final class ResidentialComplexPostgreSqlDAO extends SqlDAO implements Residentia
 	        
 	        final var result = preparedStatement.executeQuery();
 	        while (result.next()) {
+	            var commonZoneEntityTmp = new CommonZoneEntity();
 	            var residentialComplexEntityTmp = new ResidentialComplexEntity();
-	            var administratorEntityTmp = new AdministratorEntity();
-	            residentialComplexEntityTmp.setId(UUID.fromString(result.getString("id")));
-	            residentialComplexEntityTmp.setName(result.getString("name"));
+	            commonZoneEntityTmp.setId(UUID.fromString(result.getString("id")));
+	            commonZoneEntityTmp.setName(result.getString("name"));
 	            
-	            administratorEntityTmp.setId(UUID.fromString(result.getString("Administrator")));	          
-	            residentialComplexEntityTmp.setAdministrator(administratorEntityTmp);
+	            residentialComplexEntityTmp.setId(UUID.fromString(result.getString("residentialComplex")));	          
+	            commonZoneEntityTmp.setResidentialComplex(residentialComplexEntityTmp);
 	            
-	            resultSelect.add(residentialComplexEntityTmp);		
+	            resultSelect.add(commonZoneEntityTmp);		
 	        }
 	    } catch (final SQLException exception) {
-	        var userMessage = "Se ha presentado un problema tratando de llevar a cabo la consulta de los conjuntos residenciales.";
+	        var userMessage = "Se ha presentado un problema tratando de llevar a cabo la consulta de las zonas comúnes.";
 	        var technicalMessage = statementWasPrepared ? 
-	            "Problema ejecutando la consulta de los conjuntos residenciales en la base de datos." : 
-	            "Problema preparando la consulta de los conjuntos residenciales en la base de datos.";
+	            "Problema ejecutando la consulta de las zonas comúnes en la base de datos." : 
+	            "Problema preparando la consulta de las zonas comúnes en la base de datos.";
 	        
 	        throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
 	    }
@@ -91,14 +91,14 @@ final class ResidentialComplexPostgreSqlDAO extends SqlDAO implements Residentia
 	}
 	
 	private void createSelect(final StringBuilder statement) {
-	    statement.append("SELECT id, name, administrator ");
+	    statement.append("SELECT id, name, residentialComplex ");
 	}
 
 	private void createFrom(final StringBuilder statement) {
-	    statement.append("FROM residentialComplex ");
+	    statement.append("FROM commonZone ");
 	}
 
-	private void createWhere(final StringBuilder statement, final ResidentialComplexEntity filter, final List<Object> parameters) {
+	private void createWhere(final StringBuilder statement, final CommonZoneEntity filter, final List<Object> parameters) {
 	    if (!UUIDHelper.isDefault(filter.getId())) {
 	        statement.append("WHERE id = ? ");
 	        parameters.add(filter.getId());
@@ -115,14 +115,12 @@ final class ResidentialComplexPostgreSqlDAO extends SqlDAO implements Residentia
 	    statement.append("ORDER BY name ASC");
 	}
 
-	
-	//me toco agregar estos metodos de forma automatica,toca revisarlos.
-	//
+	// Revisar tambien Pues sin estas implementaciones me sale error.
 	//
 	//
 	
 	@Override
-	public void create(ResidentialComplexEntity data) {
+	public void create(CommonZoneEntity data) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -134,9 +132,10 @@ final class ResidentialComplexPostgreSqlDAO extends SqlDAO implements Residentia
 	}
 
 	@Override
-	public void update(ResidentialComplexEntity data) {
+	public void update(CommonZoneEntity data) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
