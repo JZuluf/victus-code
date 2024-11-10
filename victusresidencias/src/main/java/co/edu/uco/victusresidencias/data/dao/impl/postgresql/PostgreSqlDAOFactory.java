@@ -39,30 +39,7 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 		connection = SqlConnectionHelper.openConnectionPostgreSQL(url, user, password);
 		System.out.println("Buen trabajo se conecto a la base de datos");
 	}
-//	public static void main(String[] args) throws SQLException {
-//		try {
-//            Connection conexion = DriverManager.getConnection(
-//                "jdbc:postgresql://bubble.db.elephantsql.com/cjjxjjym",
-//                "cjjxjjym",
-//                "C1fGqQx4sC0Jh6Rg3TicDI1WJ1UxAUJk"
-//            );
-//            System.out.println("Buen trabajo, se conectó a la base de datos");
-//            conexion.close();
-//            System.out.println("Buen trabajo, se cerro a la base de datos");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//	}
 
-//	public static void main(String[] args) {
-//		PostgreSqlDAOFactory prueba = new PostgreSqlDAOFactory();
-//		CountryPostgreSQLDAO pais = new CountryPostgreSQLDAO(prueba.connection); // repository
-//		CountryEntity paisEntidad = new CountryEntity(); //domain
-//		paisEntidad.setId(UUIDHelper.generate());
-//		paisEntidad.setName("Venezuela");
-//		pais.create(paisEntidad);
-//		prueba.closeConnection();
-//	}
 	@Override
 	public void initTransaction() {
 		SqlConnectionHelper.initTransaction(connection);
@@ -79,6 +56,7 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 	}
 
 	@Override
+	
 	public void closeConnection() {
 		SqlConnectionHelper.closeConnection(connection);
 		System.out.println("Buen trabajo se Desconecto a la base de datos");

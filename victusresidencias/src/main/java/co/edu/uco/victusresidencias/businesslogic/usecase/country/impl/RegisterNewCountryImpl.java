@@ -66,14 +66,6 @@ public final class RegisterNewCountryImpl implements RegisterNewCountry{
 	    daoFactory.getCountryDAO().create(countryEntity);
 	}
 	
-//	@Override
-//	public void execute(final CountryDomain data) {
-//		countryNameConsistencyIsValid.execute(data.getName());
-//		
-//		var countryDomainToMap = CountryDomain.create(generateId(), data.getName());
-//		var countryEntity = CountryEntityAdapter.getCountryEntityAdapter().adaptSource(countryDomainToMap);
-//		daoFactory.getCountryDAO().create(countryEntity);		
-//	}
 	private UUID generateId() {
 	    UUID id;
 	    do {
@@ -82,18 +74,5 @@ public final class RegisterNewCountryImpl implements RegisterNewCountry{
 	    
 	    return id;
 	}
-
-	
-//	private UUID generateId() {
-//		var id = UUIDHelper.generate();
-//		var countryEntity = daoFactory.getCountryDAO().fingByID(id);    
-//		
-//		if (UUIDHelper.isEqual(countryEntity.getId(), id)) {
-//			id = generateId();
-//		}
-//		
-//		return id;
-//		
-//	}
 
 }
