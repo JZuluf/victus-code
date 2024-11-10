@@ -4,7 +4,6 @@ import java.util.List;
 
 
 import co.edu.uco.victusresidencias.businesslogic.facade.FacadeWithReturn;
-import co.edu.uco.victusresidencias.dto.CityDTO;
 import co.edu.uco.victusresidencias.dto.CountryDTO;
 
 public interface FindCountryFacade extends FacadeWithReturn<CountryDTO, List<CountryDTO>> {

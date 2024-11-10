@@ -9,9 +9,7 @@ import java.util.List;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.domain.AdministratorDomain;
-import co.edu.uco.victusresidencias.domain.CityDomain;
 import co.edu.uco.victusresidencias.dto.AdministratorDTO;
-import co.edu.uco.victusresidencias.dto.CityDTO;
 
 public class AdministratorDTOAdapter implements Adapter<AdministratorDomain, AdministratorDTO> {
 

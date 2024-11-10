@@ -3,13 +3,10 @@ package co.edu.uco.victusresidencias.businesslogic.usecase.country.impl;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 
-import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CityEntityAdapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CountryEntityAdapter;
-import co.edu.uco.victusresidencias.businesslogic.usecase.city.UpdateCity;
 import co.edu.uco.victusresidencias.businesslogic.usecase.country.UpdateCountry;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
-import co.edu.uco.victusresidencias.domain.CityDomain;
 import co.edu.uco.victusresidencias.domain.CountryDomain;
 
 public final class UpdateCountryImpl implements UpdateCountry{

@@ -2,13 +2,10 @@ package co.edu.uco.victusresidencias.businesslogic.usecase.usagetimeunit.impl;
 
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.victusresidencias.businesslogic.adapter.entity.AdministratorEntityAdapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.entity.UsageTimeUnitEntityAdapter;
-import co.edu.uco.victusresidencias.businesslogic.usecase.administrator.UpdateAdministrator;
 import co.edu.uco.victusresidencias.businesslogic.usecase.usagetimeunit.UpdateUsageTimeUnit;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
-import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.UsageTimeUnitDomain;
 
 public final class UpdateUsageTimeUnitImpl implements UpdateUsageTimeUnit{

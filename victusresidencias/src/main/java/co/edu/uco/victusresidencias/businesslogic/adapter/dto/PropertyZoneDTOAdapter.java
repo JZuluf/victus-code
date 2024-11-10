@@ -7,9 +7,7 @@ import java.util.List;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
-import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.PropertyZoneDomain;
-import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.PropertyZoneDTO;
 
 public class PropertyZoneDTOAdapter implements Adapter<PropertyZoneDomain, PropertyZoneDTO> {

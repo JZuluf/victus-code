@@ -2,11 +2,7 @@ package co.edu.uco.victusresidencias.businesslogic.usecase.usagetimeunit.impl;
 
 import java.util.UUID;
 
-import co.edu.uco.victusresidencias.businesslogic.adapter.entity.AdministratorEntityAdapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.entity.UsageTimeUnitEntityAdapter;
-import co.edu.uco.victusresidencias.businesslogic.usecase.administrator.RegisterNewAdministrator;
-import co.edu.uco.victusresidencias.businesslogic.usecase.administrator.rules.AdministratorNameConsistencyIsValid;
-import co.edu.uco.victusresidencias.businesslogic.usecase.administrator.rules.impl.AdministratorNameConsistencyIsValidImpl;
 import co.edu.uco.victusresidencias.businesslogic.usecase.usagetimeunit.RegisterNewUsageTimeUnit;
 import co.edu.uco.victusresidencias.businesslogic.usecase.usagetimeunit.rules.UsageTimeUnitNameConsistencyIsValid;
 import co.edu.uco.victusresidencias.businesslogic.usecase.usagetimeunit.rules.impl.UsageTimeUnitNameConsistencyIsValidImpl;
@@ -14,7 +10,6 @@ import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusR
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
-import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.UsageTimeUnitDomain;
 
 public final class RegisterNewUsageTimeUnitImpl implements RegisterNewUsageTimeUnit{

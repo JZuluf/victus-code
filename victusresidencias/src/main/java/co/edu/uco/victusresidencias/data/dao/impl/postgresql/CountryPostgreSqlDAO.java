@@ -2,23 +2,17 @@ package co.edu.uco.victusresidencias.data.dao.impl.postgresql;
 
 import java.sql.Connection;
 
-
-
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
-import co.edu.uco.victusresidencias.entity.CityEntity;
 import co.edu.uco.victusresidencias.entity.CountryEntity;
-import co.edu.uco.victusresidencias.entity.StateEntity;
 
 final class CountryPostgreSQLDAO extends SqlDAO implements CountryDAO {
 	

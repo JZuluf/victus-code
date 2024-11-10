@@ -11,12 +11,9 @@ import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.CommonZoneDAO;
-import co.edu.uco.victusresidencias.data.dao.StateDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.CommonZoneEntity;
-import co.edu.uco.victusresidencias.entity.CountryEntity;
 import co.edu.uco.victusresidencias.entity.ResidentialComplexEntity;
-import co.edu.uco.victusresidencias.entity.StateEntity;
 
 final class CommonZonePostgreSqlDAO extends SqlDAO implements CommonZoneDAO {
 	

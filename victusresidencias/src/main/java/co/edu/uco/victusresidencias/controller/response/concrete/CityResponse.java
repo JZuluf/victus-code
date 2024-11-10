@@ -2,7 +2,6 @@ package co.edu.uco.victusresidencias.controller.response.concrete;
 
 import java.util.List;
 
-
 import co.edu.uco.victusresidencias.controller.response.Response;
 import co.edu.uco.victusresidencias.controller.response.ResponseWithData;
 import co.edu.uco.victusresidencias.dto.CityDTO;

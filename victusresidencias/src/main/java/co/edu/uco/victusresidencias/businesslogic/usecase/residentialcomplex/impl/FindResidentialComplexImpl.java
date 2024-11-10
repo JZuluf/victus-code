@@ -2,12 +2,8 @@ package co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.im
 
 import java.util.List;
 
-
-
-import co.edu.uco.victusresidencias.businesslogic.usecase.city.FindCity;
 import co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.FindResidentialComplex;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
-import co.edu.uco.victusresidencias.domain.CityDomain;
 import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
 
 public final class FindResidentialComplexImpl implements FindResidentialComplex{

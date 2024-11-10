@@ -5,7 +5,6 @@ import java.util.UUID;
 import co.edu.uco.victusresidencias.businesslogic.usecase.country.DeleteCountry;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 
 public final class DeleteCountryImpl implements DeleteCountry {

@@ -2,14 +2,12 @@ package co.edu.uco.victusresidencias.businesslogic.facade.country.impl;
 
 import java.util.UUID;
 
-import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CountryDTOAdapter;
 import co.edu.uco.victusresidencias.businesslogic.facade.country.DeleteCountryFacade;
 import co.edu.uco.victusresidencias.businesslogic.usecase.country.impl.DeleteCountryImpl;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.enums.DAOSource;
-import co.edu.uco.victusresidencias.dto.CountryDTO;
 
 public final class DeleteCountryFacadeImpl implements DeleteCountryFacade {
 

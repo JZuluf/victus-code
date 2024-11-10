@@ -2,8 +2,6 @@ package co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.im
 
 import java.util.UUID;
 
-
-import co.edu.uco.victusresidencias.businesslogic.usecase.city.DeleteCity;
 import co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.DeleteResidentialComplex;
 
 public final class DeleteResidentialComplexImpl implements DeleteResidentialComplex{

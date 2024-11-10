@@ -1,7 +1,6 @@
 package co.edu.uco.victusresidencias.businesslogic.usecase.commonzone.rules.impl;
 
 import co.edu.uco.victusresidencias.businesslogic.usecase.commonzone.rules.CommonZoneNameConsistencyIsValid;
-import co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.rules.ResidentialComplexNameConsistencyIsValid;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 

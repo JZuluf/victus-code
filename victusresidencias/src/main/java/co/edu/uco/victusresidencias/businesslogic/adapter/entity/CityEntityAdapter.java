@@ -2,17 +2,12 @@ package co.edu.uco.victusresidencias.businesslogic.adapter.entity;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 
-import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
-import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
-import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.CityDomain;
-import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.entity.CityEntity;
 
 public final class CityEntityAdapter implements Adapter<CityEntity,CityDomain>{

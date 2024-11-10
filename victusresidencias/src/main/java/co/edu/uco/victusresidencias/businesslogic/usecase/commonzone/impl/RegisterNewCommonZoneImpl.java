@@ -3,19 +3,14 @@ package co.edu.uco.victusresidencias.businesslogic.usecase.commonzone.impl;
 import java.util.UUID;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CommonZoneEntityAdapter;
-import co.edu.uco.victusresidencias.businesslogic.adapter.entity.ResidentialComplexEntityAdapter;
 import co.edu.uco.victusresidencias.businesslogic.usecase.commonzone.RegisterNewCommonZone;
 import co.edu.uco.victusresidencias.businesslogic.usecase.commonzone.rules.CommonZoneNameConsistencyIsValid;
 import co.edu.uco.victusresidencias.businesslogic.usecase.commonzone.rules.impl.CommonZoneNameConsistencyIsValidImpl;
-import co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.RegisterNewResidentialComplex;
-import co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.rules.ResidentialComplexNameConsistencyIsValid;
-import co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.rules.impl.ResidentialcomplexNameConsistencyIsValidImpl;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.domain.CommonZoneDomain;
-import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
 
 public final class RegisterNewCommonZoneImpl implements RegisterNewCommonZone{
 

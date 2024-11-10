@@ -1,8 +1,6 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 
-import co.edu.uco.victusresidencias.crosscutting.helpers.NumericHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
-import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
 import java.util.ArrayList;
@@ -11,11 +9,6 @@ import java.util.List;
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
-import co.edu.uco.victusresidencias.domain.StateDomain;
-import co.edu.uco.victusresidencias.domain.AdministratorDomain;
-import co.edu.uco.victusresidencias.domain.CityDomain;
-import co.edu.uco.victusresidencias.domain.CountryDomain;
-import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.ResidentialComplexDTO;
 
 public class ResidentialComplexDTOAdapter implements Adapter<ResidentialComplexDomain, ResidentialComplexDTO> {

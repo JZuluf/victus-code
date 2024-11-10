@@ -10,17 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.TextHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.AdministratorDAO;
-import co.edu.uco.victusresidencias.data.dao.CountryDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.AdministratorEntity;
-import co.edu.uco.victusresidencias.entity.CityEntity;
-import co.edu.uco.victusresidencias.entity.CountryEntity;
-import co.edu.uco.victusresidencias.entity.StateEntity;
 
 final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDAO {
 	

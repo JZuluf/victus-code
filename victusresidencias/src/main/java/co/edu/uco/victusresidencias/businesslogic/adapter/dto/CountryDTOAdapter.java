@@ -12,9 +12,7 @@ import java.util.List;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
-import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.domain.CountryDomain;
-import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 import co.edu.uco.victusresidencias.dto.CountryDTO;
 
 

@@ -3,18 +3,13 @@ package co.edu.uco.victusresidencias.businesslogic.facade.residentialcomplex.imp
 import java.util.List;
 
 
-import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CityDTOAdapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.dto.ResidentialComplexDTOAdapter;
-import co.edu.uco.victusresidencias.businesslogic.facade.city.FindCityFacade;
 import co.edu.uco.victusresidencias.businesslogic.facade.residentialcomplex.FindResidentialComplexFacade;
-import co.edu.uco.victusresidencias.businesslogic.usecase.city.impl.FindCityImpl;
 import co.edu.uco.victusresidencias.businesslogic.usecase.residentialcomplex.impl.FindResidentialComplexImpl;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.enums.DAOSource;
-import co.edu.uco.victusresidencias.domain.ResidentialComplexDomain;
-import co.edu.uco.victusresidencias.dto.CityDTO;
 import co.edu.uco.victusresidencias.dto.ResidentialComplexDTO;
 
 public final class FindResidentialComplexFacadeImpl implements FindResidentialComplexFacade{

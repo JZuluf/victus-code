@@ -2,7 +2,6 @@ package co.edu.uco.victusresidencias.data.dao;
 
 import java.util.UUID;
 
-import co.edu.uco.victusresidencias.entity.AdministratorEntity;
 import co.edu.uco.victusresidencias.entity.UsageTimeUnitEntity;
 
 public interface UsageTimeUnitDAO 
