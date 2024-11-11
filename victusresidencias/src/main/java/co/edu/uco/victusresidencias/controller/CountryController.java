@@ -1,6 +1,7 @@
 package co.edu.uco.victusresidencias.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +19,7 @@ import co.edu.uco.victusresidencias.controller.response.concrete.CountryResponse
 import co.edu.uco.victusresidencias.controller.response.concrete.GenericResponse;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.UcoApplicationException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
+import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.data.dao.impl.postgresql.PostgreSqlDAOFactory;
 import co.edu.uco.victusresidencias.domain.CountryDomain;
 import co.edu.uco.victusresidencias.dto.CountryDTO;
@@ -38,7 +40,7 @@ public final class CountryController {
     public CountryDTO getDummy() {
         return CountryDTO.create();
     }
-
+   
     @PostMapping("/create")
     public ResponseEntity<GenericResponse> create(@RequestBody CountryDTO country) {
         var messages = new ArrayList<String>();
@@ -208,4 +210,43 @@ public final class CountryController {
             return new ResponseEntity<>(responseWithData, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping("/login")
+	public ResponseEntity<CountryResponse> validateLogin(String username, String password) {
+		var responseWithData = new CountryResponse();
+        var messages = new ArrayList<String>();
+        
+        try {
+        	UUID idConverted = UUIDHelper.convertToUUID(password);
+        	// Paso 1: Obtener la entidad del país desde la base de datos
+            CountryEntity countryEntity = daoFactory.getCountryDAO().fingByID(idConverted);
+
+            if (countryEntity == null) {
+                messages.add("No se encontró un país con esa clave.");
+                responseWithData.setMessages(messages);
+                return new ResponseEntity<>(responseWithData, HttpStatus.NOT_FOUND);
+            }
+         // Paso 2: Adaptar la entidad a un dominio
+            List<CountryEntity> countryEntityList = List.of(countryEntity);
+            List<CountryDomain> countryDomains = CountryEntityAdapter.getCountryEntityAdapter().adaptTarget(countryEntityList);
+
+            // Paso 3: Convertir el dominio a DTO y prepararlo para la respuesta
+            List<CountryDTO> countryDTOs = CountryDTOAdapter.getCountryDTOAdapter().adaptTarget(countryDomains);
+
+            // Paso 4: Establecer los datos y mensajes en la respuesta
+            responseWithData.setData(countryDTOs);
+     
+            messages.add("El país fue consultada satisfactoriamente.");
+            responseWithData.setMessages(messages);
+            
+            return new GenerateResponse<CountryResponse>().generateSuccessResponseWithData(responseWithData);
+
+        } catch (final Exception exception) {
+            messages.add("Error al consultar el país. Por favor intente nuevamente.");
+            exception.printStackTrace();
+            responseWithData.setMessages(messages);
+            return new ResponseEntity<>(responseWithData, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    	
+	}
 }

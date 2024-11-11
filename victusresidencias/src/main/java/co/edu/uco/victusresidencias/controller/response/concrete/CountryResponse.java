@@ -12,6 +12,6 @@ public final class CountryResponse extends ResponseWithData<CountryDTO>{
 		var response= new CountryResponse();
 		response.setMessages(messages);
 		response.setData(data);
-		return response;
+		return response;   
 	}
 }

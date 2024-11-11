@@ -18,6 +18,8 @@ public class AdministratorDTO extends DomainDTO {
         setName(TextHelper.EMPTY);
         setLastName(TextHelper.EMPTY);
         setIdType(TextHelper.EMPTY);
+        setIdNumber(TextHelper.EMPTY);
+        setContactNumber(TextHelper.EMPTY);
         setEmail(TextHelper.EMPTY);
         setPassword(TextHelper.EMPTY);
     }
