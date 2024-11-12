@@ -10,5 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
     CommonModule,
     AppRoutingModule
   ]
+  
 })
 export class AppModule { }
