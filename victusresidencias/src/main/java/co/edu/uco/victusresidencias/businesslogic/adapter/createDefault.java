@@ -22,7 +22,9 @@ import co.edu.uco.victusresidencias.domain.TurnDomain;
 import co.edu.uco.victusresidencias.domain.UsageTimeUnitDomain;
 
 public class createDefault {
-	
+	private createDefault() {
+		
+	}
 	//para los DTO
 	public static final CountryDomain COUNTRY = CountryDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY);
 	public static final UsageTimeUnitDomain USAGE_TIME_UNIT = UsageTimeUnitDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY, TextHelper.EMPTY, false, TextHelper.EMPTY);

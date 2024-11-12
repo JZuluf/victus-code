@@ -1,10 +1,13 @@
 package co.edu.uco.victusresidencias.businesslogic.adapter.entity;
 
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
+<<<<<<< HEAD
 
 import java.util.ArrayList;
 import java.util.List;
 
+=======
+>>>>>>> 84f5c830edffaeaee5b686539a7cae392a49f778
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.domain.CityDomain;
