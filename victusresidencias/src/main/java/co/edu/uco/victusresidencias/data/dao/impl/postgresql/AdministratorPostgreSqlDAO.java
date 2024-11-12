@@ -12,7 +12,6 @@ import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidencia
 import co.edu.uco.victusresidencias.data.dao.AdministratorDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.AdministratorEntity;
-import co.edu.uco.victusresidencias.entity.CountryEntity;
 
 final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDAO {
 	

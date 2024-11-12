@@ -4,7 +4,6 @@ package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
-import java.awt.DefaultFocusTraversalPolicy;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,16 +1,13 @@
 package co.edu.uco.victusresidencias.businesslogic.facade.administrator.impl;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.dto.AdministratorDTOAdapter;
-import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CountryDTOAdapter;
 import co.edu.uco.victusresidencias.businesslogic.facade.administrator.RegisterNewAdministratorFacade;
 import co.edu.uco.victusresidencias.businesslogic.usecase.administrator.impl.RegisterNewAdministratorImpl;
-import co.edu.uco.victusresidencias.businesslogic.usecase.country.impl.RegisterNewCountryImpl;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.enums.DAOSource;
 import co.edu.uco.victusresidencias.dto.AdministratorDTO;
-import co.edu.uco.victusresidencias.dto.CountryDTO;
 
 public final class RegisterNewAdministratorFacadeImpl implements RegisterNewAdministratorFacade{
 	@Override

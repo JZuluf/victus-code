@@ -17,28 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.dto.AdministratorDTOAdapter;
-import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CountryDTOAdapter;
 import co.edu.uco.victusresidencias.businesslogic.adapter.entity.AdministratorEntityAdapter;
-import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CountryEntityAdapter;
 import co.edu.uco.victusresidencias.businesslogic.facade.administrator.impl.DeleteAdminstratorFacadeImpl;
 import co.edu.uco.victusresidencias.businesslogic.facade.administrator.impl.RegisterNewAdministratorFacadeImpl;
-import co.edu.uco.victusresidencias.businesslogic.facade.country.impl.DeleteCountryFacadeImpl;
-import co.edu.uco.victusresidencias.businesslogic.facade.country.impl.RegisterNewCountryFacadeImpl;
-import co.edu.uco.victusresidencias.businesslogic.usecase.administrator.impl.DeleteAdministratorImpl;
 import co.edu.uco.victusresidencias.controller.response.GenerateResponse;
 import co.edu.uco.victusresidencias.controller.response.concrete.AdministratorResponse;
-import co.edu.uco.victusresidencias.controller.response.concrete.CountryResponse;
 import co.edu.uco.victusresidencias.controller.response.concrete.GenericResponse;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.UcoApplicationException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.victusresidencias.data.dao.impl.postgresql.PostgreSqlDAOFactory;
 import co.edu.uco.victusresidencias.domain.AdministratorDomain;
-import co.edu.uco.victusresidencias.domain.CountryDomain;
 import co.edu.uco.victusresidencias.dto.AdministratorDTO;
-import co.edu.uco.victusresidencias.dto.CountryDTO;
 import co.edu.uco.victusresidencias.entity.AdministratorEntity;
-import co.edu.uco.victusresidencias.entity.CountryEntity;
 
 @RestController
 @RequestMapping("/api/v1/administrator")
