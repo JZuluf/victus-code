@@ -109,7 +109,7 @@ body {
 
 /* Header */
 .header {
-    background-color: white;
+    background-color: rgb(186, 3, 3);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;

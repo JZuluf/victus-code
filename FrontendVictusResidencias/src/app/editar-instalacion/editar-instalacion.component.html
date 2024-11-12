@@ -1,1 +1,55 @@
-<p>editar-instalacion works!</p>
+<!-- editar-instalacion.component.html -->
+<div class="contenedor">
+    <!-- Barra lateral -->
+    <aside class="barra-lateral">
+      <ul>
+        <li>Inicio</li>
+        <li>Usuarios</li>
+        <li>Gestión</li>
+        <li class="activo">Instalaciones
+          <ul>
+            <li>Listado</li>
+            <li>Buscador</li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+  
+    <!-- Contenido principal -->
+    <main class="contenido-principal">
+      <!-- Encabezado -->
+      <header class="encabezado">
+        <h1>Nueva Zona Común</h1>
+        <p>Instalaciones &raquo; Editar</p>
+      </header>
+  
+      <!-- Formulario de edición -->
+      <section class="formulario-edicion">
+        <form (ngSubmit)="onSubmit()">
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+          </div>
+          <div class="campo">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" [(ngModel)]="descripcion" required></textarea>
+          </div>
+          <div class="campo">
+            <label for="reservable">Reservable</label>
+            <select id="reservable" name="reservable" [(ngModel)]="reservable">
+              <option value="no">No</option>
+              <option value="si">Sí</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="foto">Subir foto</label>
+            <input type="file" id="foto" name="foto" (change)="onFileChange($event)" accept="image/*">
+          </div>
+          <div class="campo">
+            <button type="submit">Guardar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  
