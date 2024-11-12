@@ -1,21 +1,24 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';  // Asegúrate de importar CommonModule
 import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Importa CommonModule
+import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
+import { IconoComponent} from './icono/icono.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule], // Añade CommonModule aquí
+  imports: [IconoComponent,CommonModule, RouterOutlet, HeaderComponent, LoginComponent,], // Asegúrate de agregar CommonModule aquí
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'frontend';
-  // Variable que guarda el formulario actual que se debe mostrar
   currentForm: string = '';
 
-  // Método para cambiar el formulario
   showForm(form: string): void {
     this.currentForm = form;
   }
 }
+
+
