@@ -24,7 +24,7 @@ public class AdministratorDTO extends DomainDTO {
         setPassword(TextHelper.EMPTY);
     }
 
-    public static AdministratorDTO create() {
+    public static final AdministratorDTO create() {
         return new AdministratorDTO();
     }
 

@@ -2,6 +2,7 @@ package co.edu.uco.victusresidencias.businesslogic.usecase.country.impl;
 
 import java.util.UUID;
 
+
 import co.edu.uco.victusresidencias.businesslogic.adapter.entity.CountryEntityAdapter;
 import co.edu.uco.victusresidencias.businesslogic.usecase.country.RegisterNewCountry;
 import co.edu.uco.victusresidencias.businesslogic.usecase.country.rules.CountryNameConsistencyIsValid;
@@ -33,7 +34,7 @@ public final class RegisterNewCountryImpl implements RegisterNewCountry{
 	
 	@Override
 	public void execute(final CountryDomain data) {
-	    countryNameConsistencyIsValid.execute(data.getName());
+	    countryNameConsistencyIsValid.execute(data.getName(),"Nombre");
 
 	 // Crear un filtro de entidad para buscar si existe un país con el mismo nombre
 	    var countryEntityFilter = new CountryEntity();

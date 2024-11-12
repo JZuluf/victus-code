@@ -15,7 +15,9 @@ public class CountryDomain extends Domain {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static final CountryDomain create (final UUID id, final String name){
+	public static final CountryDomain create (
+			final UUID id, 
+			final String name){
 		return new CountryDomain(id, name);
 	}
 	

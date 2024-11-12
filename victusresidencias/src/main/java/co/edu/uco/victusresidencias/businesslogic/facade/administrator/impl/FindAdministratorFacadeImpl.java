@@ -17,7 +17,7 @@ import co.edu.uco.victusresidencias.dto.CityDTO;
 public final class FindAdministratorFacadeImpl implements FindAdministratorFacade{
 	@Override
 	public List<AdministratorDTO> execute(final AdministratorDTO data){
-		var factory = DAOFactory.getFactory(DAOSource.SQLSERVER);
+		var factory = DAOFactory.getFactory(DAOSource.POSTGRESQL);
 		
 		try {
 			var findAdminUseCase = new FindAdministratorImpl(factory);//new FindCityImpl(factory);

@@ -2,6 +2,7 @@ package co.edu.uco.victusresidencias.data.dao;
 
 import java.util.UUID;
 
+
 import co.edu.uco.victusresidencias.entity.AdministratorEntity;
 
 public interface AdministratorDAO 

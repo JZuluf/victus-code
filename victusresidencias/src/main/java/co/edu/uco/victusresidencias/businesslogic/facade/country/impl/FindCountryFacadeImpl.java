@@ -4,24 +4,28 @@ import java.util.List;
 
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CityDTOAdapter;
+import co.edu.uco.victusresidencias.businesslogic.adapter.dto.CountryDTOAdapter;
 import co.edu.uco.victusresidencias.businesslogic.facade.city.FindCityFacade;
+import co.edu.uco.victusresidencias.businesslogic.facade.country.FindCountryFacade;
 import co.edu.uco.victusresidencias.businesslogic.usecase.city.impl.FindCityImpl;
+import co.edu.uco.victusresidencias.businesslogic.usecase.country.impl.FindCountryImpl;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.BusinessLogicVictusResidenciasException;
 import co.edu.uco.victusresidencias.crosscutting.exceptions.VictusResidenciasException;
 import co.edu.uco.victusresidencias.data.dao.DAOFactory;
 import co.edu.uco.victusresidencias.data.dao.enums.DAOSource;
 import co.edu.uco.victusresidencias.dto.CityDTO;
+import co.edu.uco.victusresidencias.dto.CountryDTO;
 
-public final class FindCountryFacadeImpl implements FindCityFacade{
+public final class FindCountryFacadeImpl implements FindCountryFacade{
 	@Override
-	public List<CityDTO> execute(final CityDTO data){
-		var factory = DAOFactory.getFactory(DAOSource.SQLSERVER);
+	public List<CountryDTO> execute(final CountryDTO data){
+		var factory = DAOFactory.getFactory(DAOSource.POSTGRESQL);
 		
 		try {
-			var findCityUseCase = new FindCityImpl(factory);//new FindCityImpl(factory);
-			var cityDomain = CityDTOAdapter.getCityDTOAdapter().adaptSource(data);
+			var findCountryUseCase = new FindCountryImpl(factory);//new FindCityImpl(factory);
+			var countryDomain = CountryDTOAdapter.getCountryDTOAdapter().adaptSource(data);
 			
-			return CityDTOAdapter.getCityDTOAdapter().adaptTarget(findCityUseCase.execute(cityDomain));
+			return CountryDTOAdapter.getCountryDTOAdapter().adaptTarget(findCountryUseCase.execute(countryDomain));
 			
 		} catch (final VictusResidenciasException exception) {
 			throw exception;

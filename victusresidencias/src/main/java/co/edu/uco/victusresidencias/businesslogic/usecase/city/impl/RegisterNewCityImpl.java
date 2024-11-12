@@ -38,7 +38,7 @@ public final class RegisterNewCityImpl implements RegisterNewCity{
 	
 	@Override
 	public void execute(final CityDomain data) {
-		cityNameConsistencyIsValid.execute(data.getName());
+		cityNameConsistencyIsValid.execute(data.getName(),"Nombre");
 		cityNameDoesNotExistsForState.execute(data, daoFactory);
 		stateExists.execute(data.getState().getId(), daoFactory);
 		

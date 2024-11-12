@@ -22,7 +22,6 @@ public final class RegisterNewAdministratorFacadeImpl implements RegisterNewAdmi
 		
 		try {
 			factory.initTransaction(); 
-			System.out.println("ESta registrando");
 			var registerNewAdminUSeCase = new RegisterNewAdministratorImpl(factory);
 			var adminDomain = AdministratorDTOAdapter.getAdministratorDTOAdapter().adaptSource(data);
 			

@@ -92,8 +92,7 @@ public final class PostgreSqlDAOFactory extends DAOFactory {
 
 	@Override
 	public AdministratorDAO getAdministratorDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new AdministratorPostgreSQLDAO(connection);
 	}
 
 	@Override

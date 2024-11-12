@@ -1,0 +1,62 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    background-color: #E6F0FF;
+    padding: 60px;
+    height: fit-content;
+}
+
+.logo {
+    font-size: 30px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    padding-top: 0;
+}
+
+.headNav {
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+    font-size: 30px;
+    /* Añadir 'px' a font-size */
+    list-style: none;
+    gap: 30px;
+}
+
+.headNav li a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.btn-vacantes,
+.btn-register {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 30px;
+    /* Ajustado para que se vea más uniforme */
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+.btn {
+    color: #E6F0FF;
+    text-decoration: none;
+}
+
+.infomenu {
+    display: flex;
+    flex-direction: column;
+    /* Para mantener el diseño en columna */
+    gap: 20px;
+    /* Añade espacio entre los elementos */
+}

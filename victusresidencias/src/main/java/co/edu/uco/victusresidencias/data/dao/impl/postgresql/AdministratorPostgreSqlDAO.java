@@ -12,6 +12,7 @@ import co.edu.uco.victusresidencias.crosscutting.exceptions.DataVictusResidencia
 import co.edu.uco.victusresidencias.data.dao.AdministratorDAO;
 import co.edu.uco.victusresidencias.data.dao.impl.sql.SqlDAO;
 import co.edu.uco.victusresidencias.entity.AdministratorEntity;
+import co.edu.uco.victusresidencias.entity.CountryEntity;
 
 final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDAO {
 	
@@ -31,6 +32,8 @@ final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDA
 
 	@Override
 	public List<AdministratorEntity> findAll() {
+		AdministratorEntity pruebaAdmin = new AdministratorEntity();
+		System.out.println("el pais nuevo tiene el id " + pruebaAdmin.getId());
 		return findByFilter(new AdministratorEntity());
 	}
 	
@@ -52,18 +55,19 @@ final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDA
 	            var statementIndex = arrayIndex + 1;
 	            preparedStatement.setObject(statementIndex, parameters.get(arrayIndex));
 	        }
-	        
+	        System.out.println("Sentencia preparada " + statement);
 	        statementWasPrepared = true;
 	        final var result = preparedStatement.executeQuery();
-	        
+	      //SELECT id, name, last_name, id_type, id_number, contact_number, email, password
 	        while (result.next()) {
 	            var administratorEntityTmp = new AdministratorEntity();
 	            administratorEntityTmp.setId(UUID.fromString(result.getString("id")));
+	            System.out.println("id que inserta a la lista " + UUID.fromString(result.getString("id")));
 	            administratorEntityTmp.setName(result.getString("name"));
-	            administratorEntityTmp.setLastName(result.getString("lastName"));
-	            administratorEntityTmp.setIdType(result.getString("idType"));
-	            administratorEntityTmp.setIdNumber(result.getString("idNumber"));
-	            administratorEntityTmp.setContactNumber(result.getString("contactNumber"));
+	            administratorEntityTmp.setLastName(result.getString("last_name"));
+	            administratorEntityTmp.setIdType(result.getString("id_type"));
+	            administratorEntityTmp.setIdNumber(result.getString("id_number"));
+	            administratorEntityTmp.setContactNumber(result.getString("contact_number"));
 	            administratorEntityTmp.setEmail(result.getString("email"));
 	            administratorEntityTmp.setPassword(result.getString("password"));
 	            
@@ -82,7 +86,7 @@ final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDA
 	}
 	
 	private void createSelect(final StringBuilder statement) {
-		statement.append("SELECT id, name, lastName, idType, idNumber, contactNumber, email, password ");
+		statement.append("SELECT id, name, last_name, id_type, id_number, contact_number, email, password ");
 	}
 	
 	private void createFrom(final StringBuilder statement) {
@@ -93,6 +97,7 @@ final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDA
             final AdministratorEntity filter, 
             final List<Object> parameters) {
 			if (!UUIDHelper.isDefault(filter.getId())) {
+				System.out.println("Sentencia preparada con where " + filter.getId());
 				statement.append("WHERE id = ? ");
 				parameters.add(filter.getId());
 			} else if (!TextHelper.isEmpty(filter.getName())) {
@@ -115,7 +120,7 @@ final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDA
 	    }
 	    
 	    final StringBuilder statement = new StringBuilder();
-	    statement.append("INSERT INTO admin(id, name, lastName, idType, idNumber, contactNumber, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+	    statement.append("INSERT INTO admin(id, name, last_name, id_type, id_number, contact_number, email, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 
 	    if (UUIDHelper.isDefault(data.getId())) {
 	        data.setId(UUIDHelper.generate());
@@ -156,11 +161,11 @@ final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDA
 	        throw DataVictusResidenciasException.crear(userMessage, technicalMessage, exception);
 	    }
 	}
-
+//SELECT id, name, last_name, id_type, id_number, contact_number, email, password 
 	@Override
 	public void update(AdministratorEntity data) {
 		final StringBuilder statement = new StringBuilder();
-	    statement.append("UPDATE admin SET name = ?, lastName = ?, idType = ?, idNumber = ?, contactNumber = ?, email = ?, password = ? WHERE id = ?");
+	    statement.append("UPDATE admin SET name = ?, last_name = ?, id_type = ?, id_number = ?, contact_number = ?, email = ?, password = ? WHERE id = ?");
 
 	    try (final var preparedStatement = getConnection().prepareStatement(statement.toString())) {
 	        preparedStatement.setString(1, data.getName());

@@ -39,7 +39,9 @@ public class CountryEntityAdapter implements Adapter<CountryEntity,CountryDomain
 	@Override
 	public CountryDomain adaptTarget(CountryEntity data) {
 		var entityToAdapt = ObjectHelper.getDefault(data, new CountryEntity());
-		return CountryDomain.create(entityToAdapt.getId(), entityToAdapt.getName());
+		return CountryDomain.create(
+				entityToAdapt.getId(), 
+				entityToAdapt.getName());
 	}
 	@Override
 	public List<CountryDomain> adaptTarget(final List<CountryEntity> data) {

@@ -32,7 +32,7 @@ public final class RegisterNewUsageTimeUnitImpl implements RegisterNewUsageTimeU
 	
 	@Override
 	public void execute(final UsageTimeUnitDomain data) {
-		usageTimeUnitNameConsistencyIsValid.execute(data.getName());
+		usageTimeUnitNameConsistencyIsValid.execute(data.getName(),"Nombre");
 		
 		var usageTimeUnitDomainToMap = UsageTimeUnitDomain.create(); //organizar despues
 		var usageTimeUnitEntity = UsageTimeUnitEntityAdapter.getUsageTimeUnitEntityAdapter().adaptSource(usageTimeUnitDomainToMap);

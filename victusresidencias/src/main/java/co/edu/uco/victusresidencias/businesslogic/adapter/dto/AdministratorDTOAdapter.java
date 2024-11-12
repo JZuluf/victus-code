@@ -4,10 +4,12 @@ package co.edu.uco.victusresidencias.businesslogic.adapter.dto;
 import co.edu.uco.victusresidencias.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.victusresidencias.crosscutting.helpers.UUIDHelper;
 
+import java.awt.DefaultFocusTraversalPolicy;
 import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uco.victusresidencias.businesslogic.adapter.Adapter;
+import co.edu.uco.victusresidencias.businesslogic.adapter.createDefault;
 import co.edu.uco.victusresidencias.domain.AdministratorDomain;
 import co.edu.uco.victusresidencias.dto.AdministratorDTO;
 
@@ -23,27 +25,33 @@ public class AdministratorDTOAdapter implements Adapter<AdministratorDomain, Adm
     }
 
     @Override
-    public AdministratorDomain adaptSource(AdministratorDTO data) {
+    public AdministratorDomain adaptSource(final AdministratorDTO data) {
         // Usar un DTO por defecto si el dato es nulo
         var dtoToAdapt = ObjectHelper.getDefault(data, AdministratorDTO.create());
-
         // Adaptación de DTO a Domain
         return AdministratorDomain.create(
                 UUIDHelper.convertToUUID(dtoToAdapt.getId()),
-                dtoToAdapt.getName(),
-                dtoToAdapt.getLastName(),
-                dtoToAdapt.getIdType(),
-                dtoToAdapt.getIdNumber(),
-                dtoToAdapt.getContactNumber(),
-                dtoToAdapt.getEmail(),
-                dtoToAdapt.getPassword()
+                data.getName(),
+                data.getLastName(),
+                data.getIdType(),
+                data.getIdNumber(),
+                data.getContactNumber(),
+                data.getEmail(),
+                data.getPassword()
+//                dtoToAdapt.getName(),
+//                dtoToAdapt.getLastName(),
+//                dtoToAdapt.getIdType(),
+//                dtoToAdapt.getIdNumber(),
+//                dtoToAdapt.getContactNumber(),
+//                dtoToAdapt.getEmail(),
+//                dtoToAdapt.getPassword()
         );
     }
 
     @Override
-    public AdministratorDTO adaptTarget(AdministratorDomain data) {
+    public AdministratorDTO adaptTarget(final AdministratorDomain data) {
         // Usar un Domain por defecto si el dato es nulo
-        var domainToAdapt = ObjectHelper.getDefault(data, AdministratorDomain.create());
+        var domainToAdapt = ObjectHelper.getDefault(data, createDefault.ADMINISTRATOR);
 
         // Adaptación de Domain a DTO
         return AdministratorDTO.create()

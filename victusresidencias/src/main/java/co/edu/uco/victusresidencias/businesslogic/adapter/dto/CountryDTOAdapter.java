@@ -32,7 +32,9 @@ public class CountryDTOAdapter implements Adapter<CountryDomain, CountryDTO> {
 	@Override
 	public CountryDomain adaptSource(final CountryDTO data) {
 		var dtoToAdapt = ObjectHelper.getDefault(data, CountryDTO.create());
-		return CountryDomain.create(UUIDHelper.convertToUUID(dtoToAdapt.getId()), data.getName());
+		return CountryDomain.create(
+				UUIDHelper.convertToUUID(dtoToAdapt.getId()), 
+				data.getName());
 	}
 
 	@Override

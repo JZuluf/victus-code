@@ -30,10 +30,24 @@ public class AdministratorDomain extends Domain {
     }
 
     // Método estático para crear una instancia
-    public static final AdministratorDomain create(final UUID id, final String name, final String lastName, 
-                                                   final String idType, final String idNumber, final String contactNumber, 
-                                                   final String email, final String password) {
-        return new AdministratorDomain(id, name, lastName, idType, idNumber, contactNumber, email, password);
+    public static final AdministratorDomain create(
+    		final UUID id, 
+    		final String name, 
+    		final String lastName,
+            final String idType, 
+            final String idNumber, 
+            final String contactNumber, 
+            final String email, 
+            final String password) {
+        return new AdministratorDomain(
+        		id, 
+        		name, 
+        		lastName, 
+        		idType, 
+        		idNumber, 
+        		contactNumber, 
+        		email, 
+        		password);
     }
 
     // Método estático para crear una instancia vacía por defecto

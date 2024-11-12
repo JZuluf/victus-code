@@ -32,7 +32,7 @@ public final class RegisterNewResidentialComplexImpl implements RegisterNewResid
 	
 	@Override
 	public void execute(final ResidentialComplexDomain data) {
-		residentialComplexNameConsistencyIsValid.execute(data.getName());
+		residentialComplexNameConsistencyIsValid.execute(data.getName(),"Nombre");
 		
 		var residentialComplexDomainToMap = ResidentialComplexDomain.create(); //organizar despues
 		var residentialComplexEntity = ResidentialComplexEntityAdapter.getResidentialComplexEntityAdapter().adaptSource(residentialComplexDomainToMap);

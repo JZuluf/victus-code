@@ -32,7 +32,7 @@ public final class RegisterNewCommonZoneImpl implements RegisterNewCommonZone{
 	
 	@Override
 	public void execute(final CommonZoneDomain data) {
-		commonZoneNameConsistencyIsValid.execute(data.getName());
+		commonZoneNameConsistencyIsValid.execute(data.getName(),"Nombre");
 		
 		var commonZoneDomainToMap = CommonZoneDomain.create(); //organizar despues
 		var commonZoneEntity = CommonZoneEntityAdapter.getCommonZoneEntityAdapter().adaptSource(commonZoneDomainToMap);
