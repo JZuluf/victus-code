@@ -1,6 +1,7 @@
 package co.edu.uco.victusresidencias.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -103,7 +104,8 @@ public final class AdministratorController {
             // Actualizar el país en la base de datos
             daoFactory.getAdministratorDAO().update(updatedAdminEntity);
             
-            List<AdministratorEntity> adminEntityList = List.of(updatedAdminEntity);
+            List<AdministratorEntity> adminEntityList = Arrays.asList(updatedAdminEntity);
+            //List<AdministratorEntity> adminEntityList = List.of(updatedAdminEntity);
             List<AdministratorDomain> adminDomains = AdministratorEntityAdapter.getAdministratorEntityAdapter().adaptTarget(adminEntityList);
 
             // Paso 3: Convertir el dominio a DTO y prepararlo para la respuesta
@@ -196,8 +198,10 @@ public final class AdministratorController {
                 responseWithData.setMessages(messages);
                 return new ResponseEntity<>(responseWithData, HttpStatus.NOT_FOUND);
             }
+            List<AdministratorEntity> adminEntityList = Arrays.asList(adminEntity);
+
          // Paso 2: Adaptar la entidad a un dominio
-            List<AdministratorEntity> adminEntityList = List.of(adminEntity);
+           // List<AdministratorEntity> adminEntityList = List.of(adminEntity);
             List<AdministratorDomain> adminDomains = AdministratorEntityAdapter.getAdministratorEntityAdapter().adaptTarget(adminEntityList);
 
             // Paso 3: Convertir el dominio a DTO y prepararlo para la respuesta

@@ -33,9 +33,15 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
+<<<<<<< HEAD
     RouterModule.forRoot(routes),
   ],
   exports: [RouterModule]
+=======
+    AppRoutingModule
+  ]
+  
+>>>>>>> origin/DEV
 })
 export class AppRoutingModule { }
 

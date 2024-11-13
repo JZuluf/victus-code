@@ -189,6 +189,7 @@ public final class CountryController {
                 return new ResponseEntity<>(responseWithData, HttpStatus.NOT_FOUND);
             }
          // Paso 2: Adaptar la entidad a un dominio
+            
             List<CountryEntity> countryEntityList = List.of(countryEntity);
             List<CountryDomain> countryDomains = CountryEntityAdapter.getCountryEntityAdapter().adaptTarget(countryEntityList);
 
