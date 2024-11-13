@@ -1,7 +1,7 @@
 package co.edu.uco.victusresidencias.controller;
 
 import java.util.ArrayList;
-
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -228,7 +228,8 @@ public final class CountryController {
                 return new ResponseEntity<>(responseWithData, HttpStatus.NOT_FOUND);
             }
          // Paso 2: Adaptar la entidad a un dominio
-            List<CountryEntity> countryEntityList = List.of(countryEntity);
+            List<CountryEntity> countryEntityList = Arrays.asList(countryEntity);
+
             List<CountryDomain> countryDomains = CountryEntityAdapter.getCountryEntityAdapter().adaptTarget(countryEntityList);
 
             // Paso 3: Convertir el dominio a DTO y prepararlo para la respuesta

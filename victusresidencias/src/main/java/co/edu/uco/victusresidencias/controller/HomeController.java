@@ -1,6 +1,8 @@
 package co.edu.uco.victusresidencias.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,16 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.qos.logback.core.model.Model;
-import co.edu.uco.victusresidencias.controller.response.concrete.GenericResponse;
 
 @Controller
 @RequestMapping("/api/v1/home")
 public final class HomeController {
-	
-	@GetMapping("/login")
-	public String iniciarSesion() {
-		return "prueba";
-	}
+
+    @GetMapping("/login")
+    public String iniciarSesion() {
+        return "prueba";
+    }
 	
 	@PostMapping("/login")
 	public String validateLogin(@RequestParam String username, @RequestParam String password, Model model) {
