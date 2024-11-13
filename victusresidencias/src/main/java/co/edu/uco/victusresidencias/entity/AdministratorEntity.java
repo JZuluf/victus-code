@@ -76,7 +76,7 @@ public class AdministratorEntity extends DomainEntity {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = TextHelper.applyTrim(email);
 	}
 
 	public String getPassword() {

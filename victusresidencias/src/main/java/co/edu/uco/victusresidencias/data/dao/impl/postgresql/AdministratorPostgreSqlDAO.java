@@ -102,6 +102,10 @@ final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDA
 			} else if (!TextHelper.isEmpty(filter.getName())) {
 				statement.append("WHERE name = ? ");
 				parameters.add(filter.getName());
+			} else if (!TextHelper.isEmpty(filter.getEmail())) {
+				System.out.println("Sentencia preparada con where " + filter.getEmail());
+				statement.append("WHERE email = ? ");
+				parameters.add(filter.getEmail());
 			}
 	}
 	
@@ -112,11 +116,16 @@ final class AdministratorPostgreSQLDAO extends SqlDAO implements AdministratorDA
 	@Override
 	public void create(AdministratorEntity data) {
 	    AdministratorEntity filter = new AdministratorEntity();
+	    AdministratorEntity filterEmail = new AdministratorEntity();
 	    filter.setName(data.getName());
+	    filter.setName(data.getEmail());
 	    if (!findByFilter(filter).isEmpty()) {
 	        throw DataVictusResidenciasException.crear(
-	            "El administrador ya existe", "No se puede crear un administrador con el nombre duplicado: " + data.getName());
-	    }
+	            "El nombre del administrador ya existe", "No se puede crear un administrador con el nombre duplicado: " + data.getName());
+	    }else if(!findByFilter(filterEmail).isEmpty()) {
+	        throw DataVictusResidenciasException.crear(
+		            "El email del administrador ya existe", "No se puede crear un administrador con el email duplicado: " + data.getEmail());
+		}
 	    
 	    final StringBuilder statement = new StringBuilder();
 	    statement.append("INSERT INTO admin(id, name, last_name, id_type, id_number, contact_number, email, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
