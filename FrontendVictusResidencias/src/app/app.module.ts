@@ -4,12 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { EditarInstalacionComponent } from './editar-instalacion/editar-instalacion.component';
 import { LoginComponent } from './login/login.component';
+import { CrearAdministradorComponent } from './crear-administrador/crear-administrador.component';
 
 
 const routes: Routes = [
   { 
     path: 'header', 
     component: HeaderComponent
+  },
+  { 
+    path: 'crear-administrador', 
+    component: CrearAdministradorComponent
   },
   { 
     path: 'nueva-zona-comun', 
@@ -33,15 +38,9 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-<<<<<<< HEAD
     RouterModule.forRoot(routes),
   ],
   exports: [RouterModule]
-=======
-    AppRoutingModule
-  ]
-  
->>>>>>> origin/DEV
 })
 export class AppRoutingModule { }
 

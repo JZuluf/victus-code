@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+h2 {
+  margin-bottom: 20px; /* Ajusta el margen entre el título y el formulario */
+}
+
+form {
+  margin-top: 20px; /* Ajusta el margen superior si es necesario */
+}

@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { EditarInstalacionModule } from './editar-instalacion/editar-instalacion.module';
+import { CrearAdministradorComponent } from './crear-administrador/crear-administrador.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { EditarInstalacionModule } from './editar-instalacion/editar-instalacion
     RouterOutlet, 
     HeaderComponent, 
     LoginComponent, 
-    EditarInstalacionModule
+    EditarInstalacionModule,
+    CrearAdministradorComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

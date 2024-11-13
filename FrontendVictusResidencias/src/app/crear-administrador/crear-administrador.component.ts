@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-crear-administrador',
+  selector: 'app-crear-administrador',  // Cambiado para que coincida con el nombre del componente
   standalone: true,
-  imports: [],
   templateUrl: './crear-administrador.component.html',
-  styleUrl: './crear-administrador.component.css'
+  styleUrls: ['./crear-administrador.component.scss'],
+  imports: [CommonModule]  // Importa CommonModule si usas directivas como ngIf o ngFor
 })
 export class CrearAdministradorComponent {
+  currentForm: string = 'login';
 
+  showForm(form: string): void {
+    this.currentForm = form;
+  }
 }

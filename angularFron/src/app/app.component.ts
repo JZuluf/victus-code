@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  imports: [CommonModule]  // Asegúrate de importar CommonModule si es necesario
 })
 export class AppComponent {
-  title = 'angularFron';
+  currentForm: string = 'login';
+
+  showForm(form: string): void {
+    this.currentForm = form;
+  }
 }

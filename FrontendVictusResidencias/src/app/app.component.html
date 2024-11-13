@@ -1,76 +1,23 @@
 <!--<app-header></app-header>
 <app-login></app-login>
-<app-editar-instalacion></app-editar-instalacion>-->
+<app-editar-instalacion></app-editar-instalacion>
+<app-crear-administrador></app-crear-administrador>
+-->
 
-<<<<<<< HEAD
 <h1>Bienvenido a victus Residencias</h1>
 <nav>
   <div class="nav">
   <ul>
     <li>
-        <a href="/entrar" >Entrar</a>
+        <a style="color: black;"  href="/entrar">Entrar</a>
     </li>
     <li>
-      <a href="/editar-instalacion" >Crear Zona Común</a>
+      <a  style="color: black;" href="/editar-instalacion" >Crear Zona Común</a>
+    </li>
+    <li>
+      <a style="color: black;"  href="/crear-administrador" >Crear Administrador</a>
     </li>
   </ul>
-=======
-
-  <div class="container mt-5">
-    <button class="btn btn-primary mr-2" (click)="showForm('create')">Crear Admin</button>
-    <button class="btn btn-secondary" (click)="showForm('login')">Iniciar Sesión</button>
-  
-    <div *ngIf="currentForm === 'create'" class="mt-4">
-      <h2>Crear Administrador</h2>
-      <form>
-        <div class="form-group">
-          
-          <label for="name">Nombre</label>
-          <input type="text" id="name" class="form-control" placeholder="Nombre">
-        </div>
-        <div class="form-group">
-          <label for="lastName">Apellido</label>
-          <input type="text" id="lastName" class="form-control" placeholder="Apellido">
-        </div>
-        <div class="form-group">
-          <label for="idType">Tipo de Documento</label>
-          <select id="idType" class="form-control">
-            <option>CC</option>
-            <option>TI</option>
-            <option>PASS</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="idNumber">Número de Documento</label>
-          <input type="text" id="idNumber" class="form-control" placeholder="Número de Documento">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" class="form-control" placeholder="Email">
-        </div>
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" id="password" class="form-control" placeholder="Contraseña">
-        </div>
-        <button type="button" class="btn btn-success">Registrar</button>
-      </form>
-    </div>
-  
-    <div *ngIf="currentForm === 'login'" class="mt-4">
-      <h2>Iniciar Sesión</h2>
-      <form>
-        <div class="form-group">
-          <label for="username">Nombre</label>
-          <input type="text" id="username" class="form-control" placeholder="Nombre">
-        </div>
-        <div class="form-group">
-          <label for="loginPassword">Contraseña</label>
-          <input type="password" id="loginPassword" class="form-control" placeholder="Contraseña">
-        </div>
-        <button type="button" class="btn btn-primary">Iniciar</button>
-      </form>
-    </div>
->>>>>>> origin/DEV
   </div>
 </nav>
 
@@ -79,62 +26,6 @@
 <!-- Este es el lugar donde se cargará el componente según la ruta -->
 <!--<router-outlet></router-outlet>
 
-
-
-<div class="container mt-5">
-  <button class="btn btn-primary mr-2" (click)="showForm('create')">Crear Admin</button>
-  <button class="btn btn-secondary" (click)="showForm('login')">Iniciar Sesión</button>
-
-  <div *ngIf="currentForm === 'create'" class="mt-4">
-    <h2>Crear Administrador</h2>
-    <form>
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input type="text" id="name" class="form-control" placeholder="Nombre">
-      </div>
-      <div class="form-group">
-        <label for="lastName">Apellido</label>
-        <input type="text" id="lastName" class="form-control" placeholder="Apellido">
-      </div>
-      <div class="form-group">
-        <label for="idType">Tipo de Documento</label>
-        <select id="idType" class="form-control">
-          <option>CC</option>
-          <option>TI</option>
-          <option>PASS</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="idNumber">Número de Documento</label>
-        <input type="text" id="idNumber" class="form-control" placeholder="Número de Documento">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" class="form-control" placeholder="Email">
-      </div>
-      <div class="form-group">
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" class="form-control" placeholder="Contraseña">
-      </div>
-      <button type="button" class="btn btn-success">Registrar</button>
-    </form>
-  </div>
-
-  <div *ngIf="currentForm === 'login'" class="mt-4">
-    <h2>Iniciar Sesión</h2>
-    <form>
-      <div class="form-group">
-        <label for="username">Nombre</label>
-        <input type="text" id="username" class="form-control" placeholder="Nombre">
-      </div>
-      <div class="form-group">
-        <label for="loginPassword">Contraseña</label>
-        <input type="password" id="loginPassword" class="form-control" placeholder="Contraseña">
-      </div>
-      <button type="button" class="btn btn-primary">Iniciar</button>
-    </form>
-  </div>
-</div>
 -->
 <!-- #region 
 <header>
